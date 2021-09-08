@@ -1,0 +1,30 @@
+.signup .form-container form{
+
+    .input-container .password-strength{
+        margin-top: 7px;
+        .bar{
+            height: 3px;
+            transition: .4s ease-in-out;
+        }
+        .text{text-align: left;}
+    }
+
+    .error{
+        color: #ff3b00;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .login-link{
+        margin-bottom: 15px;
+        font-size: 14px;
+        display: inline-block;
+        a{
+            text-transform: uppercase;
+            color: #018c79;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+    }
+}

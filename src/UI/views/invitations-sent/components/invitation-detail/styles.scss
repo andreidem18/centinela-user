@@ -1,0 +1,44 @@
+@import "App.scss";
+
+.invitation-detail{
+    padding: 20px 0;
+    .card{
+        .card-title-container{
+            h4{
+                .status{text-transform: uppercase;}
+            }
+        }
+        .guest-image{
+            @include make-circle(55px);
+            border: 3px solid $light-blue;
+            margin: 10px auto;
+        }
+        .calendars{
+            display: flex;
+            color: $dark-blue-variation;
+            margin-bottom: 30px;
+            .date-container{
+                margin: 0 20px;
+                input{
+                    outline: 0;
+                    padding: 4px 10px;
+                    font-weight: 500;
+                    font-size: 15px;
+                    border: none;
+                    border-radius: 9px;
+                    box-shadow: inset 3px 3px 3px rgba(0,0,0,.3);
+                    width: 100%;
+                }
+            }
+        }
+        .input-box-light{margin-bottom: 30px;}
+        .finish-button{
+            @include button-configuration();
+            padding: 10px 20px;
+            border-radius: 3px;
+            background: $dark-blue;
+            color: $white;
+            box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+}

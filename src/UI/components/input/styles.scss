@@ -1,0 +1,63 @@
+@import "App.scss";
+
+.input-box{
+    text-align: left;
+    position: relative;
+    margin: 20px;
+    display: inline-block;
+
+    input{
+        text-align: left;
+        position: relative;
+        background: transparent;
+        outline: none;
+        border: none;
+        width: 100%;
+        color: #fff;
+        padding-bottom: 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        border-bottom: 2px solid rgba(255,255,255,.5);
+        &:focus, &:valid{
+            border-bottom-color: #fff;
+        }
+        &:focus ~ span, &:valid ~ span{
+            transform: translateY(-24px);
+            color: $light-blue;
+            font-size: 14px;
+        }
+    }
+
+    span{
+        position: absolute;
+        left: 0;
+        font-size: 15px;
+        display: inline-block;
+        font-weight: 300;
+        pointer-events: none;
+        color: rgba(255,255,255,.5);
+        transition: all .2s;
+        letter-spacing: 1px;
+    }
+}
+
+.input-box.light{
+    span{
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 0;
+    }
+    input{
+        border-bottom-color: rgba(0,0,0,.15);
+        color: rgba(0, 0, 0, 0.7);
+        &:focus, &:valid{
+            border-bottom-color: $dark-blue-variation;
+        }
+        &:focus ~ span, &:valid ~ span{
+            transform: translateY(-24px);
+            color: $dark-blue-variation;
+            font-size: 14px;
+        }
+    }
+}

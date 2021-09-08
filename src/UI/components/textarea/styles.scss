@@ -1,0 +1,41 @@
+@import "App.scss";
+
+.textarea-box{
+    text-align: left;
+    position: relative;
+    display: inline-block;
+
+    textarea{
+        text-align: left;
+        position: relative;
+        background: transparent;
+        outline: none;
+        border: none;
+        width: 100%;
+        color: #fff;
+        padding-bottom: 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        border-bottom: 2px solid rgba(255,255,255,.5);
+        &:focus, &:valid{
+            border-bottom-color: #fff;
+        }
+        &:focus ~ span, &:valid ~ span{
+            transform: translateY(-24px);
+            color: $light-blue;
+            font-size: 14px;
+        }
+    }
+
+    span{
+        position: absolute;
+        left: 0;
+        font-size: 15px;
+        display: inline-block;
+        font-weight: 300;
+        pointer-events: none;
+        color: rgba(255,255,255,.5);
+        transition: all .2s;
+        letter-spacing: 1px;
+    }
+}

@@ -1,0 +1,1 @@
+export { InvitationDetail } from './invitation-detail';

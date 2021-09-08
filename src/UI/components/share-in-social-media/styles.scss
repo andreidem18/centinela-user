@@ -1,0 +1,104 @@
+@import "App.scss";
+
+.share-in-social-media-container{
+    .share-in-social-media{
+        z-index: 999;
+        position: fixed;
+        bottom: -100%;
+        right: 0;
+        left: 0;
+        background: #1d1d1d;
+        display: flex;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        flex-wrap: wrap;
+        padding: 50px 20px 0 20px;
+        transition: 1s;
+        &.show{
+            bottom: 0;
+        }
+        &::before{
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 10px;
+            right: 44%;
+            width: 40px;
+            height: 6px;
+            border-radius: 10px;
+            background: #747474;
+        }
+        &::after{
+            content: 'Compartir a través de';
+            position: absolute;
+            top: 30px;
+            color: $white;
+        }
+        .button-container{
+            width: 33.33333%;
+            padding: 20px ;
+            .copy-button{
+                @include button-configuration();
+                @include make-circle(60px);
+                border-radius: 20px;
+                background: #e4d413;
+                color: #fff;
+                font-size: 26px;
+            }
+        }
+    }
+    .overlay{
+        @include wrap();
+        position: absolute;
+        background: rgba(0,0,0,.3);
+        animation: fadeIn 1s;
+        z-index: 99;
+    }
+}
+
+.copied-text{
+    position: fixed;
+    bottom: 200px;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    animation: fadeOut 3s ease-in-out;
+    pointer-events: none;
+    span{
+        padding:8px 13px;
+        border-radius: 8px;
+        background: #2b2b2b;
+        color: #fff;
+    }
+}
+
+@keyframes toTop {
+    0%{
+        bottom: -100%;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+

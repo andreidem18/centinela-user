@@ -1,0 +1,39 @@
+@import 'App.scss';
+
+.premium-invitation{
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+    background: $white;
+    z-index: 9;
+    p{
+        margin-bottom: 8px;
+        font-size: 15px;
+        line-height: 25px;
+    }
+    .premium-message{
+        display: block;
+        width: 100%;
+        color: #01ad8a;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 14px;
+    }
+    button{
+        @include button-configuration();
+        width: 100%;
+        padding: 9px;
+        font-size: 15px;
+    }
+    button.primary{
+        color: #fff;
+        background: #01ad8a;
+        margin-bottom: 10px;
+    }
+    button.secondary{
+        color: #01ad8a;
+        background: #dbdada;
+    }
+}

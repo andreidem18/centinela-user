@@ -1,0 +1,49 @@
+@import 'App.scss';
+
+.step-progress-bar-container{
+    width: 100%;
+    .progress-bar{
+        margin: 30px 0 10px 0;
+        counter-reset: step;
+        display: flex;
+        li{
+            list-style: none;
+            width: 33.33%;
+            position: relative;
+            &:before{
+                @include make-circle(30px);
+                content: counter(step);
+                line-height: 30px;
+                counter-increment: step;
+                border: 1px solid #bdbcbc;
+                display: block;
+                margin: 0 auto 10px auto;
+                background: $white;
+                z-index: 9;
+                position: relative;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                background: #bcbcbc;
+                top: 15px;
+                left: -50%;
+                z-index: 0;
+            }
+            &:first-child::after{
+                content: none;
+            }
+            &.active{
+                color: $light-blue;
+            }
+            &.active:before{
+                border-color: $light-blue;
+            }
+            &.active + li:after{
+                background: $light-blue;
+            }
+        }
+    }
+}

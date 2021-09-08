@@ -1,0 +1,62 @@
+@import 'App.scss';
+
+.select-profile{
+    padding: 30px 10px 0 10px;
+    height: 100vh;
+    background: #f7fffe;
+    .select-profile-content{
+        display: flex;
+        flex-direction: column;
+        height: 83vh;
+        overflow: auto;
+        .logo{
+            height: 90px;
+            padding: 10px 0;
+            margin-top: 85px;
+        }
+        .options{
+            text-align: left;
+            padding: 20px 30px;
+            .button-add{
+                @include button-configuration();
+                color: #01ad8a;
+                i{
+                    background: #1fc7ff2e;
+                    padding: 9px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                }
+                span{
+                    margin-left: 7px;
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .logout-button{
+        height: 13vh;
+        padding: 17px;
+        button{
+            @include button-configuration();
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #01ad8a;
+            background: #1fc7ff2e;
+        }
+    }
+    .overlay{
+        position: fixed;
+        background: transparent;
+        z-index: 0;
+    }
+}
+
+@media (min-width: 402px) {
+    .select-profile h3{
+        font-size: 27px
+    }
+}

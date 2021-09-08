@@ -1,0 +1,64 @@
+@import "App.scss";
+
+.nav-bar{
+    position: relative;
+    height: 55px;
+    z-index: 99;
+    nav{
+        height: 100%;
+        display: flex;
+        background: #f9f9f9;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        border-bottom: 1px solid $light-blue;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+        .menu-button{
+            @include button-configuration();
+            color: $dark-blue-variation;
+            font-size: 25px;
+        }
+        img{height: 100%;}
+    }
+    .main-menu{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 65px;
+        padding: 10px 0;
+        transition: .8s ease-in-out;
+        transform: translateY(-105%);
+        background: #f9f9f9;
+        z-index: -9;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+        &.active{transform: translateY(-15px);}
+        button, a{
+            @include button-configuration();
+            color: #1B1C1E;
+            padding: 18px 30px;
+            text-align: left; 
+            position: relative; 
+            display: flex;
+            font-size: 16px;
+            width: 100%;
+            text-decoration: none;
+            i{
+                margin-right: 20px;
+                color: #01c4ff;
+            }
+            span{
+                @include make-circle(20px);
+                @include center();
+                background: #ff2508;
+                color: #fff;
+                position: absolute;
+                right: 30px;
+            }
+        }
+        hr{
+            width: 80%;
+            display: inline-block;
+            background: $light-blue;
+        }
+    }
+}

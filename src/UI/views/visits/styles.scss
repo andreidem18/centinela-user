@@ -1,0 +1,64 @@
+@import "App.scss";
+
+.visits{
+    h3{
+        text-transform: uppercase;
+        font-size: 40px;
+        letter-spacing: 0.1em;
+        color: $white;
+        margin: 90px 0 30px 0;
+    }
+    .card{
+        max-width: 250px;
+        border-radius: 30px;
+        margin: 0 auto;
+        padding: 25px 30px;
+        background: $white;
+        box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.3);
+
+        a{
+            @include center();
+            flex-direction: column;
+            text-decoration: none;
+            width: 75%;
+            border-radius: 20px;
+            position: relative;
+            padding: 10px 0;
+            overflow: hidden;
+            margin: 0 auto;
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.3);
+            span{
+                text-transform: uppercase;
+                display: inline-block;
+                margin-top: 10px;
+                font-weight: 600;
+                font-size: 9px;
+                letter-spacing: 0.1em;
+                z-index: 9;
+                color: $white;
+            }
+            img{
+                height: 60px;
+                z-index: 9;
+            }
+            &:hover .inner{
+                transform: translateY(-50%);
+            }
+        }
+
+        .mb{
+            margin-bottom: 30px;
+        }
+    }
+    .chat-button{
+        @include button-configuration();
+        @include make-circle(60px);
+        @include center();
+        background: #004483;
+        position: fixed;
+        right: 20px;
+        bottom: 40px;
+        box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.4);
+        img{width: 50%;}
+    }
+}

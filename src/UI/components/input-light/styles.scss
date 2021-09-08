@@ -1,0 +1,58 @@
+@import "App.scss";
+
+.input-box-light{
+    position: relative;
+    height: 40px;
+    width: 260px;
+
+    input{
+        height: 100%;
+        width: 100%;
+        border: 1px solid rgba(0,0,0,.2);
+        padding: 0 15px;
+        outline: none;
+        font-size: 16px;
+        text-align: left;
+        border-radius: 8px;
+        transition: .4s;
+        &:focus{
+            border-color: #1da1f2;
+            transition: .4s;
+        }
+        &:focus ~ label, &:valid ~ label{
+            color: #1da1f2;
+            transform: translateY(-29px);
+            font-size: 14px;
+            transition: .4s;
+            background: #fff;
+        }
+        &:-webkit-autofill { 
+            background: #fff;
+        }
+        &:-webkit-autofill:focus {
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    }
+    label{
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: rgba(0,0,0,.6);
+        font-size: 16px;
+        font-weight: 400;
+        transition: .4s;
+    }
+    .show-password{
+        @include button-configuration();
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 15px;
+        color: rgba(0,0,0,.5);
+    }
+}
+.password input{
+    padding-right: 40px;
+}

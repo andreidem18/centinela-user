@@ -1,0 +1,1 @@
+export { isMobileOrTablet } from './mobile-tablets-validation';

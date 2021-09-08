@@ -1,0 +1,59 @@
+@import 'App.scss';
+
+.select-profile .select-profile-content .profile-container{
+    padding: 10px;
+    .profile{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .img{
+            width: 25%;
+            padding: 8px;
+            img{
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        button{
+            @include button-configuration();
+        }
+        .name{
+            width: 66.6666%;
+            height: 100%;
+            text-align: left;
+            font-weight: 600;
+            font-size: 17px;
+            padding-left: 5px;
+            letter-spacing: 0.1em;
+            color: #4a4a4a;
+        }
+        .options-profile{
+            width: 8.3333%;
+            font-size: 16px;
+            color: #4a4a4a;
+        }
+        .options-profile-list{
+            position: absolute;
+            right: 0;
+            bottom: -4px;
+            background: $white;
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+            background: $white;
+            width: 160px;
+            transform-origin: top right;
+            transition: .5s;
+            z-index: 999;
+            button{
+                padding: 6px;
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+        .overlay{
+            position: fixed;
+            background: transparent;
+        }
+    }
+}
