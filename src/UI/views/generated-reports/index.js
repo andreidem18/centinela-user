@@ -12,7 +12,7 @@ export const GeneratedReports = () => {
             <AlternativeBackground>
                 <NavBar />
                 <div className="come-back-button">
-                    <Link to="/visitas">
+                    <Link to="/incidentes">
                         <i className="fas fa-chevron-left"></i>
                     </Link>
                     <img src={ registroReporteAzul } alt="Agregar invitado" />
