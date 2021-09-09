@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoginError } from "redux/actions";
 import { useApp } from "hooks";
 import { useHistory } from "react-router";
-import { setLoggedUser, quitLoggedUser, removeProfile } from "redux/actions";
+import { setLoggedUser, quitLoggedUser } from "redux/actions";
 
 export const useAuth = () => {
     const dispatch = useDispatch();
@@ -47,7 +47,7 @@ export const useAuth = () => {
 
 
 
-    const getUser = async (render) => {
+    const getUser = async render => {
         if(!loggedUser.id || render){
             showLoading();
             try{

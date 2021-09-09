@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useProfile } from 'hooks';
-import { useAuth } from 'hooks';
 
 import './styles.scss';
 
@@ -8,7 +7,6 @@ export const Profile = ({profile}) => {
 
     const [ showOptions, setShowOptions ] = useState(false);
     const { deleteProfile, selectProfile } = useProfile();
-    const { loggedUser } = useAuth();
 
     const handleDelete = id => {
         setShowOptions(false);
