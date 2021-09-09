@@ -21,6 +21,9 @@ function App() {
       <Background>
         { isLoading && <LoadingScreen />}
         <Switch>
+          <ProtectedRoute path='/incidentes/reportes-generados' exact>
+            <views.GeneratedReports />
+          </ProtectedRoute>
           <ProtectedRoute path="/incidentes/reportar-incidente" exact>
             <views.NewIncident />
           </ProtectedRoute>

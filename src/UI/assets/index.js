@@ -24,4 +24,5 @@ export { default as iconoCompartir } from "./icono-compartir.svg";
 export { default as nuevoReporte } from "./nuevo-reporte.svg";
 export { default as nuevoReporteAzul } from "./nuevo-reporte-azul.svg";
 export { default as registroReporte } from "./registro-reporte.svg";
+export { default as registroReporteAzul } from './registro-reporte-azul.svg';
 export { default as subirImagenAzul } from "./subir-imagen-azul.svg";

@@ -1,0 +1,100 @@
+@import "App.scss";
+
+.generated-reports{
+    .come-back-button{
+        @include center();
+        position: relative;
+        max-width: 400px;
+        margin: 30px auto;
+        button, a{
+            @include button-configuration();
+            @include center();
+            text-decoration: none;
+            color: $light-blue;
+            position: absolute;
+            font-size: 35px;
+            left: 30px;
+        }
+        img{
+            width: 70px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .new-guest-link{
+        background: $dark-blue-variation;
+        border-radius: 20px;
+        padding: 10px;
+        color: $white;
+        text-decoration: none;
+        display: flex;
+        width: max-content;
+        margin: 0 auto 25px auto;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+        .info{
+            padding-right: 10px;
+            h4{
+                text-transform: uppercase;
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+            img{
+                height: 40px;
+                margin-top: 8px;
+            }
+        }
+        .arrow{
+            @include center();
+            padding-left: 15px;
+            border-left: 2px solid rgba(255, 255, 255, .3);
+            font-size: 30px;
+        }
+    }
+    .access-configuration{
+        @include center();
+        margin: 15px 30px;
+        position: relative;
+        a{
+            @include button-configuration();
+            @include center();
+            text-decoration: none;
+            color: $light-blue;
+            position: absolute;
+            font-size: 35px;
+            left: 0;
+        }
+    }
+    .card{
+        width: 95%;
+        max-width: 576px;
+        border-radius: 30px;
+        margin: 0 auto;
+        padding: 15px 30px;
+        background: $white;
+        box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.1);
+        .card-title-container{
+            h4{
+                color: $dark-blue-variation;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: 15px;
+                letter-spacing: 1px;
+                padding-bottom: 13px;
+                border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+            }
+            button{
+                @include button-configuration();
+                padding: 6px 5px;
+                background: $light-blue;
+                font-weight: 500;
+                border-radius: 8px;
+                margin-left: 10px;
+            }
+        }
+        .reports{
+            @include custom-scrollbar($dark-blue, $dark-blue-variation);
+            max-height: 50vh;
+        }
+    }
+}

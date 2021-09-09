@@ -8,4 +8,5 @@ export { InvitationsSent } from './invitations-sent';
 export { QRScreen } from './qr-screen';
 export { Incidents } from './incidents';
 export { NewIncident } from './new-incident';
-export { SelectProfile } from './select-profile'
+export { SelectProfile } from './select-profile';
+export { GeneratedReports } from './generated-reports';

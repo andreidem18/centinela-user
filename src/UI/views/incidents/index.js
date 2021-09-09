@@ -17,7 +17,7 @@ export const Incidents = () => {
                         <span>Reportar nuevo incidente</span>
                         <div className="inner"></div>
                     </Link>
-                    <Link to="/incidentes/registro">
+                    <Link to="/incidentes/reportes-generados">
                         <img src={invitacionesEnviadas} alt="Invitado frecuente" />
                         <span>Registro de reportes</span>
                         <div className="inner"></div>

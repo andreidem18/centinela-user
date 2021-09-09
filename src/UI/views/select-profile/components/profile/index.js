@@ -13,11 +13,13 @@ export const Profile = ({profile}) => {
         deleteProfile(id);
     }
 
+    const avatarBackground = colors[Math.floor(Math.random()*4)];
+
     return (
         <div className="profile-container">
             <div className="profile">
                 <div className="img">
-                    <img src={`https://ui-avatars.com/api/?background=${colors[Math.floor(Math.random()*4)]}&name=${profile.name}&color=fff`} alt="" />
+                    <img src={`https://ui-avatars.com/api/?background=${avatarBackground}&name=${profile.name}&color=fff`} alt="" />
                 </div>
                 <button className="name" onClick={() => selectProfile(profile.id)}>
                     {profile.name}
