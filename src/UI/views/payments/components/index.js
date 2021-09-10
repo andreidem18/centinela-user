@@ -1,0 +1,1 @@
+export { PaymentsDetail } from './payments-detail';

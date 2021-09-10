@@ -10,3 +10,4 @@ export { Incidents } from './incidents';
 export { NewIncident } from './new-incident';
 export { SelectProfile } from './select-profile';
 export { GeneratedReports } from './generated-reports';
+export { Payments } from './payments';

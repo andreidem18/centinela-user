@@ -26,3 +26,8 @@ export { default as nuevoReporteAzul } from "./nuevo-reporte-azul.svg";
 export { default as registroReporte } from "./registro-reporte.svg";
 export { default as registroReporteAzul } from './registro-reporte-azul.svg';
 export { default as subirImagenAzul } from "./subir-imagen-azul.svg";
+export { default as pagosPendientes } from "./pagos-pendientes.svg";
+export { default as pagosRealizados } from "./pagos-realizados.svg";
+export { default as pagos } from "./pagos.svg";
+export { default as iconoPagosPendientes } from "./icono-pagos-pendientes.svg";
+export { default as iconoPagosRealizados } from "./icono-pagos-realizados.svg";
