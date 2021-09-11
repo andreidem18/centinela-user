@@ -8,3 +8,8 @@ export { LateralMenu } from './lateral-menu';
 export { LoadingScreen } from './loading-screen';
 export { AlternativeBackground } from './alternative-background';
 export { ShareInSocialMedia } from './share-in-social-media';
+export { ChatButton } from './chat-button';
+export { StandarMainSectionContainer } from './standar-main-section-container';
+export { StandarContainer } from './standar-container';
+export { MenuButton } from './menu-button';
+export { StandarComeBackButton } from './standar-come-back-button';

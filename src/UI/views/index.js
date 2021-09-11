@@ -12,3 +12,5 @@ export { SelectProfile } from './select-profile';
 export { GeneratedReports } from './generated-reports';
 export { Payments } from './payments';
 export { Vehicles } from './vehicles';
+export { HelpSection } from './help-section';
+export { FrecuentlyAskedQuestions } from './frecuently-asked-questions';

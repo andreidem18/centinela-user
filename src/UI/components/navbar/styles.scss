@@ -14,7 +14,7 @@
             padding: 10px 15px;
             border-bottom: 1px solid $light-blue;
             box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
-            .menu-button{
+            .nav-bar-menu-button{
                 @include button-configuration();
                 color: $dark-blue-variation;
                 font-size: 25px;

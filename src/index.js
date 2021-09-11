@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import thunk from "redux-thunk";
 // Stylesheets
 import './UI/vendors/aileron/aileron.css';
+import 'UI/vendors/icomoon/style.css';
 
 const store = createStore(
   rootReducer, 

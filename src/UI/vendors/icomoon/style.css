@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?utbrdk');
+  src:  url('fonts/icomoon.eot?utbrdk#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?utbrdk') format('truetype'),
+    url('fonts/icomoon.woff?utbrdk') format('woff'),
+    url('fonts/icomoon.svg?utbrdk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down:before {
+  content: "\e90d";
+  color: #007bb1;
+}
+.icon-arrow-left:before {
+  content: "\e915";
+  color: #01ffcd;
+}
+.icon-house:before {
+  content: "\e914";
+  color: #01ffcd;
+}
+.icon-faq:before {
+  content: "\e913";
+  color: #fff;
+}
+.icon-contact:before {
+  content: "\e912";
+  color: #fff;
+}
+.icon-agregar-invitado:before {
+  content: "\e900";
+  color: #fff;
+}
+.icon-icono-advertencia .path1:before {
+  content: "\e901";
+  color: rgb(255, 255, 255);
+}
+.icon-icono-advertencia .path2:before {
+  content: "\e902";
+  margin-left: -1.15234375em;
+  color: rgb(0, 0, 0);
+}
+.icon-icono-carro:before {
+  content: "\e903";
+  color: #fff;
+}
+.icon-icono-chat:before {
+  content: "\e904";
+  color: #fff;
+}
+.icon-icono-compartir:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-icono-encuestas:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-icono-link:before {
+  content: "\e907";
+  color: #004483;
+}
+.icon-icono-megafono:before {
+  content: "\e908";
+  color: #fff;
+}
+.icon-icono-mensajes:before {
+  content: "\e909";
+  color: #fff;
+}
+.icon-icono-notificaciones:before {
+  content: "\e90a";
+  color: #fff;
+}
+.icon-icono-pagos-pendientes:before {
+  content: "\e90b";
+  color: #fff;
+}
+.icon-icono-toggle:before {
+  content: "\e90c";
+  color: #004483;
+}
+.icon-add-user:before {
+  content: "\e90e";
+  color: #01ffcd;
+}
+.icon-pagos:before {
+  content: "\e90f";
+  color: #01ffcd;
+}
+.icon-registro-reporte:before {
+  content: "\e910";
+  color: #fff;
+}
+.icon-subir-imagen-azul:before {
+  content: "\e911";
+  color: #004483;
+}

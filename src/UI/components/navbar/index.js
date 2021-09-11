@@ -14,7 +14,7 @@ export const NavBar = () => {
         <div className="nav-bar-container">
             <div className="nav-bar">
                 <nav>
-                    <button onClick={() => setShowMenu(!showMenu)} className="menu-button">
+                    <button onClick={() => setShowMenu(!showMenu)} className="nav-bar-menu-button">
                         <i className="fas fa-bars"></i>
                     </button>
                     <img src={escudoAncho} alt="Escudo" />
@@ -40,10 +40,10 @@ export const NavBar = () => {
                         Registro de autos
                     </Link>
                     <hr />
-                    <button>
+                    <Link to='/ayuda'>
                         <i className="fas fa-question-circle"></i>
-                        ayuda
-                    </button>
+                        Ayuda
+                    </Link>
                     <button>
                         <i className="fas fa-exclamation-circle"></i>   
                         Reporte de un problema

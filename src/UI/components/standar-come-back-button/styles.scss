@@ -1,0 +1,23 @@
+@import 'App.scss';
+
+.standar-come-back-button{
+    @include center();
+    position: relative;
+    max-width: 400px;
+    margin: 30px auto;
+    button, a{
+        @include button-configuration();
+        @include center();
+        text-decoration: none;
+        color: $light-blue;
+        position: absolute;
+        font-size: 35px;
+        left: 30px;
+    }
+    i.main-icon{
+        font-size: 75px;
+        &::before{
+            color: $light-blue;
+        }
+    }
+}
