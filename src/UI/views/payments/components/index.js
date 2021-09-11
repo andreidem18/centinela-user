@@ -1,1 +1,2 @@
-export { PaymentsDetail } from './payments-detail';
+export { PaymentsPending } from './payments-pending';
+export { PaymentsMade } from './payments-made';

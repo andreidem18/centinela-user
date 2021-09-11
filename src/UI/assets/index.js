@@ -32,3 +32,4 @@ export { default as pagos } from "./pagos.svg";
 export { default as iconoPagosPendientes } from "./icono-pagos-pendientes.svg";
 export { default as iconoPagosRealizados } from "./icono-pagos-realizados.svg";
 export { default as vehiculo } from "./vehiculo.svg";
+export { default as iconoLink } from "./icono-link.svg";

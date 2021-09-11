@@ -58,8 +58,10 @@ export const VehicleForm = ({ selected, comeBack }) => {
                         required 
                     />
                 </label>
-                <button className='primary'>Guardar cambios</button>
-                <button className='secondary' type='button'>Asignar auto</button>
+                <div className="buttons-container">
+                    <button className='secondary' type='button'>Asignar auto</button>
+                    <button className='primary'>Guardar cambios</button>
+                </div>
             </form>
         </div>
     );

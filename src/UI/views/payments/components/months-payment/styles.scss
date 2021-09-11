@@ -1,0 +1,43 @@
+@import 'App.scss';
+
+.months-payment{
+    margin: 10px 0;
+    h5{
+        text-align: left;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    ul{
+        padding-left: 10px;
+        li{
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 15px;
+            margin: 3px 0; 
+            &::before{
+                @include make-circle(6px);
+                content: '';
+                background: $dark-blue;
+                position: absolute;
+                left: 0;
+            }
+            span{
+                display: block;
+                font-size: 14px;
+            }
+            .amount{
+                color: $dark-blue;
+                font-weight: 600;
+                button{
+                    @include button-configuration();
+                    margin-left: 10px;
+                    img{
+                        width: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

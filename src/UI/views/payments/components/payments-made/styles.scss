@@ -1,0 +1,27 @@
+@import 'App.scss';
+
+.payments-made{
+    li{
+        position: relative;
+        padding-left: 13px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        .date{
+            color: $green;
+        }
+        .amount{
+            color: $dark-blue;
+        }
+        &::before{
+            @include make-circle(5px);
+            content: '';
+            background: $dark-blue;
+            position: absolute;
+            left: 0;
+        }
+    }
+}

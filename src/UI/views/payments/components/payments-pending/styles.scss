@@ -1,0 +1,32 @@
+@import 'App.scss';
+
+.payments-pending{
+    .pendings, .rejects{
+        max-height: 150px;
+        overflow: auto;
+
+        .title-payment{
+            border-bottom: 1px solid $light-blue;
+            padding-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .is-empty-message{
+            color: rgba(0,0,0,.4);
+            display: inline-block;
+            margin: 20px 0;
+        }
+    }
+    .pendings{
+        margin-bottom: 20px;
+        .title-payment{
+            color: #004483;
+        }
+    }
+    .rejects{
+        .title-payment{
+            color: $red;
+        }
+    }
+}

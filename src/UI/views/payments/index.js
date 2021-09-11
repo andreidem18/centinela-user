@@ -1,42 +1,49 @@
 import React, { useState } from 'react';
-import { PaymentsDetail } from './components';
-import { pagosRealizados, iconoChat, pagosPendientes } from 'UI/assets';
+import { pagos } from 'UI/assets';
 import { NavBar, LateralMenu, AlternativeBackground } from 'UI/components';
+import { PaymentsMade, PaymentsPending } from './components';
 
 import "./styles.scss";
 
 export const Payments = () => {
 
-    const [ section, setSection ] = useState('paymentsMade');
+    const [ section, setSection ] = useState('paymentsPending');
 
     return (
         <section className="payments">
             <AlternativeBackground>
                 <NavBar />
-                { 
-                    section ? (
-                        <PaymentsDetail section={section} setSection={setSection} />
-                    ) : (
-                        <>
-                            <h3>Incidentes</h3>
-                            <div className="card">
-                                <button className="mb" onClick={() => setSection('paymentsPending')}>
-                                    <img src={pagosRealizados} alt="Pagos Realizados" />
-                                    <span>Pendientes</span>
-                                    <div className="inner"></div>
-                                </button>
-                                <button onClick={() => setSection('paymentsMade')}>
-                                    <img src={pagosPendientes} alt="Pagos Pendientes" />
-                                    <span>Realizados</span>
-                                    <div className="inner"></div>
-                                </button>
-                            </div>
-                            <button className="chat-button">
-                                <img src={iconoChat} alt="" />
-                            </button>
-                        </>
-                    )
-                }
+                <div className="title">
+                    <h3>Pagos</h3>
+                    <img src={pagos} alt="Icono pagos" />
+                </div>
+                <div className="card-container">
+                    <div className="toggle-buttons">
+                        <button 
+                            className={`payments-made ${section === 'paymentsPending' ? 'active' : ''}`}
+                            onClick={() => setSection('paymentsPending')}
+                        >
+                            <i className="fas fa-clock"></i>
+                            <span>Pendientes</span>
+                        </button>
+                        <button 
+                            className={`payments-pending ${section === 'paymentsMade' ? 'active' : ''}`}
+                            onClick={() => setSection('paymentsMade')}
+                        >
+                            <i className="far fa-check-circle"></i>
+                            <span>Realizados</span>
+                        </button>
+                    </div>
+                    <div className="card">
+                        {
+                            section === 'paymentsPending' ? (
+                                <PaymentsPending />
+                            ) : (
+                                <PaymentsMade />
+                            )
+                        }
+                    </div>
+                </div>
                 <LateralMenu  selected="payments" />
             </AlternativeBackground>
         </section>
