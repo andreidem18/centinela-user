@@ -21,7 +21,10 @@ function App() {
       <Background>
         { isLoading && <LoadingScreen />}
         <Switch>
-          <ProtectedRoute path='/payments' exact>
+          <ProtectedRoute path='/vehiculos' exact>
+            <views.Vehicles />
+          </ProtectedRoute>
+          <ProtectedRoute path='/pagos' exact>
             <views.Payments />
           </ProtectedRoute>
           <ProtectedRoute path='/incidentes/reportes-generados' exact>

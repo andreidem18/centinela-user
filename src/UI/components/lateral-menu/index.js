@@ -39,7 +39,7 @@ export const LateralMenu = ({selected}) => {
                     </button>
                 </div>
                 <div className={`button-container ${selected === "payments" ? "selected" : ""}`}>
-                    <Link description="pagos" to="/payments">
+                    <Link description="pagos" to="/pagos">
                         <i className="fas fa-money-bill"></i>
                     </Link>
                 </div>

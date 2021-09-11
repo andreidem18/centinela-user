@@ -35,10 +35,10 @@ export const NavBar = () => {
                         Encuestas 
                         <span>1</span>
                     </button>
-                    <button>
+                    <Link to='/vehiculos'>
                         <i className="fas fa-car"></i>
                         Registro de autos
-                    </button>
+                    </Link>
                     <hr />
                     <button>
                         <i className="fas fa-question-circle"></i>
