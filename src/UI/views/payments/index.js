@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { pagos } from 'UI/assets';
 import { NavBar, LateralMenu, AlternativeBackground } from 'UI/components';
 import { PaymentsMade, PaymentsPending } from './components';
+import { HomeLink } from 'UI/components';
 
 import "./styles.scss";
 
@@ -13,9 +13,10 @@ export const Payments = () => {
         <section className="payments">
             <AlternativeBackground>
                 <NavBar />
+                <HomeLink />
                 <div className="title">
                     <h3>Pagos</h3>
-                    <img src={pagos} alt="Icono pagos" />
+                    <i className="icon-payments"></i>
                 </div>
                 <div className="card-container">
                     <div className="toggle-buttons">

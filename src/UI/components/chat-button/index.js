@@ -5,7 +5,7 @@ import './styles.scss';
 export const ChatButton = () => {
     return (
         <button className="chat-button">
-            <i className='icon-icono-chat'></i>
+            <i className='icon-chat'></i>
         </button>
     );
 };

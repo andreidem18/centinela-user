@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
-import { registroReporteAzul } from 'UI/assets';
-import { AlternativeBackground, LateralMenu, NavBar } from 'UI/components';
+import { AlternativeBackground, HomeLink, LateralMenu, NavBar, StandarComeBackButton } from 'UI/components';
 import { Report } from './components';
 
 import "./styles.scss";
@@ -11,12 +9,12 @@ export const GeneratedReports = () => {
         <section className="generated-reports">
             <AlternativeBackground>
                 <NavBar />
-                <div className="come-back-button">
-                    <Link to="/incidentes">
-                        <i className="fas fa-chevron-left"></i>
-                    </Link>
-                    <img src={ registroReporteAzul } alt="Agregar invitado" />
-                </div>
+                <HomeLink />
+                <StandarComeBackButton
+                    isLink={true}
+                    link="/incidentes"
+                    icon='icon-reports'
+                />
                 <div className="card">
                     <div className="card-title-container">
                         <h4>Reportes Generados</h4>

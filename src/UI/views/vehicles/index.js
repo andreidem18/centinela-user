@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { iconoChat, vehiculo } from 'UI/assets';
-import { NavBar, LateralMenu, AlternativeBackground } from 'UI/components';
+import { vehiculo } from 'UI/assets';
+import { NavBar, LateralMenu, AlternativeBackground, ChatButton, HomeLink } from 'UI/components';
 import { VehicleForm } from './components';
 
 import "./styles.scss";
 
 export const Vehicles = () => {
 
-    const [ selected, setSelected ] = useState(fakeVehicles[0]);
+    const [ selected, setSelected ] = useState(null);
 
     return (
         <section className="vehicles">
@@ -18,6 +18,7 @@ export const Vehicles = () => {
                         <VehicleForm selected={selected} comeBack={() => setSelected(null)} />
                     ) : (
                         <>
+                            <HomeLink />
                             <h3 className='vehicles-title'>Vehiculos</h3>
                             <div className="card">
                                 <div className='vehicle-icon'>
@@ -42,9 +43,7 @@ export const Vehicles = () => {
                                     </button>   
                                 </div>
                             </div>
-                            <button className="chat-button">
-                                <img src={iconoChat} alt="" />
-                            </button>
+                            <ChatButton />
                         </>
                     )
                 }

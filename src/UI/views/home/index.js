@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { iconoChat, iconoEmergencia } from 'UI/assets';
+import { iconoAñadirEmergencia } from 'UI/assets';
 import { NavBar, LateralMenu } from 'UI/components';
 import { ConfirmEmergencyModal } from 'UI/modals';
 import { NotificationsButton } from './components';
@@ -29,9 +29,9 @@ export const Home = () => {
                 
                 <div className="option-buttons">
                     <button onClick={() => setShowEmergencyModal(true)} >
-                        <img src={iconoEmergencia} alt="Emergencia" />
+                        <img src={iconoAñadirEmergencia} alt="Emergencia" />
                     </button>
-                    <button><img src={iconoChat} alt="Chat" /></button>
+                    <button><i className='icon-chat'></i></button>
                 </div>
                 
                 <div className={`bank-data-container ${showBankData ? "show" : ""}`}>

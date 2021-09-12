@@ -4,7 +4,7 @@ import './styles.scss';
 
 export const Report = ({report}) => {
 
-    const [ showReport, setShowReport ] = useState(true);
+    const [ showReport, setShowReport ] = useState(false);
     report.title = report.title.length > 26 ? report.title.substring(0, 24) + '...' : report.title;
 
     return (
@@ -41,7 +41,7 @@ export const Report = ({report}) => {
                     )
                 }
                 <div className="button-hide" onClick={() => setShowReport(false)}>
-                    <i class="fas fa-chevron-up"></i>
+                    <i className="fas fa-chevron-up"></i>
                 </div>
             </div>
         </div>

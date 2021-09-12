@@ -21,6 +21,7 @@
                     margin: 0 auto;
                     background: #004483;
                 }
+                i{font-size: 90px}
                 .shadow{
                     @include make-circle(140px);
                     position: absolute;
@@ -50,16 +51,17 @@
                     animation: 1s circle-movement;
                 }
 
-                button{
+                button, a{
                     @include make-circle(80px);
                     @include button-configuration();
                     @include center();
+                    text-decoration: none;
                     box-shadow: 2px 6px 3px rgba(0, 0, 0, 0.3);
                     position: absolute;
                     background: #004483;
                     z-index: 9;
-                    img{
-                        width: 55%;
+                    i{
+                        font-size: 45px;
                         animation: animate-content .7s;
                     }
                     span{

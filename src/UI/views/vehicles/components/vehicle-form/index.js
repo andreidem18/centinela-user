@@ -14,9 +14,9 @@ export const VehicleForm = ({ selected, comeBack }) => {
         <div className="vehicle-form">
             <div className="come-back-button">
                 <button onClick={comeBack}>
-                    <i className="fas fa-chevron-left"></i>
+                    <i className="icon-arrow-left"></i>
                 </button>
-                <img src={vehiculo} alt="Agregar invitado" />
+                <img src={vehiculo} alt="Vehiculo" />
             </div>
             <h3 className='vehicle-name'>
                 {((selected.property1 || '') + ' ' + (selected.property2 || ''))}

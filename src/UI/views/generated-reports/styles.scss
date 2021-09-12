@@ -1,26 +1,6 @@
 @import "App.scss";
 
 .generated-reports{
-    .come-back-button{
-        @include center();
-        position: relative;
-        max-width: 400px;
-        margin: 30px auto;
-        button, a{
-            @include button-configuration();
-            @include center();
-            text-decoration: none;
-            color: $light-blue;
-            position: absolute;
-            font-size: 35px;
-            left: 30px;
-        }
-        img{
-            width: 70px;
-            display: block;
-            margin: 0 auto;
-        }
-    }
     .new-guest-link{
         background: $dark-blue-variation;
         border-radius: 20px;

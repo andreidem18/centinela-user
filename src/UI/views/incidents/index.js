@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { nuevoReporte, iconoChat, invitacionesEnviadas } from 'UI/assets';
+import { nuevoReporte } from 'UI/assets';
 import { NavBar, LateralMenu, AlternativeBackground } from 'UI/components';
+import { ChatButton } from 'UI/components';
 
 import "./styles.scss";
 
@@ -18,14 +19,12 @@ export const Incidents = () => {
                         <div className="inner"></div>
                     </Link>
                     <Link to="/incidentes/reportes-generados">
-                        <img src={invitacionesEnviadas} alt="Invitado frecuente" />
+                        <i className="icon-reports" style={{zIndex: 9, fontSize: '40px'}}></i>
                         <span>Registro de reportes</span>
                         <div className="inner"></div>
                     </Link>
                 </div>
-                <button className="chat-button">
-                    <img src={iconoChat} alt="" />
-                </button>
+                <ChatButton />
                 <LateralMenu  selected="" />
             </AlternativeBackground>
         </section>

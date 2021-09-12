@@ -18,7 +18,7 @@
         }
         button{
             @include button-configuration();
-            transition: .5s;
+            transition: .3s;
             &.rotate{transform: rotate(-90deg);}
             i{
                 font-size: 22px;
@@ -28,7 +28,7 @@
     }
     .question-body{
         overflow: auto;
-        transition: 1s ease-in-out;
+        transition: .5s ease-in-out;
         p{
             padding: 10px;
             text-align: left;

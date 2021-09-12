@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { iconoCarro, iconoEncuestas, iconoMegafono, iconoMensajes, iconoNotificaciones } from 'UI/assets';
+import { Link } from 'react-router-dom';
 
 import "./styles.scss";
 
@@ -14,7 +14,7 @@ export const NotificationsButton = () => {
                     <button 
                         onClick={() => setShowMenu(true)}
                     >
-                        <img src={iconoNotificaciones} alt="Icono notificaciones" />
+                        <i className="icon-notifications"></i>
                     </button>
                     <div className="shadow"></div>
                 </div>
@@ -22,20 +22,20 @@ export const NotificationsButton = () => {
             { showMenu &&
                 <div className="notifications-menu-container">
                     <div className="notifications-menu">
-                        <button className="top">
-                            <img src={iconoMegafono} alt="Incidentes" />
+                        <Link className="top" to='/incidentes'>
+                            <i className="icon-megaphone"></i>
                             <span>3</span>
-                        </button>
+                        </Link>
                         <button className="left">
-                            <img src={iconoMensajes} alt="Comunicados" />
+                            <i className="icon-message"></i>
                             <span>1</span>
                         </button>
                         <button className="right">
-                            <img src={iconoEncuestas} alt="Encuestas" />
+                            <i className="icon-survey"></i>
                         </button>
-                        <button className="bottom">
-                            <img src={iconoCarro} alt="Visitas" />
-                        </button>
+                        <Link className="bottom" to='/vehiculos'>
+                            <i className="icon-car"></i>
+                        </Link>
                         <div className="circle"></div>
                     </div>
                     <div className="overlay" onClick={() => setShowMenu(false)}></div>

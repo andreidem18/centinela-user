@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { Link, useHistory } from 'react-router-dom';
-import { agregarInvitadoAzul, iconoToggle } from 'UI/assets';
 import { Input, AlternativeBackground, LateralMenu, NavBar } from 'UI/components';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,14 +24,14 @@ export const AddGuest = () => {
                 <NavBar />
                 <div className="access-configuration">
                     <Link to="/visitas/nueva-invitación">
-                        <i className="fas fa-chevron-left"></i>
+                        <i className="icon-arrow-left"></i>
                     </Link>
                     <button className="access-configuration-button" onClick={() => setIsUniqueAccess(!isUniqueAccess)}>
-                        <img src={agregarInvitadoAzul} alt="Agregar invitado" />
+                        <i className="icon-add-guest"></i>
                         <span>
                             {isUniqueAccess ? 'Acceso único' : 'Acceso especial'}
-                            <img src={iconoToggle} alt="" className="icon-toggle" 
-                        /></span>
+                            <i className="icon-toggle"></i>
+                        </span>
                     </button>
                 </div>
                 <form action="" onSubmit={handleSubmit}>

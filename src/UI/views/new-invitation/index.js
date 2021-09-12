@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { agregarInvitado, iconoChat } from 'UI/assets';
-import { AlternativeBackground, LateralMenu, NavBar } from 'UI/components';
+import { AlternativeBackground, ChatButton, LateralMenu, NavBar } from 'UI/components';
 
 import "./styles.scss";
 
@@ -12,14 +11,14 @@ export const NewInvitation = () => {
                 <NavBar />
                 <h3>
                     <Link to="/visitas">
-                        <i className="fas fa-chevron-left"></i>
+                        <i className="icon-arrow-left"></i>
                     </Link>
                     Nueva Invitación
                 </h3>
                 <Link className="new-guest-link" to="/visitas/nueva-invitación/agregar-invitado" >
                     <div className="info">
                         <h4>Invitado nuevo</h4>
-                        <div className="icon"><img src={agregarInvitado} alt="Agregar invitado" /></div>
+                        <div className="icon"><i className="icon-add-guest"></i></div>
                     </div>
                     <div className="arrow">
                         <i className="fas fa-caret-right"></i>
@@ -41,9 +40,7 @@ export const NewInvitation = () => {
                         ))}
                     </div>
                 </div>
-                <button className="chat-button">
-                    <img src={iconoChat} alt="" />
-                </button>
+                <ChatButton />
                 <LateralMenu  selected="visits" />
             </AlternativeBackground>
         </section>

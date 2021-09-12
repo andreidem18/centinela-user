@@ -1,5 +1,4 @@
 import React from 'react';
-import { iconoLink } from 'UI/assets';
 
 import './styles.scss';
 
@@ -16,7 +15,7 @@ export const MonthsPayment = ({months}) => {
                             </span>
                             <span className='amount'>
                                 $ {payment.amount}
-                                <button><img src={iconoLink} alt="" /></button>
+                                <button><i className="icon-link"></i></button>
                             </span>
                         </li>
                     ))}

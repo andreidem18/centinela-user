@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { iconoCompartir, iconoChat, ejemploQR } from 'UI/assets';
-import { AlternativeBackground, LateralMenu, NavBar, ShareInSocialMedia } from 'UI/components';
+import { ejemploQR } from 'UI/assets';
+import { ShareInSocialMedia, ChatButton, StandarContainer } from 'UI/components';
 import { isMobileOrTablet } from 'utils';
 
 import "./styles.scss";
@@ -23,11 +23,10 @@ export const QRScreen = () => {
     
     return (
         <section className="qr-screen">
-            <AlternativeBackground>
-                <NavBar />
+            <StandarContainer sectionSelected='visits'>
                     <h3>
                         <Link to="/visitas">
-                            <i className="fas fa-chevron-left"></i>
+                            <i className="icon-arrow-left"></i>
                         </Link>
                         Invitados
                     </h3>
@@ -39,18 +38,15 @@ export const QRScreen = () => {
                     <button className="btn-primary" onClick={handleOpenShare}>
                         <span>Compartir</span>
                         <div className="icon">
-                            <img src={iconoCompartir} alt="compartir" />
+                            <i className="icon-share"></i>
                         </div>
                     </button>
                     <button className="btn-secondary">Salir</button>
 
                     <ShareInSocialMedia isOpened={showShare} handleClose={() => setShowShare(false)} />
 
-                    <button className="chat-button">
-                        <img src={iconoChat} alt="" />
-                    </button>
-                <LateralMenu  selected="visits" />
-            </AlternativeBackground>
+                    <ChatButton />
+            </StandarContainer>
         </section>
     );
 };

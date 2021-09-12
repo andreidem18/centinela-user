@@ -23,8 +23,9 @@
     }
     i{
         z-index: 9;
+        font-size: 60px;
         &::before{
-            font-size: 60px;
+            color: $white;
         }
     }
     &:hover .inner{

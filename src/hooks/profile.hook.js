@@ -74,7 +74,6 @@ export const useProfile = () => {
                     `${process.env.REACT_APP_BASE_URL}/profiles/${localStorage.getItem('profile')}/`,
                     { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
                 )
-                console.log(profile)
                 dispatch(setProfile(profile.data));
             } catch(error){
                 console.log(error);

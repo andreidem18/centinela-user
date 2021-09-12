@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?utbrdk');
-  src:  url('fonts/icomoon.eot?utbrdk#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?utbrdk') format('truetype'),
-    url('fonts/icomoon.woff?utbrdk') format('woff'),
-    url('fonts/icomoon.svg?utbrdk#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?frof0l');
+  src:  url('fonts/icomoon.eot?frof0l#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?frof0l') format('truetype'),
+    url('fonts/icomoon.woff?frof0l') format('woff'),
+    url('fonts/icomoon.svg?frof0l#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -45,72 +45,72 @@
   content: "\e912";
   color: #fff;
 }
-.icon-agregar-invitado:before {
+.icon-add-guest:before {
   content: "\e900";
   color: #fff;
 }
-.icon-icono-advertencia .path1:before {
+.icon-warning .path1:before {
   content: "\e901";
   color: rgb(255, 255, 255);
 }
-.icon-icono-advertencia .path2:before {
+.icon-warning .path2:before {
   content: "\e902";
   margin-left: -1.15234375em;
   color: rgb(0, 0, 0);
 }
-.icon-icono-carro:before {
+.icon-car:before {
   content: "\e903";
   color: #fff;
 }
-.icon-icono-chat:before {
+.icon-chat:before {
   content: "\e904";
   color: #fff;
 }
-.icon-icono-compartir:before {
+.icon-share:before {
   content: "\e905";
   color: #fff;
 }
-.icon-icono-encuestas:before {
+.icon-survey:before {
   content: "\e906";
   color: #fff;
 }
-.icon-icono-link:before {
+.icon-link:before {
   content: "\e907";
   color: #004483;
 }
-.icon-icono-megafono:before {
+.icon-megaphone:before {
   content: "\e908";
   color: #fff;
 }
-.icon-icono-mensajes:before {
+.icon-message:before {
   content: "\e909";
   color: #fff;
 }
-.icon-icono-notificaciones:before {
+.icon-notifications:before {
   content: "\e90a";
   color: #fff;
 }
-.icon-icono-pagos-pendientes:before {
+.icon-clock:before {
   content: "\e90b";
   color: #fff;
 }
-.icon-icono-toggle:before {
+.icon-toggle:before {
   content: "\e90c";
   color: #004483;
 }
-.icon-add-user:before {
+.icon-add-register:before {
   content: "\e90e";
   color: #01ffcd;
 }
-.icon-pagos:before {
+.icon-payments:before {
   content: "\e90f";
   color: #01ffcd;
 }
-.icon-registro-reporte:before {
+.icon-reports:before {
   content: "\e910";
   color: #fff;
 }
-.icon-subir-imagen-azul:before {
+.icon-upload-image:before {
   content: "\e911";
   color: #004483;
 }

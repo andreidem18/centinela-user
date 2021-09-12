@@ -19,10 +19,11 @@
             .access-configuration-button{
                 @include button-configuration();
                 margin-top: 10px;
-                img{
-                    width: 58px;
+                i{
+                    font-size: 60px;
                     display: block;
                     margin: 0 auto;
+                    &::before{color: $light-blue;}
                 }
                 span{
                     display: flex;
@@ -36,10 +37,10 @@
                     font-size: 14px;
                     font-weight: 500;
                 }
-                img.icon-toggle{
-                    width: 27px;
+                .icon-toggle{
+                    font-size: 22px;
                     margin-left: 6px;
-                    display: inline;
+                    &::before{color: #1B1C1E;}
                 }
             }
         }

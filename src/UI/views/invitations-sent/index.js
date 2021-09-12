@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
-import { invitacionesEnviadasAzul, iconoChat } from 'UI/assets';
-import { AlternativeBackground, LateralMenu, NavBar } from 'UI/components';
+import { AlternativeBackground, LateralMenu, NavBar, StandarComeBackButton } from 'UI/components';
 import { InvitationDetail } from './components';
 
 import "./styles.scss";
@@ -17,12 +15,9 @@ export const InvitationsSent = () => {
                 { invitationSelected ? (
                     <InvitationDetail invitation={invitationSelected} comeBack={() => setInvitationSelected(null)} />
                 ) : (<>
-                    <div className="come-back-button">
-                        <Link to="/visitas">
-                            <i className="fas fa-chevron-left"></i>
-                        </Link>
-                        <img src={invitacionesEnviadasAzul} alt="Agregar invitado" />
-                    </div>
+
+                    <StandarComeBackButton isLink={true} link='/visitas' icon='icon-add-register' />
+
                     <div className="card">
                         <div className="card-title-container">
                             <h4>Invitaciones enviadas</h4>
@@ -46,9 +41,6 @@ export const InvitationsSent = () => {
                         </div>
                     </div>
                 </>)}
-                <button className="chat-button">
-                    <img src={iconoChat} alt="" />
-                </button>
                 <LateralMenu  selected="visits" />
             </AlternativeBackground>
         </section>

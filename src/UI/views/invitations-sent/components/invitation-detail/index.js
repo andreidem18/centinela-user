@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { invitacionesEnviadasAzul } from 'UI/assets';
 import DatePicker from 'react-datepicker';
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.scss";
-import { InputLight } from 'UI/components';
+import { InputLight, StandarComeBackButton } from 'UI/components';
 
 export const InvitationDetail = ({comeBack, invitation}) => {
 
@@ -13,12 +12,9 @@ export const InvitationDetail = ({comeBack, invitation}) => {
 
     return (
         <div className="invitation-detail">
-            <div className="come-back-button">
-                <button onClick={comeBack}>
-                    <i className="fas fa-chevron-left"></i>
-                </button>
-                <img src={invitacionesEnviadasAzul} alt="Agregar invitado" />
-            </div>
+
+            <StandarComeBackButton onClick={comeBack} icon='icon-add-register' />
+            
             <div className="card">
                 <div className="card-title-container">
                     <h4>

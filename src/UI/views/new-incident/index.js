@@ -27,7 +27,7 @@ export const NewIncident = () => {
                 <NavBar />
                 <div className="come-back-button">
                     <Link to="/incidentes">
-                        <i className="fas fa-chevron-left"></i>
+                        <i className="icon-arrow-left"></i>
                     </Link>
                     <img src={nuevoReporteAzul} alt="Agregar invitado" />
                 </div>
