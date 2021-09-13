@@ -26,10 +26,10 @@ export const NotificationsButton = () => {
                             <i className="icon-megaphone"></i>
                             <span>3</span>
                         </Link>
-                        <button className="left">
+                        <Link className="left" to='/comunicados'>
                             <i className="icon-message"></i>
                             <span>1</span>
-                        </button>
+                        </Link>
                         <button className="right">
                             <i className="icon-survey"></i>
                         </button>

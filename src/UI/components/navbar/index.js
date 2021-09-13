@@ -26,10 +26,10 @@ export const NavBar = () => {
                         incidentes 
                         <span>3</span>
                     </Link>
-                    <button>
+                    <Link to='/comunicados'>
                         <i className="fas fa-comment-alt"></i>
                         comunicados
-                    </button>
+                    </Link>
                     <button>
                         <i className="far fa-clipboard"></i>
                         Encuestas 

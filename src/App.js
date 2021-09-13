@@ -21,6 +21,9 @@ function App() {
       <Background>
         { isLoading && <LoadingScreen />}
         <Switch>
+          <ProtectedRoute path='/comunicados' exact>
+            <views.Statements />
+          </ProtectedRoute>
           <ProtectedRoute path='/ayuda/preguntas-frecuentes' exact>
             <views.FrecuentlyAskedQuestions />
           </ProtectedRoute>
