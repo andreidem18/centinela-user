@@ -16,3 +16,4 @@ export { default as pagosRealizados } from "./pagos-realizados.svg";
 export { default as iconoPagosRealizados } from "./icono-pagos-realizados.svg";
 export { default as vehiculo } from "./vehiculo.svg";
 export { default as comunicados } from "./comunicados.svg";
+export { default as eventos } from "./eventos.svg";

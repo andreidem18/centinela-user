@@ -34,9 +34,9 @@ export const LateralMenu = ({selected}) => {
                     </button>
                 </div>
                 <div className={`button-container ${selected === "events" ? "selected" : ""}`}>
-                    <button description="eventos">
+                    <Link description="eventos" to='/eventos'>
                         <i className="fas fa-calendar-day"></i>
-                    </button>
+                    </Link>
                 </div>
                 <div className={`button-container ${selected === "payments" ? "selected" : ""}`}>
                     <Link description="pagos" to="/pagos">

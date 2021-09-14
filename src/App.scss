@@ -153,7 +153,6 @@ button.btn-info{
 
 textarea{
   resize: none;
-  @include custom-scrollbar($light-blue, $light-blue-variation);
 }
 
 
@@ -167,6 +166,7 @@ textarea{
     display: flex;
     flex-wrap: wrap;
   }
+  textarea{ @include custom-scrollbar($light-blue, $light-blue-variation); }
 
   .col-sm-2{width: 16.66666%;}
   .col-sm-3{width: 25%;}

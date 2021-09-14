@@ -1,4 +1,10 @@
 export { isMobileOrTablet } from './isMobileOrTablet';
 export { getCurrentDate } from './getCurrentDate';
+export { fromDateToObject } from './fromDateToObject';
+export { formatTimeToMilitaryHour } from './formatTimeToMilitaryHour';
 export { formatDate } from './formatDate';
 export { getSpanishMonth } from './getSpanishMonth';
+export { withoutTime } from './withoutTime';
+export { formatTime } from './formatTime';
+export { formatStringTime } from './formatStringTime';
+export { handleTime } from './handleTime';

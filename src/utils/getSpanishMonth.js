@@ -7,6 +7,6 @@ export const getSpanishMonth = date => {
 }
 
 const months = [
-    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 
+    null, 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 
     'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
 ]

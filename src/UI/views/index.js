@@ -15,3 +15,4 @@ export { Vehicles } from './vehicles';
 export { HelpSection } from './help-section';
 export { FrecuentlyAskedQuestions } from './frecuently-asked-questions';
 export { Statements } from './statements';
+export { Events } from './events';

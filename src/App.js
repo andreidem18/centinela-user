@@ -21,6 +21,9 @@ function App() {
       <Background>
         { isLoading && <LoadingScreen />}
         <Switch>
+          <ProtectedRoute path='/eventos' exact>
+            <views.Events />
+          </ProtectedRoute>
           <ProtectedRoute path='/comunicados' exact>
             <views.Statements />
           </ProtectedRoute>

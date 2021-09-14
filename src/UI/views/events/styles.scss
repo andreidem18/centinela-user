@@ -1,0 +1,28 @@
+@import 'App.scss';
+
+.events{
+    .standar-section-title{
+        font-size: 35px;
+        margin: 20px 0;
+    }
+    .main-image{
+        margin-bottom: -40px;
+        z-index: 9;
+        position: relative;
+    }
+    .standar-card-container{
+        padding: 55px 20px 30px 20px;
+        background: #fff;
+        padding-bottom: 50px;
+        max-height: 500px;
+        overflow: auto;
+        select.place-select{
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+@import 'App.scss';
+
+.events .calendar{
+    .e-calendar{
+        display: inline;
+        border-color: transparent;
+        .e-footer-container{
+            display: none;
+        }
+    }
+    .e-calendar, .e-bigger.e-small {
+        .highlight{
+            position: relative;
+            &::before{
+                position: absolute;
+                content: "";
+                @include make-circle(5px);
+                bottom: 4px;
+                background: #00b9ff;
+                left: 46%;
+            }
+        }
+    }
+}
