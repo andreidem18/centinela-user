@@ -1,0 +1,33 @@
+@import 'App.scss';
+
+.payment-rejected-reasons{
+    .title-payment{
+        padding-top: 9px;
+        position: relative;
+        color: $red;
+        margin-bottom: 20px;
+    }
+    .amount{
+        color: $dark-blue;
+        font-weight: 600;
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    h4.reject-reason-title{
+        color: $red;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: left;
+        margin-bottom: 4px;
+    }
+    .reject-reason{
+        border: 1px solid rgba(0,0,0,.3);
+        border-radius: 7px;
+        padding: 8px;
+        max-height: 120px;
+        text-align: left;
+        overflow: auto;
+        margin-bottom: 10px;    
+        line-height: 1.4;
+    }
+}

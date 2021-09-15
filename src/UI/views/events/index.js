@@ -7,7 +7,7 @@ import './styles.scss';
 
 export const Events = () => {
 
-    const [ place, setPlace ] = useState(places[0]);
+    const [ place, setPlace ] = useState(null);
     const [ dateSelected, setDateSelected ] = useState(null);
 
     const handlePlace = id => setPlace(places.find(p => p.id === parseInt(id)));

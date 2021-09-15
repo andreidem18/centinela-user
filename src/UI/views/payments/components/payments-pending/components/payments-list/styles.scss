@@ -1,0 +1,33 @@
+@import 'App.scss';
+
+.payments-list{
+    margin: 10px 0;
+    padding-left: 10px;
+    li{
+        position: relative;
+        padding-left: 13px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        .date{
+            color: rgba(0, 0, 0, .8);
+        }
+        .amount{
+            color: $dark-blue;
+            button{
+                @include button-configuration();
+                margin-left: 10px;
+            }
+        }
+        &::before{
+            @include make-circle(5px);
+            content: '';
+            background: $dark-blue;
+            position: absolute;
+            left: 0;
+        }
+    }
+}

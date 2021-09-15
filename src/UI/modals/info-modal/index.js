@@ -18,12 +18,11 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
                 setAssets({icon: 'fas fa-times', color: '#e30000', background: '#ffd3d3'});
                 break;
             default:
-                setAssets({icon: 'fas fa-exclamation', color: '#f2c934', background: '#fff0b9'});
+                setAssets({icon: 'fas fa-exclamation', color: '#e6aa00', background: '#fff0b9'});
                 break;
         }
     }, [type]);
 
-    useEffect(() => setTimeout(setShowContent(true), 10), []);
 
     const close = useCallback(() => {
         if(!fadeOut){
@@ -34,6 +33,13 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
             }, 1000)
         }
     }, [fadeOut, handleClose])
+
+
+    useEffect(() => { 
+        const timeout = setTimeout(setShowContent(true), 10)
+        return () => clearTimeout(timeout)
+    }, []);
+
 
     useEffect(() => {
         let timeout = null
@@ -62,7 +68,8 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
                         { type === 'warning' &&
                             <button 
                                 type='button' 
-                                style={{background: assets.color, borderColor: assets.color}}>
+                                style={{background: assets.color, borderColor: assets.color}}
+                                onClick={action}>
                                     Continuar
                             </button>
                         }

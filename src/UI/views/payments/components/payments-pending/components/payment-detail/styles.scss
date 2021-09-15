@@ -1,0 +1,115 @@
+@import 'App.scss';
+
+.payments .payment-detail{
+
+    overflow: auto;
+    max-height: 358px;
+    padding-bottom: 20px;
+
+    .title-payment{
+        padding-top: 9px;
+        position: relative;
+        color: #004483;
+        margin-bottom: 20px;
+    }
+
+    .reasons{
+        margin: 10px 0;
+        padding-left: 10px;
+        li{
+            position: relative;
+            padding-left: 13px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            .date{
+                color: rgba(0, 0, 0, .8);
+            }
+            .amount{
+                color: $dark-blue;
+            }
+            &::before{
+                @include make-circle(5px);
+                content: '';
+                background: $dark-blue;
+                position: absolute;
+                left: 0;
+            }
+        }
+        .total{
+            display: flex;
+            justify-content: space-between;
+            padding-left: 10px;
+            margin-top: 10px;
+            align-items: flex-end;
+            .text{
+                font-size: 18px;
+                margin-right: 20px;
+                font-weight: 600;
+            }
+            .amount{
+                color: $dark-blue-variation;
+                font-weight: 600;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .upload-button{
+        @include button-configuration();
+        margin-top: 20px;
+        i{
+            display: block;
+            font-size: 50px;
+        }
+        span{
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: #004483;
+        }
+        input[type=file]{
+            display: none;
+        }
+    }
+    .files{
+        list-style: none;
+        text-align: left;
+        margin-bottom: 20px;
+        li{
+            display: inline-block;
+            padding: 4px 5px;
+            margin: 4px;
+            background: #cff9f3;
+            border-radius: 5px;
+            border: 2px solid $light-blue;
+            font-size: 12px;
+            button{
+                @include button-configuration;
+                margin-left: 10px;
+                font-size: 14px;
+                color: $light-blue;
+            }
+        }
+    }
+    textarea{
+        width: 100%;
+        display: block;
+        text-align: left;
+        border-color: rgba(0,0,0,.3);
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 16px;
+        outline: none;
+        margin: 10px 0;
+        color: rgba(0, 0, 0, 0.7);
+        letter-spacing: 1px;
+        background: transparent;
+        &:focus{
+            border-color: $dark-blue-variation;
+        }
+    }
+}
