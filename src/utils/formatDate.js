@@ -3,5 +3,5 @@ export const formatDate = date => {
     const day = date.getUTCDate();
     const year = date.getUTCFullYear();
     
-    return day + "/" + month + "/" + year;
+    return { day, month, year };
 }

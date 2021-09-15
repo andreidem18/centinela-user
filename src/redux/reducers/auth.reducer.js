@@ -5,12 +5,11 @@ const initialState = {
     loggedUser: {
         id: 0, 
         email: "", 
-        name: "",
         role: "", 
-        profiles: [],
         residence: "",
         apartment: "",
-        is_premium: null
+        first_name: "", 
+        last_name: ""
     }
 }
 
@@ -24,9 +23,9 @@ const authReducer = (state = initialState, action) => {
             }
 
         case authActions.setLoggedUser:
-            const { id, email, role, apartment, residence, profiles, is_premium } = action.payload;
+            const { id, email, role, apartment, residence, first_name, last_name } = action.payload;
             return{
-                ...state, loggedUser: { id, email, role, apartment, residence, profiles, is_premium }
+                ...state, loggedUser: { id, email, role, apartment, residence, first_name, last_name }
             }
         case authActions.quitLoggedUser:
             return{

@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { iconoAñadirEmergencia } from 'UI/assets';
 import { NavBar, LateralMenu } from 'UI/components';
 import { ConfirmEmergencyModal } from 'UI/modals';
 import { NotificationsButton } from './components';
-import { useProfile } from 'hooks';
-
+import { useAuth } from 'hooks';
 import "./styles.scss";
 
 export const Home = () => {
 
-    const { profile, getProfile } = useProfile();
-
     const [ showEmergencyModal, setShowEmergencyModal ] = useState(false);
     const [ showBankData, setShowBankData ] = useState(false);
 
-    useEffect(() => getProfile(), [ getProfile ]);
+    const { loggedUser, getUser } = useAuth();
+
+
+    useEffect(() => getUser(), [getUser]);
+    
 
     return (
         <section className="home-user">
@@ -22,7 +23,7 @@ export const Home = () => {
             <div className="background-home-user">
                 <NavBar />
 
-                <h2 className="greeting">Hola, <span className="user-name">{profile.name.split(' ')[0]}</span></h2>
+                <h2 className="greeting">Hola, <span className="user-name">{loggedUser.first_name}</span></h2>
                 <p className="notifications">Tienes <span className="notification-number">4</span> notificaciones</p>
                 
                 <NotificationsButton />

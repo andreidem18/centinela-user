@@ -8,3 +8,4 @@ export { withoutTime } from './withoutTime';
 export { formatTime } from './formatTime';
 export { formatStringTime } from './formatStringTime';
 export { handleTime } from './handleTime';
+export * from './services';
