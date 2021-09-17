@@ -22,3 +22,10 @@ export const get = endpoint => new Promise((resolve, reject) => {
         .then(res => resolve(res))
         .catch(err => reject(err))
 })
+
+
+export const post = (endpoint, data) => new Promise((resolve, reject) => {
+    axios.post(setURL(endpoint), data, config)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+})

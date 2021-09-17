@@ -1,5 +1,5 @@
 import { setLoading } from ".";
-import { loginPost, get } from "utils/services";
+import { loginPost, get, post } from "utils/services";
 
 export const authActions = {
     setLoginError: "SET_LOGIN_ERROR",
@@ -40,7 +40,7 @@ export const doLoginThunk = data => {
                 if(error.response.status === 404){
                     dispatch(setLoginError('Credenciales incorrectas'))
                 }
-                return null
+                return error
             })
             .finally(() => dispatch(setLoading(false)));
     }
@@ -56,5 +56,12 @@ export const getUserThunk = () => {
                 if(error.response.status === 404) dispatch(setLoginError('Error de autenticación'))
             })
             .finally(() => dispatch(setLoading(false)))
+    }
+}
+
+
+export const createUserThunk = data => {
+    return dispatch => {
+        return post('users', data)
     }
 }

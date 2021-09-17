@@ -35,6 +35,12 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
     }, [fadeOut, handleClose])
 
 
+    const executeAction = () => {
+        action();
+        handleClose();
+    }
+
+
     useEffect(() => { 
         const timeout = setTimeout(setShowContent(true), 10)
         return () => clearTimeout(timeout)
@@ -69,7 +75,7 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
                             <button 
                                 type='button' 
                                 style={{background: assets.color, borderColor: assets.color}}
-                                onClick={action}>
+                                onClick={action ? executeAction : close}>
                                     Continuar
                             </button>
                         }
@@ -78,7 +84,7 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
                             borderColor: assets.color,
                             color:  type === 'warning' ? assets.color : '#fff'
                         }}
-                        onClick={type === 'warning' ? close : action ? action : close}
+                        onClick={type === 'warning' ? close : action ? executeAction : close}
                         >
                             Cerrar
                         </button>

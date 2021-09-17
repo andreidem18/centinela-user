@@ -3,6 +3,7 @@ import userReducer from './user.reducer';
 import authReducer from './auth.reducer';
 import incidentReducer from './incident.reducer';
 import profileReducer from './profile.reducer';
+import residenceReducer from './residence.reducer';
 import { combineReducers } from "redux";
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     user: userReducer,
     auth: authReducer,
     incident: incidentReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    residences: residenceReducer
 });

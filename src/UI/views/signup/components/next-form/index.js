@@ -1,63 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import { InputLight } from 'UI/components';
+import { validatePassword } from 'utils';
+import { useApp, useAuth } from 'hooks'
 
 import "./styles.scss";
 
-export const NextForm = ({previusData}) => {
+export const NextForm = ({previusData, comeback}) => {
 
     const [ passwordStrength, setPasswordStrength ] = useState(null);
     const [ password, setPassword ] = useState("");
-    const [ error, setError ] = useState("");
+    
+    const { showInfoModal } = useApp();
+    const { createUser } = useAuth();
 
 
     useEffect(() => {
-        if(password){
-            let value = 0;
-
-            if(password.length >= 8){
-                value++;
-                if(password.split('').find(c => c === c.toUpperCase()))  value++;
-                if(/\d/.test(password))                                  value++;
-                if(/[a-zA-Z]/.test(password))                            value++;
-            }                                 
-
-            switch (value) {
-                case 4:
-                    setPasswordStrength({ number: value, color: "#008000", description: "Muy Segura"});
-                    break;
-                case 3:
-                    setPasswordStrength({ number: value, color: "#33ff33", description: "Segura"});
-                    break;
-                case 2:
-                    setPasswordStrength({ number: value, color: "#fff700", description: "Débil"});
-                    break;
-                default:
-                    setPasswordStrength({ number: 1, color: "#ff3b00", description: "Muy Débil"});
-                    break;
-            }
-        } else setPasswordStrength(null)
+        if(password) setPasswordStrength(validatePassword(password))
+        else setPasswordStrength(null)
     }, [password]);
-
-
-    const history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault();
-        if(passwordStrength.number > 1){
-            if(e.target[3].value !== password) setError("Las contraseñas no coinciden");
-            else history.push('/');
+        if(passwordStrength.number < 3) return showInfoModal({ type: 'error', message: 'La contraseña debería tener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número', title: 'Error de validación' });
+        if(e.target[4].value !== password){ 
+            return showInfoModal({ type: 'error', autoClose: true, showingTime: 2500, message: 'Las contraseñas no coinciden', title: 'Error de validación' });
+        };
+        const data = { 
+            first_name: e.target[0].value, 
+            last_name: e.target[1].value, 
+            password,
+            email: previusData.email,
+            status: 'draft',
+            role: 4,
+            data_residential: previusData.data_residential
         }
+        createUser(data);
     }
     return (
         <form action="" onSubmit={handleSubmit}>
 
             <div className="input-container">
-                <InputLight label="Correo electrónico" required/> 
-            </div>
-
+                    <InputLight label='Nombre' required />
+                </div>
             <div className="input-container">
-                <InputLight label="Nombre de usuario" required/> 
+                <InputLight label='Apellido' required />
             </div>
 
             <div className="input-container">
@@ -83,16 +69,15 @@ export const NextForm = ({previusData}) => {
 
             <div className="input-container">
                 <InputLight label="Confirmar contraseña" type="password" required/> 
-                {error && <p className="error">{error}</p>}
             </div>
 
-            <div className="button-signup">
+            <div className="buttons-signup">
                 <button type="submit" className="button-next">
                     <span>REGISTRARSE</span>
                     <div className="inner"></div>
                 </button>
+                <button type="button" onClick={comeback}>CANCELAR</button>
             </div>
-            <span className="login-link">¿Ya tienes una cuenta? <Link to="login">INGRESAR</Link></span>
         </form>
     );
 };

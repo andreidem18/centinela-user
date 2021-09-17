@@ -8,18 +8,20 @@ import * as views from "./UI/views";
 import { Background } from 'UI/components/background';
 import { useApp } from 'hooks';
 import { LoadingScreen } from 'UI/components';
+import { InfoModal } from 'UI/modals';
 
 // Importando estilos
 import "./App.scss";
 
 function App() {
 
-  const { isLoading } = useApp();
+  const { isLoading, infoModal } = useApp();
 
   return (
     <Router>
       <Background>
         { isLoading && <LoadingScreen />}
+        { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} title={infoModal.title} />}
         <Switch>
           <ProtectedRoute path='/eventos' exact>
             <views.Events />

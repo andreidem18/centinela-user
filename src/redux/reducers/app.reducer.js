@@ -1,22 +1,38 @@
 import { appActions } from "redux/actions";
 
 const initialState = {
-    title: "",
-    isLoading: false
+    isLoading: false,
+    infoModal: {
+        type: '', 
+        handleClose: '', 
+        autoClose: false, 
+        showingTime: 3000, 
+        action: null, 
+        message: '', 
+        title: ''
+    }
 }
 
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case appActions.addTitle:
-            return{
+            return {
                 ...state,
                 title: action.payload
             }
         case appActions.setLoading:
-            return{
+            return {
                 ...state,
                 isLoading: action.payload
             }
+        case appActions.setInfoModal:
+            const { type, handleClose, autoClose, showingTime, actionModal, message, title } = action.payload;
+            return { 
+                ...state, 
+                infoModal: {type, handleClose, autoClose, showingTime, action: actionModal, message, title} 
+            }
+        case appActions.removeInfoModal:
+            return { ...state, infoModal: initialState.infoModal }
         default:
             return state;
     }

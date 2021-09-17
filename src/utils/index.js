@@ -1,3 +1,4 @@
+export * from './services';
 export { isMobileOrTablet } from './isMobileOrTablet';
 export { getCurrentDate } from './getCurrentDate';
 export { fromDateToObject } from './fromDateToObject';
@@ -8,4 +9,5 @@ export { withoutTime } from './withoutTime';
 export { formatTime } from './formatTime';
 export { formatStringTime } from './formatStringTime';
 export { handleTime } from './handleTime';
-export * from './services';
+export { validatePassword } from './validatePassword';
+export { getAvatarColor } from './getAvatarColor';
