@@ -30,11 +30,11 @@ export const NavBar = () => {
                         <i className="fas fa-comment-alt"></i>
                         comunicados
                     </Link>
-                    <button>
+                    <Link to='/encuestas'>
                         <i className="far fa-clipboard"></i>
                         Encuestas 
                         <span>1</span>
-                    </button>
+                    </Link>
                     <Link to='/vehiculos'>
                         <i className="fas fa-car"></i>
                         Registro de autos

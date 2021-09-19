@@ -2,8 +2,8 @@ import { formatDate } from "./formatDate"
 
 
 export const getSpanishMonth = date => {
-    const formattedDate = formatDate(date).split('/');
-    return { day: formattedDate[0], month: months[formattedDate[1]], year: formattedDate[2]}
+    const formattedDate = formatDate(date);
+    return { day: formattedDate.day, month: months[formattedDate.month], year: formattedDate.year}
 }
 
 const months = [

@@ -30,9 +30,9 @@ export const NotificationsButton = () => {
                             <i className="icon-message"></i>
                             <span>1</span>
                         </Link>
-                        <button className="right">
+                        <Link className="right" to='/encuestas'>
                             <i className="icon-survey"></i>
-                        </button>
+                        </Link>
                         <Link className="bottom" to='/vehiculos'>
                             <i className="icon-car"></i>
                         </Link>

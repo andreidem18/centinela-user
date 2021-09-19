@@ -23,6 +23,12 @@ function App() {
         { isLoading && <LoadingScreen />}
         { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} title={infoModal.title} />}
         <Switch>
+          <ProtectedRoute path='/encuestas/:id' exact>
+            <views.SurveyDetail />
+          </ProtectedRoute>
+          <ProtectedRoute path='/encuestas' exact>
+            <views.Surveys />
+          </ProtectedRoute>
           <ProtectedRoute path='/eventos' exact>
             <views.Events />
           </ProtectedRoute>

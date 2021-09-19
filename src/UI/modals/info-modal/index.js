@@ -23,22 +23,23 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
         }
     }, [type]);
 
+    const executeAction = useCallback(() => {
+        action();
+        handleClose();
+    }, [ action, handleClose ])
+
 
     const close = useCallback(() => {
-        if(!fadeOut){
+        if(action && type !== 'warning') executeAction();
+        else if(!fadeOut){
             setFadeOut(true);
             setTimeout(() => {
                 handleClose();
                 setFadeOut(false);
             }, 1000)
         }
-    }, [fadeOut, handleClose])
+    }, [fadeOut, handleClose, executeAction, action, type])
 
-
-    const executeAction = () => {
-        action();
-        handleClose();
-    }
 
 
     useEffect(() => { 

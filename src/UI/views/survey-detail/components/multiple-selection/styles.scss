@@ -1,0 +1,39 @@
+@import 'App.scss';
+
+.survey .multiple-selection{
+    margin-bottom: 30px;
+    .option{
+        input[type=radio]{
+            display: none;
+        }
+        input[type=radio]:checked + label{
+            background: #01ad8a;
+            color: $white;
+        }
+        input[type=radio]:checked + label:before{
+            @include make-circle(7px);
+            border: 4.5px solid $white;
+            background: #01ad8a;
+        }
+        label{
+            position: relative;
+            color: #01ad8a;
+            font-size: 16px;
+            border: 1px solid #01ad8a;
+            border-radius: 3px;
+            padding: 10px 10px 10px 50px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin: 10px 0;
+            &::before{
+                @include make-circle(12px);
+                position: absolute;
+                left: 15px;
+                content: "";
+                border: 2px solid #01ad8a;
+                margin-right: 20px;
+            }
+        }
+    }
+}

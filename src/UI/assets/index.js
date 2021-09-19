@@ -14,3 +14,4 @@ export { default as nuevoReporteAzul } from "./nuevo-reporte-azul.svg";
 export { default as vehiculo } from "./vehiculo.svg";
 export { default as comunicados } from "./comunicados.svg";
 export { default as eventos } from "./eventos.svg";
+export { default as encuestas } from "./encuestas.svg";

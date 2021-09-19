@@ -1,7 +1,7 @@
 import { useApp } from "hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { getUserThunk, createUserThunk, quitLoggedUser, doLoginThunk, setLoginError } from "redux/actions";
+import { getUserThunk, createUserThunk, quitLoggedUser, doLoginThunk } from "redux/actions";
 
 export const useAuth = () => {
     const dispatch = useDispatch();
@@ -29,9 +29,17 @@ export const useAuth = () => {
 
 
 
-    const getUser = () => {
+    const getUser = async () => {
         if(!loggedUser.id){
-            dispatch(getUserThunk())
+            const res = await dispatch(getUserThunk());
+            validateSession(res);
+        }
+    }
+
+    const validateSession = res => {
+        if(res){
+            if(res.response?.data?.error?.code === 3) doLogout();
+            else console.log(res.response?.data?.error);
         }
     }
 
@@ -43,13 +51,14 @@ export const useAuth = () => {
             await dispatch(createUserThunk(data))
             showInfoModal({ type: 'success', autoClose: false, actionModal: () => history.push('/login'), message: 'Tu usuario se encuentra en proceso de verificación por parte de los administradores del conjunto. ¡Te mantendremos informado acerca del mismo!', title: 'usuario creado correctamente' })
         } catch(error) {
-            showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, comunícate con el administrador de tu unidad residencial.`, title: 'Lo sentimos' })
-            console.log(error.response.data)
+            if(error.response?.data?.error?.code === 204){
+                showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Este email ya se encuentra registrado en el sistema.`, title: 'Email duplicado' })   
+            } else {
+                showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, comunícate con el administrador de tu unidad residencial.`, title: 'Lo sentimos' })
+                console.log(error.response.data)
+            }
         } finally { hideLoading() }
     }
-
-
-    const addAuthError = () => dispatch(setLoginError('Error de autenticación'))
 
 
     const cleanUserLogged = () => {
@@ -57,6 +66,6 @@ export const useAuth = () => {
     }
 
 
-    return { loginError, loggedUser, doLogin, doLogout, getUser, createUser, addAuthError }
+    return { loginError, loggedUser, doLogin, doLogout, getUser, createUser, validateSession }
 
 }

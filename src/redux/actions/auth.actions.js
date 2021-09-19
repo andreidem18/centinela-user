@@ -30,11 +30,13 @@ export const doLoginThunk = data => {
         dispatch(setLoading(true));
         return loginPost(data)
             .then(res => {
-                dispatch(setLoggedUser(res.data.data.user));
-                dispatch(setLoginError(''));
-                localStorage.setItem('token', res.data.data.token)
-                localStorage.setItem('user_id', res.data.data.user.id)
-                return 'success'
+                if(res.data.data.user.role !== 4){
+                    dispatch(setLoggedUser(res.data.data.user));
+                    dispatch(setLoginError(''));
+                    localStorage.setItem('token', res.data.data.token);
+                    localStorage.setItem('user_id', res.data.data.user.id);
+                    return 'success';
+                } return null;
             })
             .catch(error => {
                 if(error.response.status === 404){
@@ -50,11 +52,9 @@ export const doLoginThunk = data => {
 export const getUserThunk = () => {
     return dispatch => {
         dispatch(setLoading(true));
-        return get('users/5')
+        return get('users/me')
             .then(res => dispatch(setLoggedUser(res.data.data)))
-            .catch(error => {
-                if(error.response.status === 404) dispatch(setLoginError('Error de autenticación'))
-            })
+            .catch(error => error)
             .finally(() => dispatch(setLoading(false)))
     }
 }
