@@ -22,3 +22,4 @@ export { ContactUs } from './contact-us';
 export { AppComments } from './app-comments';
 export { SendComment } from './send-comment';
 export { ReportError } from './report-error';
+export { PasswordRecovery } from './password-recovery';

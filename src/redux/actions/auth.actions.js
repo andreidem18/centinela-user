@@ -1,5 +1,5 @@
 import { setLoading } from ".";
-import { loginPost, get, post } from "utils/services";
+import { loginPost, get, post, notTokenPost } from "utils/services";
 
 export const authActions = {
     setLoginError: "SET_LOGIN_ERROR",
@@ -61,7 +61,19 @@ export const getUserThunk = () => {
 
 
 export const createUserThunk = data => {
-    return dispatch => {
+    return () => {
         return post('users', data)
+    }
+}
+
+export const recoveryPasswordThunk = data => {
+    return () => {
+        return notTokenPost('auth/password/request', data)
+    }
+}
+
+export const changePasswordThunk = data => {
+    return () => {
+        return notTokenPost('auth/password/reset', data)
     }
 }

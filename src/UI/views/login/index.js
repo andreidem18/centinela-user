@@ -31,7 +31,7 @@ export const Login = () => {
                     </div>
                     <div className="input-container">
                         <InputLight type="password" label="Contraseña" required={true} />
-                        <a href="/">Olvidé mi contraseña</a>
+                        <Link to="/recuperar-contraseña">Olvidé mi contraseña</Link>
                         <div className="error"><span>{loginError}</span></div>
                     </div>
                     <button className="login-button">

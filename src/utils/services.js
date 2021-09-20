@@ -29,3 +29,10 @@ export const post = (endpoint, data) => new Promise((resolve, reject) => {
         .then(res => resolve(res))
         .catch(err => reject(err))
 })
+
+
+export const notTokenPost = (endpoint, data) => new Promise((resolve, reject) => {
+    axios.post(setURL(endpoint), data)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+})

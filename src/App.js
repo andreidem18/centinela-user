@@ -83,6 +83,9 @@ function App() {
           <ProtectedRoute path="/visitas">
             <views.Visits />
           </ProtectedRoute>
+          <Route path="/recuperar-contraseña">
+            <views.PasswordRecovery />
+          </Route>
           <Route path="/perfiles">
             <views.SelectProfile />
           </Route>

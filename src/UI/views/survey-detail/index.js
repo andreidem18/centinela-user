@@ -12,13 +12,21 @@ export const SurveyDetail = () => {
     const survey = fakeSurveys.find(s => s.id === parseInt(id));
     const { showInfoModal } = useApp();
 
+    const comeBack = () => {
+        if(survey.questions[0].answer){
+            history.push('/encuestas');
+        } else {
+            showInfoModal({ type: 'warning', actionModal: () => history.push('/encuestas'), message: 'Si cambias de pantalla se perderá la información ingresada', title: '¿Seguro que quieres salir?' })
+        }
+    }
+
     return (
         <section className="survey">
             <AlternativeBackground>
                 <NavBar />
                 
                 <StandarComeBackButton
-                    onClick={() => showInfoModal({ type: 'warning', actionModal: () => history.push('/encuestas'), message: 'Si cambias de pantalla se perderá la información ingresada', title: '¿Seguro que quieres salir?' })}
+                    onClick={comeBack}
                     icon='icon-survey-bold'
                 />
 

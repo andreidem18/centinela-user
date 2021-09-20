@@ -2,9 +2,10 @@ export const validatePassword = password => {
     let value = 0
     if(password.length >= 8){
         value++;
-        if(password.split('').find(c => c === c.toUpperCase()))  value++;
-        if(/\d/.test(password))                                  value++;
-        if(/[a-zA-Z]/.test(password))                            value++;
+        if(password.split('').find(c => c === c.toUpperCase() && c.match(/[a-z]/i))
+            && password.split('').find(c => c === c.toLowerCase() && c.match(/[a-z]/i)))    value++;
+        if(/\d/.test(password))                                                             value++;
+        if(/[a-zA-Z]/.test(password))                                                       value++;
     }
 
     switch (value) {

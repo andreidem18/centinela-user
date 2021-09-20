@@ -1,0 +1,60 @@
+@import "App.scss";
+
+.signup{
+    @include center();
+    height: 150vw;
+
+    img{
+        width: 90%;
+        z-index: 9;
+    }
+    .form-container{
+        background: #fff;
+        padding: 50px 50px 10px 50px;
+        margin-top: -103px;
+        border-radius: 20px;
+        h3{
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        form{
+            .buttons-signup{
+                margin: 40px 0 20px;
+                button{
+                    @include button-configuration();
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    letter-spacing: 1.2px;
+                    width: 100%;
+                }
+                button[type=submit]{
+                    position: relative;
+                    overflow: hidden;
+                    box-shadow: 0 2px 4px rgba(0,0,0,.4);
+                    margin-bottom: 15px;
+                    span{
+                        z-index: 9;
+                        position: relative;
+                        color: #fff;
+                    }
+                }
+                button[type=button]{
+                    border: 1px solid rgba(0, 68, 131, 0.6);
+                    box-sizing: border-box;
+                    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
+                    color: $dark-blue-variation;
+                }
+            }
+            .input-container, .doble-input-container{
+                margin: 20px 0;
+                .input-box-light{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
