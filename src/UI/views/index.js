@@ -18,3 +18,4 @@ export { Statements } from './statements';
 export { Events } from './events';
 export { Surveys } from './surveys';
 export { SurveyDetail } from './survey-detail';
+export { ContactUs } from './contact-us';

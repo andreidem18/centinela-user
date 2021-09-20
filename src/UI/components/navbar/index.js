@@ -44,14 +44,10 @@ export const NavBar = () => {
                         <i className="fas fa-question-circle"></i>
                         Ayuda
                     </Link>
-                    <button>
+                    <Link to='/comentarios'>
                         <i className="fas fa-exclamation-circle"></i>   
-                        Reporte de un problema
-                    </button>
-                    <button>
-                        <i className="fas fa-cog"></i>
-                        Configuración
-                    </button>
+                        Envía tu comentario
+                    </Link>
                     <button onClick={doLogout}>
                         <i className="fas fa-sign-out-alt"></i>
                         Salir

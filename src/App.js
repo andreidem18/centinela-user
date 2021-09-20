@@ -23,6 +23,9 @@ function App() {
         { isLoading && <LoadingScreen />}
         { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} title={infoModal.title} />}
         <Switch>
+          {/* <ProtectedRoute path='/comentarios' exact>
+            <views.SurveyDetail />
+          </ProtectedRoute> */}
           <ProtectedRoute path='/encuestas/:id' exact>
             <views.SurveyDetail />
           </ProtectedRoute>
@@ -34,6 +37,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/comunicados' exact>
             <views.Statements />
+          </ProtectedRoute>
+          <ProtectedRoute path='/ayuda/contacto' exact>
+            <views.ContactUs />
           </ProtectedRoute>
           <ProtectedRoute path='/ayuda/preguntas-frecuentes' exact>
             <views.FrecuentlyAskedQuestions />

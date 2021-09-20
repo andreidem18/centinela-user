@@ -1,0 +1,40 @@
+@import 'App.scss';
+
+.contact-us{
+    p{
+        font-size: 16px;
+        line-height: 1.4;
+        margin-bottom: 30px;
+        // color: #01ad8a;
+    }
+    h3{
+        text-align: left;
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    textarea{
+        display: block;
+        width: 100%;
+        padding: 5px 8px;
+        outline: none;
+        text-align: left;
+        font-size: 16px;
+        margin-top: 10px;
+        border: 1px solid #01ad8a;
+        border-radius: 3px;
+        background: transparent;
+        line-height: 1.4;
+    }
+    button.button-send{
+        @include button-configuration();
+        margin-top: 25px;
+        width: 100%;
+        padding: 10px;
+        background: #01ad8a;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 3px;
+    }
+}
