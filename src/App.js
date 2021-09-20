@@ -23,9 +23,15 @@ function App() {
         { isLoading && <LoadingScreen />}
         { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} title={infoModal.title} />}
         <Switch>
-          {/* <ProtectedRoute path='/comentarios' exact>
-            <views.SurveyDetail />
-          </ProtectedRoute> */}
+          <ProtectedRoute path='/comentarios/reportar-error' exact>
+            <views.ReportError />
+          </ProtectedRoute>
+          <ProtectedRoute path='/comentarios/enviar-comentario' exact>
+            <views.SendComment />
+          </ProtectedRoute>
+          <ProtectedRoute path='/comentarios' exact>
+            <views.AppComments />
+          </ProtectedRoute>
           <ProtectedRoute path='/encuestas/:id' exact>
             <views.SurveyDetail />
           </ProtectedRoute>

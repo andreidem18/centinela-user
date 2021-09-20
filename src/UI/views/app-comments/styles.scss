@@ -1,0 +1,50 @@
+@import "App.scss";
+
+.comments{
+    h3.comments-title{
+        text-transform: uppercase;
+        font-size: 25px;
+        letter-spacing: 0.1em;
+        margin: 30px 0 40px 0;
+    }
+    h3{color: $white;}
+    .standar-card-container{
+        margin: 60px auto 0 auto;
+        padding: 60px 30px 25px 30px;
+        .comments-icon{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -45px;
+            img{ height: 90px; }
+        }
+        .info{
+    
+            h4{
+                color: $dark-blue-variation;
+            }
+            p{
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.1em;
+                margin: 10px 0;
+                color: $dark-blue-variation;
+            }
+            a{
+                text-decoration: none;
+                display: block;
+                margin: 10px 0;
+                width: 100%;
+                padding: 10px;
+                color: #fff;
+                font-size: 16px;
+                font-weight: 500;
+                border-radius: 3px;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                &.primary{ background: $dark-blue-variation; }
+                &.danger{ background: $red; }
+            }
+        }
+    }
+}

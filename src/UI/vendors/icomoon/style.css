@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?a04e5g');
-  src:  url('fonts/icomoon.eot?a04e5g#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?a04e5g') format('truetype'),
-    url('fonts/icomoon.woff?a04e5g') format('woff'),
-    url('fonts/icomoon.svg?a04e5g#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?kuv6vi');
+  src:  url('fonts/icomoon.eot?kuv6vi#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kuv6vi') format('truetype'),
+    url('fonts/icomoon.woff?kuv6vi') format('woff'),
+    url('fonts/icomoon.svg?kuv6vi#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-reports:before {
+  content: "\e919";
+  color: #01ffcd;
+}
 .icon-survey-bold:before {
   content: "\e918";
   color: #01ffcd;
@@ -117,10 +121,6 @@
 .icon-payments:before {
   content: "\e90f";
   color: #01ffcd;
-}
-.icon-reports:before {
-  content: "\e910";
-  color: #fff;
 }
 .icon-upload-image:before {
   content: "\e911";

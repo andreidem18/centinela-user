@@ -19,3 +19,6 @@ export { Events } from './events';
 export { Surveys } from './surveys';
 export { SurveyDetail } from './survey-detail';
 export { ContactUs } from './contact-us';
+export { AppComments } from './app-comments';
+export { SendComment } from './send-comment';
+export { ReportError } from './report-error';
