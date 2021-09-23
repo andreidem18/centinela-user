@@ -16,36 +16,6 @@
         background: $white;
         box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.3);
 
-        a{
-            @include center();
-            flex-direction: column;
-            text-decoration: none;
-            width: 75%;
-            border-radius: 20px;
-            position: relative;
-            padding: 10px 0;
-            overflow: hidden;
-            margin: 0 auto;
-            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.3);
-            span{
-                text-transform: uppercase;
-                display: inline-block;
-                margin-top: 10px;
-                font-weight: 600;
-                font-size: 9px;
-                letter-spacing: 0.1em;
-                z-index: 9;
-                color: $white;
-            }
-            img{
-                height: 60px;
-                z-index: 9;
-            }
-            &:hover .inner{
-                transform: translateY(-50%);
-            }
-        }
-
         .mb{
             margin-bottom: 30px;
         }

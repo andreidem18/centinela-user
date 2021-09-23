@@ -31,6 +31,13 @@ export const post = (endpoint, data) => new Promise((resolve, reject) => {
 })
 
 
+export const patch = (endpoint, data) => new Promise((resolve, reject) => {
+    axios.patch(setURL(endpoint), data, config)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+})
+
+
 export const notTokenPost = (endpoint, data) => new Promise((resolve, reject) => {
     axios.post(setURL(endpoint), data)
         .then(res => resolve(res))

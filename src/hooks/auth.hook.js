@@ -29,10 +29,11 @@ export const useAuth = () => {
 
 
     const validateSession = res => {
-        if(res){
+        if(res.response){
             if(res.response?.data?.error?.code === 3) doLogout();
             else console.log(res.response?.data?.error);
-        }
+        } else console.log(res);
+        hideLoading();
     }
 
 
@@ -80,7 +81,7 @@ export const useAuth = () => {
         showLoading();
         try{
             await dispatch(createUserThunk(data))
-            showInfoModal({ type: 'success', autoClose: false, actionModal: () => history.push('/login'), message: 'Hemos enviado un email a tu correo con los siguientes pasos para recuperar tu contraseña', title: 'Email enviado' })
+            showInfoModal({ type: 'success', autoClose: false, actionModal: () => history.push('/login'), message: 'Tu usuario se encuentra en proceso de verificación por parte de los administradores de la unidad residencial. ¡Te mantendremos informado acerca del mismo!', title: 'Usuario creado correctamente' })
         } catch(error) {
             if(error.response?.data?.error?.code === 204){
                 showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Tu usuario se encuentra en proceso de verificación por parte de los administradores del conjunto. ¡Te mantendremos informado acerca del mismo!', title: 'usuario creado correctamente' })

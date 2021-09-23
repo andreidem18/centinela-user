@@ -1,76 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { AlternativeBackground, ChatButton, LateralMenu, NavBar } from 'UI/components';
+import { StandarContainer, MessageEmpty } from 'UI/components';
+import { useGuest } from 'hooks';
+import { Guest, AddGuest } from './components';
 
 import "./styles.scss";
 
 export const NewInvitation = () => {
+
+    const { getGuests, guests } = useGuest();
+    const [ guestSelected, setGuestSelected ] = useState(null)
+
+    useEffect(() => getGuests(), [getGuests]);
+
     return (
         <section className="visits">
-            <AlternativeBackground>
-                <NavBar />
-                <h3>
-                    <Link to="/visitas">
-                        <i className="icon-arrow-left"></i>
-                    </Link>
-                    Nueva Invitación
-                </h3>
-                <Link className="new-guest-link" to="/visitas/nueva-invitación/agregar-invitado" >
-                    <div className="info">
-                        <h4>Invitado nuevo</h4>
-                        <div className="icon"><i className="icon-add-guest"></i></div>
-                    </div>
-                    <div className="arrow">
-                        <i className="fas fa-caret-right"></i>
-                    </div>
-                </Link>
-                <div className="card">
-                    <div className="card-title-container">
-                        <h4>Invitados guardados</h4>
-                        <button>Ver todos</button>
-                    </div>
-                    <div className="guests">
-                        {users.map(user => (
-                            <div className="guest-container col-md-4 col-lg-5" key={user.id}>
-                                <button>
-                                    <img src={user.avatar} alt="Invitado" />
-                                    <span>{user.name}</span>
-                                </button>
+            <StandarContainer sectionSelected='visits'>
+                {
+                    guestSelected ? <AddGuest guest={guestSelected} comeback={() => setGuestSelected(null)} />  : (
+                        <>
+                            <div className="container">
+                                <div>
+                                    <h3>
+                                        <Link to="/visitas">
+                                            <i className="icon-arrow-left"></i>
+                                        </Link>
+                                        Nueva Invitación
+                                    </h3>
+                                    <button className="new-guest-link" onClick={() => setGuestSelected({})} >
+                                        <div className="info">
+                                            <h4>Invitado nuevo</h4>
+                                            <div className="icon"><i className="icon-add-guest"></i></div>
+                                        </div>
+                                        <div className="arrow">
+                                            <i className="fas fa-caret-right"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div className="card">
+                                    <div className="card-title-container">
+                                        <h4>Invitados guardados</h4>
+                                    </div>
+                                    <div className="guests">
+                                        { 
+                                            guests && guests.length > 0 ? (
+                                                guests.map(guest => (
+                                                    <Guest guest={guest} key={guest.id} select={setGuestSelected} />
+                                                ))
+                                            ) : (
+                                                <MessageEmpty message='Aún no has guardado ningún invitado' />
+                                            )
+                                        }
+                                    </div>
+                                </div>
                             </div>
-                        ))}
-                    </div>
-                </div>
-                <ChatButton />
-                <LateralMenu  selected="visits" />
-            </AlternativeBackground>
+                        </>
+                    )
+                }
+            </StandarContainer>
         </section>
     );
 };
-
-const users = [
-    {
-        id: 1,
-        name: "Eugenio Ortiz",
-        avatar: "https://raw.githubusercontent.com/andreidem18/images-bank/main/users/1.jpg",
-    },
-    {
-        id: 2,
-        name: "Karla Montoya",
-        avatar: "https://raw.githubusercontent.com/andreidem18/images-bank/main/users/2.jpg",
-    },
-    {
-        id: 3,
-        name: "Marly Gómez",
-        avatar: "https://raw.githubusercontent.com/andreidem18/images-bank/main/users/3.jpg",
-    },
-    {
-        id: 4,
-        name: "Alejandro Fernandez",
-        avatar: "https://raw.githubusercontent.com/andreidem18/images-bank/main/users/4.jpg",
-    },
-    {
-        id: 5,
-        name: "Carlos Ortega",
-        avatar: "https://raw.githubusercontent.com/andreidem18/images-bank/main/users/5.jpg",
-    }
-]

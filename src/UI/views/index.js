@@ -2,7 +2,6 @@ export { Login } from './login';
 export { SignUp } from './signup';
 export { Home } from './home';
 export { Visits } from './visits';
-export { AddGuest } from './add-guest';
 export { NewInvitation } from './new-invitation';
 export { InvitationsSent } from './invitations-sent';
 export { QRScreen } from './qr-screen';

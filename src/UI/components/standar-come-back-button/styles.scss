@@ -4,6 +4,7 @@
     @include center();
     position: relative;
     max-width: 400px;
+    width: 90%;
     margin: 30px auto;
     button, a{
         @include button-configuration();

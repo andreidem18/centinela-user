@@ -1,0 +1,107 @@
+@import "App.scss";
+
+
+.container.add-guest{
+    padding-top: 15px;
+    .access-configuration{
+        @include center();
+        margin: 0 15px 30px;
+        position: relative;
+        .comeback-button{
+            @include center();
+            text-decoration: none;
+            color: $light-blue;
+            position: absolute;
+            font-size: 35px;
+            left: 0;
+        }
+        .access-configuration-button{
+            @include button-configuration();
+            margin-top: 10px;
+            i{
+                font-size: 60px;
+                display: block;
+                margin: 0 auto;
+                &::before{color: $light-blue;}
+            }
+            span{
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                padding: 6px 10px;
+                background: $light-blue;
+                box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.3);
+                border-radius: 5px;
+                color: #1B1C1E;
+                font-size: 14px;
+                font-weight: 500;
+            }
+            .icon-toggle{
+                font-size: 22px;
+                margin-left: 6px;
+                &::before{color: #1B1C1E;}
+            }
+        }
+    }
+    .standar-card-container{
+        padding: 20px 35px 40px;
+        width: 90%;
+        max-height: 100%;
+        overflow: auto;
+        .input-box-light{
+            width: 100%;
+            margin: 20px 0;
+            input, label{
+                background: $white;
+            }
+        }
+        .check-container{
+            text-align: right;
+            label{
+                font-weight: 500;
+                font-size: 14px;
+                margin-left: 5px;
+                line-height: 0;
+                text-shadow: 2px 2px 8px rgba(0,0,0,.3);
+            }
+            .input-box{display: block}
+        }
+        .calendars{
+            display: flex;
+            color: $white;
+            margin-bottom: 20px;
+            .date-container{
+                margin: 0 8px;
+                text-align: left;
+                label{
+                    margin-left: 10px;
+                    color: #fff;
+                }
+                input{
+                    outline: 0;
+                    padding: 4px 10px;
+                    font-weight: 500;
+                    font-size: 15px;
+                    border: none;
+                    border-radius: 5px;
+                    box-shadow: inset 3px 3px 3px rgba(0,0,0,.3);
+                    width: 100%;
+                }
+            }
+        }
+        .form-button{
+            @include button-configuration();
+            background: $dark-blue-variation;
+            width: 100%;
+            padding: 10px 5px;
+            text-transform: uppercase;
+            color: $white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: .5px;
+            box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+    }
+}

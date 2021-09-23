@@ -1,6 +1,6 @@
 @import "App.scss";
 
-.background-visits{
+.alternative-background{
     @include wrap();
     position: fixed;
     background-image: url("../../assets/background-visits.svg");
@@ -8,4 +8,5 @@
     background-size: cover;
     background-position: center 100%;
     background-repeat: no-repeat;
+    overflow: auto;
 }

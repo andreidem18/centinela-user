@@ -75,56 +75,29 @@
         padding: 25px 30px;
         background: $white;
         box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
         .card-title-container{
+            padding-bottom: 20px;
             h4{
                 color: $dark-blue-variation;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: .5px;
                 display: inline-block;
-            }
-            button{
-                @include button-configuration();
-                padding: 6px 5px;
-                background: $light-blue;
-                font-weight: 500;
-                border-radius: 8px;
-                margin-left: 10px;
             }
         }
 
         .guests{
-            @include custom-scrollbar($dark-blue, $dark-blue-variation);
-            max-height: 220px;
             overflow: auto;
-            display: flex;
-            flex-wrap: wrap;
-            .guest-container{
-                width: 50%;
-                padding: 10px;
-                button{
-                    @include button-configuration();
-                    img{
-                        width: 70%;
-                        margin: 0 auto;
-                        display: block;
-                        border-radius: 50%;
-                        border: 3px solid $light-blue;
-                    }
-                    span{
-                        color: $dark-blue;
-                        font-weight: 500;
-                    }
-                }   
-            }
+            padding-bottom: 30px;
+            height: 84%;
         }
     }
-    .chat-button{
-        @include button-configuration();
-        @include make-circle(60px);
-        @include center();
-        background: #004483;
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.4);
-        img{width: 50%;}
+    .container{
+        height: 96%;
+    }
+    .alternative-background{
+        overflow: hidden;
     }
 }

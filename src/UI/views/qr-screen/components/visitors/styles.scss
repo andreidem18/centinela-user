@@ -1,0 +1,24 @@
+@import "App.scss";
+
+.guests-view{
+    @include center();
+    height: 150vw;
+
+    img{
+        width: 97%;
+        z-index: 9;
+    }
+    .card{
+        background: #fff;
+        padding: 60px 50px 30px 50px;
+        margin-top: -103px;
+        border-radius: 20px;
+        p{
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+    }
+}

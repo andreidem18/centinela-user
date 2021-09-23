@@ -4,7 +4,7 @@ import "./styles.scss";
 
 export const AlternativeBackground = ({children}) => {
     return (
-        <div className="background-visits">
+        <div className="alternative-background">
             {children}
         </div>
     );

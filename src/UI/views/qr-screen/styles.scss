@@ -28,6 +28,15 @@
     .qr-image{
         border-radius: 30px;
         margin-bottom: 20px;
+        width: 85%;
+        max-width: 350px;
+        border: 20px solid #fff;
+    }
+    .message{
+        color: #fff;
+        width: 85%;
+        max-width: 576px;
+        margin: 0 auto;
     }
 
     [class*=btn-]{

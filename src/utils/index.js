@@ -10,4 +10,4 @@ export { formatTime } from './formatTime';
 export { formatStringTime } from './formatStringTime';
 export { handleTime } from './handleTime';
 export { validatePassword } from './validatePassword';
-export { getAvatarColor } from './getAvatarColor';
+export { getAvatar } from './getAvatar';

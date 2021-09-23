@@ -18,7 +18,7 @@ export const NavBar = () => {
                         <i className="fas fa-bars"></i>
                     </button>
                     <img src={escudoAncho} alt="Escudo" />
-                    <div></div>
+                    <div style={{width: '30px'}}></div>
                 </nav>
                 <div className={`main-menu ${showMenu ? "active" : ""}`}>
                     <Link to='/incidentes'>

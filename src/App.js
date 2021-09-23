@@ -68,14 +68,11 @@ function App() {
           <ProtectedRoute path="/incidentes" exact>
             <views.Incidents />
           </ProtectedRoute>
-          <ProtectedRoute path="/visitas/codigo/:idInvitacion" exact>
+          <Route path="/visitas/codigo/:code" exact>
             <views.QRScreen />
-          </ProtectedRoute>
+          </Route>
           <ProtectedRoute path="/visitas/invitaciones-enviadas" exact>
             <views.InvitationsSent />
-          </ProtectedRoute>
-          <ProtectedRoute path="/visitas/nueva-invitación/agregar-invitado">
-            <views.AddGuest />
           </ProtectedRoute>
           <ProtectedRoute path="/visitas/nueva-invitación">
             <views.NewInvitation />

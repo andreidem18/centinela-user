@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { logo } from 'UI/assets';
 import { InputLight } from 'UI/components';
-import { useHistory, useLocation } from 'react-router-dom';
-import { useAuth } from 'hooks';
+import { useHistory } from 'react-router-dom';
+import { useAuth, useQuery } from 'hooks';
 import { NewPasswordForm } from './components/new-password-form';
 
 import "./styles.scss";
@@ -53,7 +53,3 @@ export const PasswordRecovery = () => {
         </section>
     );
 };
-
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-}

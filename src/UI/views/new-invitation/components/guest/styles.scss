@@ -1,0 +1,64 @@
+@import 'App.scss';
+
+.visits .guests .guest-container{
+    padding: 10px;
+    .guest{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        button{
+            @include button-configuration();
+        }
+        .guest-info{
+            width: 90%;
+            display: flex;
+            align-items: center;
+            .img{
+                width: 22%;
+                img{
+                    width: 100%;
+                    border-radius: 50%;
+                }
+            }
+            span{
+                width: 78%;
+                height: 100%;
+                text-align: left;
+                font-weight: 500;
+                font-size: 14px;
+                padding-left: 8px;
+                letter-spacing: 0.5px;
+                color: #4a4a4a;
+            }
+        }
+        .options-guest{
+            width: 10%;
+            font-size: 16px;
+            color: #4a4a4a;
+        }
+        .options-guest-list{
+            position: absolute;
+            right: 10px;
+            bottom: -35px;
+            background: $white;
+            border-radius: 6px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,.2);
+            background: $white;
+            width: 220px;
+            transform-origin: top right;
+            transition: .5s;
+            z-index: 999;
+            button{
+                padding: 6px;
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+        .overlay{
+            position: fixed;
+            background: transparent;
+            z-index: 9;
+        }
+    }
+}

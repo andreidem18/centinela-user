@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import "./styles.scss";
 
-export const InputLight = ({ className, value, onChange, type, name, placeholder, required = false, classNameContainerInput, label, classNameLabel, id, disabled, ref, onBlur, onFocus }) => {
+export const InputLight = ({ className, value, onChange, type, name, placeholder, required = false, classNameContainerInput, label, classNameLabel, id, disabled, ref, onBlur, onFocus, onKeyDown }) => {
     const [ showPassword, setShowPassword ] = useState(false);
     
     return (
         <div className={`input-box-light ${type === 'password' ? 'password' : ''} ${className}`}>
-            <input ref={ref} id={id} name={name} value={value} onChange={onChange} onBlur={onBlur} onFocus={onFocus} type={showPassword ? "text" : type} placeholder={placeholder} required={required} disabled={disabled}  />
+            <input ref={ref} id={id} name={name} value={value} onChange={onChange} onBlur={onBlur} onFocus={onFocus} type={showPassword ? "text" : type} placeholder={placeholder} required={required} disabled={disabled} onKeyDown={onKeyDown}  />
             
             { label && <label>{label}</label> }      
             

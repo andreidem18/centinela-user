@@ -14,3 +14,4 @@ export { StandarContainer } from './standar-container';
 export { MenuButton } from './menu-button';
 export { StandarComeBackButton } from './standar-come-back-button';
 export { HomeLink } from './home-link';
+export { MessageEmpty } from './message-empty';
