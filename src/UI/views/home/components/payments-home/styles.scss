@@ -1,0 +1,49 @@
+@import 'App.scss';
+
+.home-user .payments-home{
+    width: 33.3333%;
+    padding: 0 15px;
+    .card{
+        border-radius: 10px;
+        padding: 16px;
+        .header, .reason{ 
+            display: flex; 
+            justify-content: space-between;
+        }
+        .header{
+            .date{
+                font-size: 5.2vw;
+                width: 75%;
+            }
+            .amount{
+                color: $main-green;
+                font-size: 5.8vw;
+                width: 25%;
+            }
+        }
+        .reasons-container{
+            list-style: none;
+            margin: 20px 0 30px;
+            .reason{
+                margin-bottom: 10px;
+                span:nth-child(1){ 
+                    font-weight: 300; 
+                    width: 80%;
+                }
+                span:nth-child(2){
+                    width: 20%;
+                }
+            }
+        }
+        a.pay{
+            width: 100%;
+            padding: 9px;
+            background: $main-green;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 3px;
+            display: block;
+        }
+    }
+}

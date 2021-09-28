@@ -4,32 +4,24 @@
     @include center();
     flex-direction: column;
     text-decoration: none;
-    width: 75%;
-    border-radius: 20px;
-    position: relative;
-    padding: 15px 10px 10px 10px;
-    overflow: hidden;
-    margin: 0 auto;
-    box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    height: 45%;
+    border: 1px solid #B4B4B4;
+    border-radius: 13px;
     span{
-        text-transform: uppercase;
+        font-family: 'Nunito';
         display: inline-block;
         margin-top: 10px;
         font-weight: 600;
-        font-size: 9px;
+        font-size: 14px;
         letter-spacing: 0.1em;
         z-index: 9;
-        color: $white;
+        color: $main-green;
     }
-    i{
+    img{
         z-index: 9;
         font-size: 60px;
-        &::before{
-            color: $white;
-        }
-    }
-    &:hover .inner{
-        transform: translateY(-50%);
+        height: 80%;
     }
 }
 .menu-button.mb{

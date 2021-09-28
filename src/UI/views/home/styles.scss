@@ -1,115 +1,75 @@
 @import "App.scss";
 
-@mixin wrap {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
 .home-user{
-    position: fixed;
-    @include wrap();
-    background-color: #f3f2f2;
-    .background-home-user{
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 84vh;
-        background-image: url('../../assets/background-menu-user.svg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        h2{
-            margin-top: 38px;
-            font-size: 11vw;
-            color: #1B1C1E;
-            letter-spacing: 1.2px;
-            .user-name{
-                color: $dark-blue-variation;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
+    *{ 
+        text-align: left; 
+        color: $dark;
+    }
+    h1{
+        font-size: 9vw;
+        padding: 0 15px;
+        margin-top: 20px;
+        text-align: left;
+        span{ color: $main-green; }
+    }
+    .sections-slider-container{
+        .question{
+            padding: 0 15px;
+            margin: 30px 0 15px;
+        }
+    }
+    .view-buttons{
+        margin: 32px 0 23px;
+        display: flex;
+        justify-content: center;
+        button{
+            margin: 0 7px;
+            position: relative;
+            &.selected{
+                color: $main-green;
+                &::before{
+                    @include make-circle(6px);
+                    content: '';
+                    background: $main-green;
+                    position: absolute;
+                    bottom: -10px;
+                    left: 47%;
+                }
             }
         }
-        .notifications{
-            color: #1B1C1E;
-            margin-top: 30px;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            .notification-number{
-                color: $red;
-                font-size: 22px;
-            }
-        }
-        .option-buttons{
-            margin-top: 125px;
-            padding: 0 20px;
+    }
+    .view-container{
+        border-radius: 30px 30px 0px 0px;
+        background: linear-gradient(136deg, #2EBF91 0%, #5C8CAC 67%, #8360C3 100%);
+        padding-top: 30px;
+        flex: 1 1 auto;
+        .view{
+            width: 300%;
             display: flex;
-            justify-content: space-between;
-            button{
-                @include button-configuration();
-                @include make-circle(60px);
-                @include center();
-                background: #004483;
-                box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.4);
+            transition: .3s ease-in-out;
+            .card{
+                background: $white;
+                display: block;
+                text-decoration: none;
+                margin-bottom: 30px;
+            }
+            .card.empty{
+                padding: 15px;
+                text-align: center;
+                color: #969698;
+                font-size: 4.2vw;
                 img{
-                    width: 60%;
+                    height: 90px;
+                    display: block;
+                    margin: 0 auto 20px;
                 }
-                i{font-size: 30px;}
-            }
-        }
-        .bank-data-container{
-            position: absolute;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            transform: translateY(114%);
-            transition: .6s ease-in-out;
-            &.show{
-                transform: translateY(50%);
-            }
-            .info{
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                padding: 5px;
-                color: #fff;
-                background: $dark-blue-variation;
-                width: 70%;
-                display: inline-block;
-                font-size: 13px;
-                letter-spacing: 1.4px;
-                font-weight: 500;
-            }
-            .bank-data-header{
-                border: 2px solid $light-blue;
-                box-shadow: 0px -3px 4px rgba(0, 0, 0, 0.25);
-                letter-spacing: 1.2px;
-                display: flex;
-                justify-content: space-between;
-                background: #f9f9f9;
-                padding: 12px 20px;
-                font-size: 17px;
-                font-weight: 700;
-                border-top-left-radius: 30px;
-                border-top-right-radius: 30px;
-                color: $dark-blue-variation;
-                button{
-                    @include button-configuration();
-                    font-size: 18px;
-                    color: $dark-blue-variation;
-                }
-            }
-            .bank-data-content{
-                border: 2px solid $light-blue;
-                background: #D1FFF6;
-                padding: 20px;
-                @include custom-scrollbar($dark-blue, $dark-blue-variation);
-                ul li{
-                    font-size: 14px;
-                    text-align: left;
-                    margin: 10px;
-                    h5{
-                        display: inline-block;
-                        font-size: 14px;
-                    }
+                a{
+                    color: #03a9f4;
+                    text-decoration: none;
                 }
             }
         }

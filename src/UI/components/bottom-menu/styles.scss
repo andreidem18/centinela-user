@@ -1,0 +1,24 @@
+@import 'App.scss';
+
+.bottom-menu{
+    background: #fff;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+
+    button, a{
+        @include center();
+        text-decoration: none;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        color: #ABABAB;
+        &.active{ color: $main-green; }
+        span{
+            font-size: 3vw;
+        }
+        i{
+            font-size: 8vw;
+        }
+    }
+}

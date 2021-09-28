@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, action, message, title}) => {
+export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, action, message, title, link, linkMessage}) => {
 
     const [ fadeOut, setFadeOut ] = useState(false);
     const [ assets, setAssets ] = useState({icon: '', color: ''});
@@ -68,7 +69,7 @@ export const InfoModal = ({type, handleClose, autoClose, showingTime = 3000, act
                     {title}
                 </div>
                 <div className="message">
-                    {message}
+                    {message} { link && <Link to={link} onClick={handleClose}>{linkMessage}</Link> }
                 </div>
                 { !autoClose &&
                     <div className="buttons">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StandarComeBackButton, StandarContainer, MessageEmpty } from 'UI/components';
 import { InvitationDetail } from './components';
 import { useGuest } from 'hooks';
+import { useParams } from 'react-router';
 
 import "./styles.scss";
 import { getAvatar } from 'utils';
@@ -10,8 +11,10 @@ export const InvitationsSent = () => {
 
     const [ invitationSelected, setInvitationSelected ] = useState(null);
     const { getGuests, invitations } = useGuest();
+    const { id } = useParams();
 
     useEffect(() => getGuests(), [ getGuests ]);
+    useEffect(() => setInvitationSelected(invitations?.find(i => i.id === parseInt(id))), [id, invitations])
     
     return (
         <section className="invitations-sent">

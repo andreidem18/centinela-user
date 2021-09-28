@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
-import { nuevoReporte } from 'UI/assets';
-import { NavBar, LateralMenu, AlternativeBackground } from 'UI/components';
+import { registroDeReportes, reportarIncidente } from 'UI/assets';
+import { StandarMainSectionContainer, MenuButton } from 'UI/components';
 import { ChatButton } from 'UI/components';
 
 import "./styles.scss";
@@ -9,24 +8,22 @@ export const Incidents = () => {
 
     return (
         <section className="incidents">
-            <AlternativeBackground>
-                <NavBar />
-                <h3>Incidentes</h3>
-                <div className="card">
-                    <Link className="mb" to="/incidentes/reportar-incidente">
-                        <img src={nuevoReporte} alt="Agregar invitado" />
-                        <span>Reportar nuevo incidente</span>
-                        <div className="inner"></div>
-                    </Link>
-                    <Link to="/incidentes/reportes-generados">
-                        <i className="icon-reports" style={{zIndex: 9, fontSize: '40px'}}></i>
-                        <span>Registro de reportes</span>
-                        <div className="inner"></div>
-                    </Link>
-                </div>
+            <StandarMainSectionContainer title='Incidentes'>
+                <MenuButton 
+                    isLink={true} 
+                    link='/incidentes/reportar-incidente' 
+                    className='mb' 
+                    image={reportarIncidente} 
+                    text='Reportar incidente'
+                />
+                <MenuButton 
+                    isLink={true}
+                    link='/incidentes/reportes-generados'
+                    image={registroDeReportes}
+                    text='Registro de reportes'
+                />
                 <ChatButton />
-                <LateralMenu  selected="" />
-            </AlternativeBackground>
+            </StandarMainSectionContainer>
         </section>
     );
 };

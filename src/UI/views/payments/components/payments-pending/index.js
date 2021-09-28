@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 import { PaymentsList, PaymentDetail, PaymentRejectedReasons } from './components';
+
 
 import './styles.scss';
 
@@ -8,6 +10,9 @@ export const PaymentsPending = () => {
     const [ paymentSelected, setPaymentSelected ] = useState(null);
     const paymentsPending = fakePayments.filter(p => p.status === 'pending');
     const paymentsRejected = fakePayments.filter(p => p.status === 'rejected');
+    const { id } = useParams();
+
+    useEffect(() => setPaymentSelected(fakePayments.find(p => p.id === parseInt(id))), [id])
 
     return (
         !paymentSelected ? (

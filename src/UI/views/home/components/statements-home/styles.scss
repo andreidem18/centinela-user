@@ -1,0 +1,49 @@
+@import 'App.scss';
+
+.home-user .statements-home{
+    width: 33.3333%;
+    padding: 0 15px;
+    .card{
+        border-radius: 12px;
+        padding: 15px;
+        & > .header{
+            display: flex;
+            margin-bottom: 12px;
+            h4{
+                font-family: 'Nunito', sans-serif;
+                font-size: 5.2vw;
+                letter-spacing: .4px;
+                width: 90%;
+            }
+            span{
+                @include center();
+                width: 10%;
+                font-size: 6vw;
+            }
+        }
+        p{ 
+            color: #B5B5B8;
+            font-size: 4vw; 
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        & > .bottom{
+            display: flex;
+            align-items: center;
+            img{
+                border-radius: 50%;
+                width: 12%;
+            }
+            .name{
+                font-size: 4.8vw; 
+                margin-left: 10px;
+            }
+        }
+        .date{
+            text-align: right;
+            color: #969698;
+            font-size: 4vw;
+            margin-top: -10px;
+        }
+    }
+}

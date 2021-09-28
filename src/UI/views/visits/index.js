@@ -1,4 +1,5 @@
 import { StandarMainSectionContainer, MenuButton, ChatButton } from 'UI/components';
+import { agregarInvitado, invitacionesEnviadas } from 'UI/assets';
 
 import "./styles.scss";
 
@@ -12,12 +13,14 @@ export const Visits = () => {
                     link='/visitas/nueva-invitación' 
                     className='mb' 
                     icon='icon-add-guest' 
+                    image={agregarInvitado}
                     text='Agregar invitado'
                 />
                 <MenuButton 
                     isLink={true} 
                     link='/visitas/invitaciones-enviadas'
                     icon='icon-add-register' 
+                    image={invitacionesEnviadas}
                     text='Invitaciones enviadas'
                 />
                 <ChatButton />

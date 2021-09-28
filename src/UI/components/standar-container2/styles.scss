@@ -1,0 +1,12 @@
+.standar-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    & > .content{ 
+        overflow: auto; 
+        height: 83%;
+        position: relative;
+    }
+    .bottom-menu{ height: 9%; }
+    .nav-bar-container{ height: 8%; }
+}

@@ -7,6 +7,7 @@ import { useApp, useResidence } from 'hooks';
 
 import "./styles.scss";
 import { Typeahead } from 'react-bootstrap-typeahead';
+import { Background } from 'UI/components/background';
 
 export const SignUp = () => {
 
@@ -51,56 +52,58 @@ export const SignUp = () => {
 
 
     return (
-        <section className="signup">
-            <div>
-                <img src={logo} alt="Logo" />
-                <div className="form-container">
-                    { dataForm ? <NextForm previusData={dataForm} comeback={() => setDataForm(null)} />
-                    : (
-                        <form action="" onSubmit={handleSubmit}>
-                            <div className="input-container">
-                                <InputLight label="Correo electrónico" required/> 
-                            </div>
-                            <div className="input-container">
-                                <Typeahead 
-                                    id='residences'
-                                    className='residences-typeahead'
-                                    selected={residenceSelected}
-                                    onChange={setResidenceSelected}
-                                    labelKey='name'
-                                    options={residences} 
-                                    placeholder="Unidad residencial"
-                                />
-                            </div>
-                            { residenceSelected.length > 0 &&
-                                <div className="doble-input-container">
-                                    {residenceSelected[0].nomenclature?.map((n, i) => (
-                                        <div className="container" key={n.id}>
-                                            <Typeahead 
-                                                id='values'
-                                                className='residences-typeahead'
-                                                // selected={valuesSelected[i]}
-                                                // onChange={handleValue}
-                                                labelKey='value'
-                                                options={n.values} 
-                                                placeholder={n.type}
-                                            />
-                                        </div>
-                                    ))}
+        <Background>
+            <section className="signup">
+                <div>
+                    <img src={logo} alt="Logo" />
+                    <div className="form-container">
+                        { dataForm ? <NextForm previusData={dataForm} comeback={() => setDataForm(null)} />
+                        : (
+                            <form action="" onSubmit={handleSubmit}>
+                                <div className="input-container">
+                                    <InputLight label="Correo electrónico" required/> 
                                 </div>
-                            }
-                            <div className="buttons-signup">
-                                <button type="submit" className="button-next">
-                                    <span>SIGUIENTE</span>
-                                    <div className="inner"></div>
-                                </button>
-                                <button type="button" onClick={() => history.push("/login")}>CANCELAR</button>
-                            </div>
-                            <span className="login-link">¿Ya tienes una cuenta? <Link to="login">INGRESAR</Link></span>
-                        </form>
-                    )}
+                                <div className="input-container">
+                                    <Typeahead 
+                                        id='residences'
+                                        className='residences-typeahead'
+                                        selected={residenceSelected}
+                                        onChange={setResidenceSelected}
+                                        labelKey='name'
+                                        options={residences} 
+                                        placeholder="Unidad residencial"
+                                    />
+                                </div>
+                                { residenceSelected.length > 0 &&
+                                    <div className="doble-input-container">
+                                        {residenceSelected[0].nomenclature?.map((n, i) => (
+                                            <div className="container" key={n.id}>
+                                                <Typeahead 
+                                                    id='values'
+                                                    className='residences-typeahead'
+                                                    // selected={valuesSelected[i]}
+                                                    // onChange={handleValue}
+                                                    labelKey='value'
+                                                    options={n.values} 
+                                                    placeholder={n.type}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                }
+                                <div className="buttons-signup">
+                                    <button type="submit" className="button-next">
+                                        <span>SIGUIENTE</span>
+                                        <div className="inner"></div>
+                                    </button>
+                                    <button type="button" onClick={() => history.push("/login")}>CANCELAR</button>
+                                </div>
+                                <span className="login-link">¿Ya tienes una cuenta? <Link to="login">INGRESAR</Link></span>
+                            </form>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </Background>
     );
 };

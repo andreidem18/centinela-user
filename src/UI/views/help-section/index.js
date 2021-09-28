@@ -1,3 +1,4 @@
+import { comunicateConNosotros, preguntasFrecuentes } from 'UI/assets';
 import { StandarMainSectionContainer, MenuButton, ChatButton } from 'UI/components';
 
 import "./styles.scss";
@@ -11,13 +12,13 @@ export const HelpSection = () => {
                     isLink={true} 
                     link='/ayuda/preguntas-frecuentes' 
                     className='mb' 
-                    icon='icon-faq' 
+                    image={preguntasFrecuentes}
                     text='Preguntas frecuentes'
                 />
                 <MenuButton 
                     isLink={true} 
                     link='/ayuda/contacto'
-                    icon='icon-contact' 
+                    image={comunicateConNosotros}
                     text='Comunícate con nosotros'
                 />
                 <ChatButton />

@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 import { ProtectedRoute } from "./auth";
 import * as views from "./UI/views";
-import { Background } from 'UI/components/background';
 import { useApp } from 'hooks';
 import { LoadingScreen } from 'UI/components';
 import { InfoModal } from 'UI/modals';
@@ -19,9 +18,8 @@ function App() {
 
   return (
     <Router>
-      <Background>
         { isLoading && <LoadingScreen />}
-        { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} title={infoModal.title} />}
+        { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} link={infoModal.link} linkMessage={infoModal.linkMessage} title={infoModal.title} />}
         <Switch>
           <ProtectedRoute path='/comentarios/reportar-error' exact>
             <views.ReportError />
@@ -56,6 +54,9 @@ function App() {
           <ProtectedRoute path='/vehiculos' exact>
             <views.Vehicles />
           </ProtectedRoute>
+          <ProtectedRoute path='/pagos/:id' exact>
+            <views.Payments />
+          </ProtectedRoute>
           <ProtectedRoute path='/pagos' exact>
             <views.Payments />
           </ProtectedRoute>
@@ -71,6 +72,9 @@ function App() {
           <Route path="/visitas/codigo/:code" exact>
             <views.QRScreen />
           </Route>
+          <ProtectedRoute path="/visitas/invitaciones-enviadas/:id" exact>
+            <views.InvitationsSent />
+          </ProtectedRoute>
           <ProtectedRoute path="/visitas/invitaciones-enviadas" exact>
             <views.InvitationsSent />
           </ProtectedRoute>
@@ -96,7 +100,6 @@ function App() {
             <views.Home />
           </ProtectedRoute>
         </Switch>
-      </Background>
     </Router>
   );
 }

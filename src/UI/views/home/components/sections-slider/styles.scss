@@ -1,0 +1,26 @@
+@import 'App.scss';
+
+.home-user .sections-slider{
+    .section-card{
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        width: 161px;
+        height: 82px;
+        position: relative;
+        *{ color: #fff; }
+        span{
+            font-weight: 300;
+            font-size: 18px;
+        }
+        i{
+            opacity: .5;
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            font-size: 60px;
+            transform: rotate(20deg);
+        }
+    }
+}

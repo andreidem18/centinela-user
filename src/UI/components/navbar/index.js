@@ -14,11 +14,13 @@ export const NavBar = () => {
         <div className="nav-bar-container">
             <div className="nav-bar">
                 <nav>
+                    <button className='notifications-button'>
+                        <i className="fas fa-bell"></i>
+                    </button>
+                    <img src={escudoAncho} alt="Escudo" />
                     <button onClick={() => setShowMenu(!showMenu)} className="nav-bar-menu-button">
                         <i className="fas fa-bars"></i>
                     </button>
-                    <img src={escudoAncho} alt="Escudo" />
-                    <div style={{width: '30px'}}></div>
                 </nav>
                 <div className={`main-menu ${showMenu ? "active" : ""}`}>
                     <Link to='/incidentes'>

@@ -8,6 +8,7 @@ export { getSpanishMonth } from './getSpanishMonth';
 export { withoutTime } from './withoutTime';
 export { formatTime } from './formatTime';
 export { formatStringTime } from './formatStringTime';
+export { timeSince } from './timeSince';
 export { handleTime } from './handleTime';
 export { validatePassword } from './validatePassword';
 export { getAvatar } from './getAvatar';

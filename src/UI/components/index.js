@@ -15,3 +15,4 @@ export { MenuButton } from './menu-button';
 export { StandarComeBackButton } from './standar-come-back-button';
 export { HomeLink } from './home-link';
 export { MessageEmpty } from './message-empty';
+export { BottomMenu } from './bottom-menu';

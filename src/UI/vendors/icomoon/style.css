@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?kuv6vi');
-  src:  url('fonts/icomoon.eot?kuv6vi#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?kuv6vi') format('truetype'),
-    url('fonts/icomoon.woff?kuv6vi') format('woff'),
-    url('fonts/icomoon.svg?kuv6vi#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?s1ug8p');
+  src:  url('fonts/icomoon.eot?s1ug8p#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?s1ug8p') format('truetype'),
+    url('fonts/icomoon.woff?s1ug8p') format('woff'),
+    url('fonts/icomoon.svg?s1ug8p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -37,6 +37,33 @@
   content: "\e917";
   color: #004483;
 }
+.icon-home-empty:before {
+  content: "\e901";
+}
+.icon-shorcut:before {
+  content: "\e90f";
+}
+.icon-exclamation-message:before {
+  content: "\e910";
+}
+.icon-payments:before {
+  content: "\e91a";
+}
+.icon-calendar:before {
+  content: "\e91b";
+}
+.icon-warning:before {
+  content: "\e91c";
+}
+.icon-group:before {
+  content: "\e91d";
+}
+.icon-home:before {
+  content: "\e91e";
+}
+.icon-menu:before {
+  content: "\e91f";
+}
 .icon-download:before {
   content: "\e916";
   color: #fff;
@@ -64,15 +91,6 @@
 .icon-add-guest:before {
   content: "\e900";
   color: #fff;
-}
-.icon-warning .path1:before {
-  content: "\e901";
-  color: rgb(255, 255, 255);
-}
-.icon-warning .path2:before {
-  content: "\e902";
-  margin-left: -1.15234375em;
-  color: rgb(0, 0, 0);
 }
 .icon-car:before {
   content: "\e903";
@@ -116,10 +134,6 @@
 }
 .icon-add-register:before {
   content: "\e90e";
-  color: #01ffcd;
-}
-.icon-payments:before {
-  content: "\e90f";
   color: #01ffcd;
 }
 .icon-upload-image:before {

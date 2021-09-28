@@ -32,7 +32,12 @@ export const useAuth = () => {
         if(res.response){
             if(res.response?.data?.error?.code === 3) doLogout();
             else console.log(res.response?.data?.error);
-        } else console.log(res);
+        } else if(res.message === "Network Error"){
+            showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Revisa tu conexión a internet' });
+        } else { 
+            console.log(res);
+            showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, reportalo ', link: '/comentarios/reportar-error', linkMessage: 'aquí', title: 'Lo sentimos...' });
+        }
         hideLoading();
     }
 
@@ -40,7 +45,7 @@ export const useAuth = () => {
     const getUser = async () => {
         if(!loggedUser.id){
             const res = await dispatch(getUserThunk());
-            if(res.status !== 200) validateSession(res);
+            if(res && !res.type) validateSession(res);
         }
     }
 
@@ -84,9 +89,10 @@ export const useAuth = () => {
             showInfoModal({ type: 'success', autoClose: false, actionModal: () => history.push('/login'), message: 'Tu usuario se encuentra en proceso de verificación por parte de los administradores de la unidad residencial. ¡Te mantendremos informado acerca del mismo!', title: 'Usuario creado correctamente' })
         } catch(error) {
             if(error.response?.data?.error?.code === 204){
-                showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Tu usuario se encuentra en proceso de verificación por parte de los administradores del conjunto. ¡Te mantendremos informado acerca del mismo!', title: 'usuario creado correctamente' })
+                showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Ya existe un usuario con esta dirección de correo electrónico.', title: 'Email duplicado' });
+                console.log(error.response.data.error)
             } else {
-                showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, comunícate con el administrador de tu unidad residencial.`, title: 'Lo sentimos' })
+                showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, comunícate con el administrador de tu unidad residencial.`, title: 'Lo sentimos' });
                 console.log(error.response.data)
             }
         } finally { hideLoading() }

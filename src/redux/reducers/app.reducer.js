@@ -9,7 +9,9 @@ const initialState = {
         showingTime: 3000, 
         action: null, 
         message: '', 
-        title: ''
+        title: '',
+        link: '',
+        linkMessage: ''
     }
 }
 
@@ -26,10 +28,10 @@ const appReducer = (state = initialState, action) => {
                 isLoading: action.payload
             }
         case appActions.setInfoModal:
-            const { type, handleClose, autoClose, showingTime, actionModal, message, title } = action.payload;
+            const { type, handleClose, autoClose, showingTime, actionModal, message, title, link, linkMessage } = action.payload;
             return { 
                 ...state, 
-                infoModal: {type, handleClose, autoClose, showingTime, action: actionModal, message, title} 
+                infoModal: {type, handleClose, autoClose, showingTime, action: actionModal, message, title, link, linkMessage} 
             }
         case appActions.removeInfoModal:
             return { ...state, infoModal: initialState.infoModal }
