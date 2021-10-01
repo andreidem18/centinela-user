@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { nuevoReporteAzul } from 'UI/assets';
-import { AlternativeBackground, LateralMenu, NavBar } from 'UI/components';
 import { StepProgressBar, Description } from './components';
 import { useIncident } from 'hooks';
+import { StandarComeBackButton, StandarContainer } from 'UI/components';
 
 import './styles.scss';
 
@@ -23,14 +21,12 @@ export const NewIncident = () => {
 
     return (
         <section className="new-incident">
-            <AlternativeBackground>
-                <NavBar />
-                <div className="come-back-button">
-                    <Link to="/incidentes">
-                        <i className="icon-arrow-left"></i>
-                    </Link>
-                    <img src={nuevoReporteAzul} alt="Agregar invitado" />
-                </div>
+            <StandarContainer background>
+                <StandarComeBackButton 
+                    isLink
+                    link='/incidentes'
+                    icon='icon-megaphone'
+                />
                 <div className="card">
                     { nextScreen ? (
                         <Description comeBack={() => setNextScreen(false)} />
@@ -56,8 +52,7 @@ export const NewIncident = () => {
                         </div>
                     </>)}
                 </div>
-                <LateralMenu  selected="" />
-            </AlternativeBackground>
+            </StandarContainer>
         </section>
     );
 };

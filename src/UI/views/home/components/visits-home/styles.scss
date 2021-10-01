@@ -1,7 +1,7 @@
 @import 'App.scss';
 
 .home-user .visits-home{
-    width: 33.3333%;
+    width: 100%;
     padding: 0 15px;
     .card{
         border-radius: 8px;
@@ -38,5 +38,15 @@
                 }
             }
         }
+    }
+}
+
+@media (min-width: 360px) {
+    .home-user .visits-home .card .guest{
+        .name{
+            font-size: 16px;
+            .date{ font-size: 15px; }
+        }
+        .status{ font-size: 16px; }
     }
 }

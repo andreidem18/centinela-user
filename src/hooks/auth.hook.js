@@ -31,7 +31,7 @@ export const useAuth = () => {
     const validateSession = res => {
         if(res.response){
             if(res.response?.data?.error?.code === 3) doLogout();
-            else console.log(res.response?.data?.error);
+            console.log(res.response?.data?.error);
         } else if(res.message === "Network Error"){
             showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Revisa tu conexión a internet' });
         } else { 

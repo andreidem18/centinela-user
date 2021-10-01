@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { StandarContainer, HomeLink } from 'UI/components';
+import { HomeLink, StandarContainer } from 'UI/components';
 import { eventos } from 'UI/assets';
 import { Calendar, PlaceInfo } from './components';
 
@@ -14,7 +14,7 @@ export const Events = () => {
 
     return (
         <section className='events'>
-            <StandarContainer sectionSelected='events'>
+            <StandarContainer sectionSelected='events' background>
                 <HomeLink />
                 <h3 className='standar-section-title'>Eventos</h3>
                 <div className="main-image">

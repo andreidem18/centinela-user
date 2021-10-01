@@ -1,7 +1,7 @@
 @import 'App.scss';
 
 .home-user .payments-home{
-    width: 33.3333%;
+    width: 100%;
     padding: 0 15px;
     .card{
         border-radius: 10px;
@@ -45,5 +45,12 @@
             border-radius: 3px;
             display: block;
         }
+    }
+}
+
+@media (min-width: 350px) {
+    .home-user .payments-home .card .header{
+        .date{ font-size: 20px; }
+        .amount{ font-size: 22px;}
     }
 }

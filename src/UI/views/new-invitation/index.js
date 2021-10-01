@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { StandarContainer, MessageEmpty } from 'UI/components';
+import { MessageEmpty, StandarContainer } from 'UI/components';
 import { useGuest } from 'hooks';
 import { Guest, AddGuest } from './components';
 
@@ -15,7 +15,7 @@ export const NewInvitation = () => {
 
     return (
         <section className="visits">
-            <StandarContainer sectionSelected='visits'>
+            <StandarContainer sectionSelected='visits' background>
                 {
                     guestSelected ? <AddGuest guest={guestSelected} comeback={() => setGuestSelected(null)} />  : (
                         <>
@@ -37,8 +37,8 @@ export const NewInvitation = () => {
                                         </div>
                                     </button>
                                 </div>
-                                <div className="card">
-                                    <div className="card-title-container">
+                                <div className="standar-card-container">
+                                    <div className="card-title">
                                         <h4>Invitados guardados</h4>
                                     </div>
                                     <div className="guests">

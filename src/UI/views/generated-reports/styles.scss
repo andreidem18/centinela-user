@@ -45,36 +45,4 @@
             left: 0;
         }
     }
-    .card{
-        width: 95%;
-        max-width: 576px;
-        border-radius: 30px;
-        margin: 0 auto;
-        padding: 15px 30px;
-        background: $white;
-        box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.1);
-        .card-title-container{
-            h4{
-                color: $dark-blue-variation;
-                display: inline-block;
-                text-transform: uppercase;
-                font-size: 15px;
-                letter-spacing: 1px;
-                padding-bottom: 13px;
-                border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-            }
-            button{
-                @include button-configuration();
-                padding: 6px 5px;
-                background: $light-blue;
-                font-weight: 500;
-                border-radius: 8px;
-                margin-left: 10px;
-            }
-        }
-        .reports{
-            @include custom-scrollbar($dark-blue, $dark-blue-variation);
-            max-height: 50vh;
-        }
-    }
 }

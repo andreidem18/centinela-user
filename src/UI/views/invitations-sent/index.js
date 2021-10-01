@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StandarComeBackButton, StandarContainer, MessageEmpty } from 'UI/components';
+import { StandarComeBackButton, MessageEmpty, StandarContainer } from 'UI/components';
 import { InvitationDetail } from './components';
 import { useGuest } from 'hooks';
 import { useParams } from 'react-router';
+import { getAvatar } from 'utils';
 
 import "./styles.scss";
-import { getAvatar } from 'utils';
 
 export const InvitationsSent = () => {
 
@@ -18,7 +18,7 @@ export const InvitationsSent = () => {
     
     return (
         <section className="invitations-sent">
-            <StandarContainer>
+            <StandarContainer sectionSelected='visits' background>
                 { invitationSelected ? (
                     <InvitationDetail invitation={invitationSelected} comeBack={() => setInvitationSelected(null)} />
                 ) : (

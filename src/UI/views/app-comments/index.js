@@ -8,7 +8,7 @@ export const AppComments = () => {
 
     return (
         <section className="comments">
-            <StandarContainer>
+            <StandarContainer background>
                 <HomeLink />
                 <h3 className='comments-title'>Envíanos tu comentario</h3>
                 <div className="standar-card-container">

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?s1ug8p');
-  src:  url('fonts/icomoon.eot?s1ug8p#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?s1ug8p') format('truetype'),
-    url('fonts/icomoon.woff?s1ug8p') format('woff'),
-    url('fonts/icomoon.svg?s1ug8p#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?rsw66p');
+  src:  url('fonts/icomoon.eot?rsw66p#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?rsw66p') format('truetype'),
+    url('fonts/icomoon.woff?rsw66p') format('woff'),
+    url('fonts/icomoon.svg?rsw66p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -36,6 +36,9 @@
 .icon-upload-file:before {
   content: "\e917";
   color: #004483;
+}
+.icon-megaphone:before {
+  content: "\e902";
 }
 .icon-home-empty:before {
   content: "\e901";
@@ -111,10 +114,6 @@
 .icon-link:before {
   content: "\e907";
   color: #004483;
-}
-.icon-megaphone:before {
-  content: "\e908";
-  color: #fff;
 }
 .icon-message:before {
   content: "\e909";

@@ -5,7 +5,7 @@
         @include center();
         position: relative;
         max-width: 400px;
-        margin: 30px auto 10px auto;
+        padding: 50px 0 10px;
         button, a{
             @include button-configuration();
             @include center();
@@ -13,7 +13,8 @@
             color: $light-blue;
             position: absolute;
             font-size: 35px;
-            left: 30px;
+            left: 20px;
+            top: 10px;
         }
         img{
             width: 70px;

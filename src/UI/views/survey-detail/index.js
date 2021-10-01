@@ -1,4 +1,4 @@
-import { AlternativeBackground, LateralMenu, NavBar, StandarComeBackButton } from 'UI/components';
+import { StandarComeBackButton, StandarContainer } from 'UI/components';
 import { useParams, useHistory } from 'react-router-dom';
 import { MultipleSelection, Opinion } from './components';
 
@@ -22,8 +22,7 @@ export const SurveyDetail = () => {
 
     return (
         <section className="survey">
-            <AlternativeBackground>
-                <NavBar />
+            <StandarContainer background>
                 
                 <StandarComeBackButton
                     onClick={comeBack}
@@ -55,8 +54,7 @@ export const SurveyDetail = () => {
                             </button>
                     }
                 </div>
-                <LateralMenu />
-            </AlternativeBackground>
+            </StandarContainer>
         </section>
     );
 };

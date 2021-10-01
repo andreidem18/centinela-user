@@ -1,6 +1,6 @@
 @import 'App.scss';
 
-.generated-reports .card .reports .report{
+.generated-reports .standar-card-container .reports .report{
     border-radius: 5px;
     box-shadow: -3px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 5px;
@@ -51,9 +51,7 @@
                 width: 100%;
                 border: none;
                 font-weight: 500;
-                overflow: auto;
                 font-size: 15px;
-                max-height: 85px;
             }
         }
         .waiting-admin-text{

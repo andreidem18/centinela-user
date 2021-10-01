@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StandarContainer, HomeLink } from 'UI/components';
+import { HomeLink, StandarContainer } from 'UI/components';
 import { comunicados } from 'UI/assets';
 
 import './styles.scss';
@@ -12,9 +12,10 @@ export const Statements = () => {
         if(open === idStatement) setOpen(null);
         else setOpen(idStatement);
     }
+
     return (
         <section className='statements'>
-            <StandarContainer>
+            <StandarContainer background>
                 <HomeLink />
                 <h3 className='standar-section-title'>Comunicados</h3>
                 <div className="main-image">

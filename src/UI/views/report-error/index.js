@@ -6,7 +6,7 @@ import './styles.scss';
 export const ReportError = () => {
     return (
         <section className='report-error'>
-            <StandarContainer>
+            <StandarContainer background>
                 <StandarComeBackButton 
                     isLink={true}
                     link='/comentarios'

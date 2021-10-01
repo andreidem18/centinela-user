@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { NavBar, LateralMenu, AlternativeBackground } from 'UI/components';
 import { PaymentsMade, PaymentsPending } from './components';
-import { HomeLink } from 'UI/components';
+import { HomeLink, StandarContainer } from 'UI/components';
 
 import "./styles.scss";
 
@@ -11,9 +10,7 @@ export const Payments = () => {
 
     return (
         <section className="payments">
-            <AlternativeBackground>
-                <NavBar />
-                <HomeLink />
+            <StandarContainer sectionSelected='payments' background><HomeLink />
                 <div className="title">
                     <h3>Pagos</h3>
                     <i className="icon-payments"></i>
@@ -45,8 +42,7 @@ export const Payments = () => {
                         }
                     </div>
                 </div>
-                <LateralMenu  selected="payments" />
-            </AlternativeBackground>
+            </StandarContainer>
         </section>
     );
 };

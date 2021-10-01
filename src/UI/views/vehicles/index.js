@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { vehiculo } from 'UI/assets';
-import { NavBar, LateralMenu, AlternativeBackground, ChatButton, HomeLink } from 'UI/components';
+import { ChatButton, HomeLink, StandarContainer } from 'UI/components';
 import { VehicleForm } from './components';
 
 import "./styles.scss";
@@ -11,8 +11,7 @@ export const Vehicles = () => {
 
     return (
         <section className="vehicles">
-            <AlternativeBackground>
-                <NavBar />
+            <StandarContainer background>
                 { 
                     selected ? (
                         <VehicleForm selected={selected} comeBack={() => setSelected(null)} />
@@ -23,6 +22,11 @@ export const Vehicles = () => {
                             <div className="card">
                                 <div className='vehicle-icon'>
                                     <img src={vehiculo} alt="Icono Vehículo" />
+                                </div>
+                                <div className="add-vehicle-button">
+                                    <button onClick={() => setSelected({})}>   
+                                        <span className='text'>Agregar vehículo <i className="fas fa-plus"></i></span>
+                                    </button>   
                                 </div>
                                 {
                                     fakeVehicles.map(vehicle => (
@@ -36,19 +40,12 @@ export const Vehicles = () => {
                                         </div>
                                     ))
                                 }
-                                <div className="add-vehicle-button">
-                                    <button onClick={() => setSelected({})}>
-                                        <span className='plus-icon'><i className="fas fa-plus"></i></span>    
-                                        <span className='text'>Agregar vehículo</span>
-                                    </button>   
-                                </div>
                             </div>
                             <ChatButton />
                         </>
                     )
                 }
-                <LateralMenu  selected="" />
-            </AlternativeBackground>
+            </StandarContainer>
         </section>
     );
 };

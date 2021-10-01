@@ -12,8 +12,9 @@
             text-decoration: none;
             color: $light-blue;
             position: absolute;
-            font-size: 35px;
-            left: 0;
+            font-size: 30px;
+            left: 10px;
+            top: 0px
         }
         .access-configuration-button{
             @include button-configuration();
@@ -47,7 +48,6 @@
         padding: 20px 35px 40px;
         width: 90%;
         max-height: 100%;
-        overflow: auto;
         .input-box-light{
             width: 100%;
             margin: 20px 0;

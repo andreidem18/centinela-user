@@ -27,10 +27,13 @@ export const InvitationDetail = ({ comeBack, invitation }) => {
                         {invitation.guest.first_name} {invitation.guest.last_name} - <span>{invitation.status ? 'Activa' : 'Finalizada'}</span>
                     </h4>
                 </div>
-                <button className='save-guest-button' onClick={() => addGuest(invitation.guest.id)}>
-                    <span className='save-guest-button'>Guardar invitado</span>
-                    <img src={getAvatar(invitation.guest.first_name, invitation.guest.lastname)} alt="Avatar del visitante" className="guest-image" />
-                </button>
+                {
+                    !invitation.guest.favorite &&
+                        <button className='save-guest-button' onClick={() => addGuest(invitation.guest.id)}>
+                            <span className='save-guest-button'>Guardar invitado</span>
+                            <img src={getAvatar(invitation.guest.first_name, invitation.guest.lastname)} alt="Avatar del visitante" className="guest-image" />
+                        </button>
+                }
                 <div className="calendars">
                     <div className="date-container">
                         <label htmlFor="datepicker-created">Creada</label>

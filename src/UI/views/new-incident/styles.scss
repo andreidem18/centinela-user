@@ -1,24 +1,10 @@
 @import 'App.scss';
 
 .new-incident{
-    .come-back-button{
-        @include center();
-        position: relative;
-        max-width: 400px;
-        margin: 30px auto;
-        button, a{
-            @include button-configuration();
-            @include center();
-            text-decoration: none;
-            color: $light-blue;
-            position: absolute;
-            font-size: 35px;
-            left: 30px;
-        }
-        img{
-            width: 70px;
-            display: block;
-            margin: 0 auto;
+    .standar-come-back-button{
+        padding: 25px 0 15px;
+        .main-icon{
+            font-size: 90px;
         }
     }
     .card{
@@ -66,7 +52,6 @@
             margin-top: 20px;
         }
         input, textarea{
-            @include custom-scrollbar($dark-blue, $dark-blue-variation);
             display: block;
             width: 100%;
             padding: 6px 10px;

@@ -71,3 +71,9 @@
         z-index: 9;
     }
 }
+
+@media (min-width: 360px) {
+    .nav-bar-container .nav-bar nav{
+        .nav-bar-menu-button, .notifications-button{ font-size: 24px; }
+    }
+}

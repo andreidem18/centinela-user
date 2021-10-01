@@ -1,7 +1,7 @@
 @import 'App.scss';
 
 .home-user .statements-home{
-    width: 33.3333%;
+    width: 100%;
     padding: 0 15px;
     .card{
         border-radius: 12px;
@@ -10,10 +10,9 @@
             display: flex;
             margin-bottom: 12px;
             h4{
-                font-family: 'Nunito', sans-serif;
                 font-size: 5.2vw;
-                letter-spacing: .4px;
                 width: 90%;
+                font-weight: 600;
             }
             span{
                 @include center();
@@ -45,5 +44,17 @@
             font-size: 4vw;
             margin-top: -10px;
         }
+    }
+}
+
+@media (min-width: 360px) {
+    .home-user .statements-home .card{
+        & > .header{
+            h4{ font-size: 20px; }
+            span{ font-size: 23px; }
+        }
+        p{ font-size: 15px; }
+        & > .bottom .name { font-size: 18px; }
+        .date{ font-size: 15px; }
     }
 }

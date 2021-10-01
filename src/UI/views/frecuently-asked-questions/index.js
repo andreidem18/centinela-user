@@ -15,7 +15,7 @@ export const FrecuentlyAskedQuestions = () => {
     }
     return (
         <section className='frecuently-asked-questions'>
-            <StandarContainer>
+            <StandarContainer background>
                 <StandarComeBackButton 
                     isLink={true}
                     link='/ayuda'
@@ -54,7 +54,8 @@ export const FrecuentlyAskedQuestions = () => {
                             New York. Oh, I'm an alien,
                             I'm a legal alien
                             I'm an
-                            Englishman in New York." 
+                            Englishman in New York. 
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, quo officiis reprehenderit unde hic vitae quam neque soluta in? Ipsam sunt ab libero impedit doloribus vitae repellendus unde est numquam?" 
                         handleOpenAnswer={() => handleOpenAnswer(3)}
                         isOpen={openAnswer === 3}
                     />

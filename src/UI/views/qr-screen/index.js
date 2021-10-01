@@ -36,7 +36,7 @@ export const QRScreen = () => {
     return (
         !localStorage.getItem('token') ? <GuestsView qr={ generateQr() } /> : (
             <section className="qr-screen">
-                <StandarContainer sectionSelected='visits'>
+                <StandarContainer sectionSelected='visits' background>
                         <h3>
                             <button onClick={() => history.goBack()}>
                                 <i className="icon-arrow-left"></i>

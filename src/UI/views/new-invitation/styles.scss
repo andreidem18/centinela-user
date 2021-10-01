@@ -7,17 +7,17 @@
         font-size: 26px;
         letter-spacing: 0.1em;
         color: $white;
-        margin: 30px auto;
-        padding: 0 30px;
+        margin: 0 auto;
+        padding: 30px;
         width: 85%;
         max-width: 400px;
-        display: flex;
         position: relative;
         a{
             margin-right: 5px;
-            font-size: 36px;
+            font-size: 30px;
             color: $light-blue;
             position: absolute;
+            top: 10px;
             left: 0;
             text-decoration: none;
         }
@@ -67,16 +67,9 @@
             left: 0;
         }
     }
-    .card{
-        width: 95%;
-        max-width: 576px;
-        border-radius: 30px;
-        margin: 0 auto;
+    .standar-card-container{
         padding: 25px 30px;
-        background: $white;
-        box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.3);
-        overflow: hidden;
-        .card-title-container{
+        .card-title{
             padding-bottom: 20px;
             h4{
                 color: $dark-blue-variation;
@@ -89,13 +82,13 @@
         }
 
         .guests{
-            overflow: auto;
-            padding-bottom: 30px;
+            // padding-bottom: 30px;
             height: 84%;
         }
     }
     .container{
-        height: 96%;
+        height: 100%;
+        overflow: auto;
     }
     .alternative-background{
         overflow: hidden;

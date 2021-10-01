@@ -6,7 +6,7 @@ import './styles.scss';
 export const SendComment = () => {
     return (
         <section className='send-comment'>
-            <StandarContainer>
+            <StandarContainer background>
                 <StandarComeBackButton 
                     isLink={true}
                     link='/comentarios'

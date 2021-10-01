@@ -20,7 +20,7 @@ export const PaymentsHome = () => {
                                 </div>
                                 <ul className="reasons-container">
                                     {payment.reasons.map(reason => (
-                                        <li className="reason">
+                                        <li className="reason" key={reason.id}>
                                             <span>{reason.reason}</span>
                                             <span>$ {reason.amount}</span>
                                         </li>

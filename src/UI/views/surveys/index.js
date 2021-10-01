@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { encuestas } from 'UI/assets';
-import { NavBar, LateralMenu, AlternativeBackground, ChatButton, HomeLink } from 'UI/components';
+import { ChatButton, StandarContainer } from 'UI/components';
 
 import "./styles.scss";
 
@@ -9,9 +9,7 @@ export const Surveys = () => {
 
     return (
         <section className="surveys">
-            <AlternativeBackground>
-                <NavBar />
-                <HomeLink />
+            <StandarContainer background >
                 <h3 className='surveys-title'>Encuestas</h3>
                 <div className='survey-icon'>
                     <img src={encuestas} alt="Icono Encuestas" />
@@ -41,8 +39,7 @@ export const Surveys = () => {
                     }
                 </div>
                 <ChatButton />
-                <LateralMenu  selected="" />
-            </AlternativeBackground>
+            </StandarContainer>
         </section>
     );
 };

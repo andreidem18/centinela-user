@@ -45,32 +45,28 @@
     .view-container{
         border-radius: 30px 30px 0px 0px;
         background: linear-gradient(136deg, #2EBF91 0%, #5C8CAC 67%, #8360C3 100%);
+        background-attachment: fixed;
         padding-top: 30px;
         flex: 1 1 auto;
-        .view{
-            width: 300%;
-            display: flex;
-            transition: .3s ease-in-out;
-            .card{
-                background: $white;
+        .card{
+            background: $white;
+            display: block;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+        .card.empty{
+            padding: 15px;
+            text-align: center;
+            color: #969698;
+            font-size: 4.2vw;
+            img{
+                height: 90px;
                 display: block;
-                text-decoration: none;
-                margin-bottom: 30px;
+                margin: 0 auto 20px;
             }
-            .card.empty{
-                padding: 15px;
-                text-align: center;
-                color: #969698;
-                font-size: 4.2vw;
-                img{
-                    height: 90px;
-                    display: block;
-                    margin: 0 auto 20px;
-                }
-                a{
-                    color: #03a9f4;
-                    text-decoration: none;
-                }
+            a{
+                color: #03a9f4;
+                text-decoration: none;
             }
         }
     }

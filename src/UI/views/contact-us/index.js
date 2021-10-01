@@ -7,7 +7,7 @@ export const ContactUs = () => {
 
     return (
         <section className='contact-us'>
-            <StandarContainer>
+            <StandarContainer background>
                 <StandarComeBackButton 
                     isLink={true}
                     link='/ayuda'

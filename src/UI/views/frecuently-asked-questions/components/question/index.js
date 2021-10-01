@@ -4,16 +4,16 @@ import './styles.scss';
 
 export const Question = ({title, text, handleOpenAnswer, isOpen}) => {
     return (
-        <div className="question">
+        <button className="question" onClick={handleOpenAnswer}>
             <div className="question-header">
                 <span className='question-name'>{title}</span>
-                <button onClick={handleOpenAnswer} className={isOpen ? 'rotate' : ''}>
+                <span className={isOpen ? 'rotate' : ''}>
                     <i className='icon-arrow-left'></i>
-                </button>
+                </span>
             </div>
-            <div className="question-body" style={{height: isOpen ? '116px' : '0px'}}>
+            <div className="question-body" style={{maxHeight: isOpen ? '1000px' : '0px'}}>
                 <p>{text}</p>
             </div>
-        </div>
+        </button>
     );
 };

@@ -5,9 +5,9 @@
     @include make-circle(50px);
     @include center();
     background: $main-green;
-    position: absolute;
+    position: fixed;
     right: 20px;
-    bottom: 15px;
+    bottom: 11%;
     box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.2);
     i::before{
         font-size: 22px;

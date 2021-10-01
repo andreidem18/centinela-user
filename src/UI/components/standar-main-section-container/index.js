@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StandarContainer } from '../standar-container2';
+import { StandarContainer } from '../standar-container';
 
 import './styles.scss';
 

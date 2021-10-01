@@ -1,4 +1,4 @@
-import { AlternativeBackground, HomeLink, LateralMenu, NavBar, StandarComeBackButton } from 'UI/components';
+import { HomeLink, StandarComeBackButton, StandarContainer } from 'UI/components';
 import { Report } from './components';
 
 import "./styles.scss";
@@ -7,26 +7,25 @@ export const GeneratedReports = () => {
     
     return (
         <section className="generated-reports">
-            <AlternativeBackground>
-                <NavBar />
+            <StandarContainer background>
                 <HomeLink />
                 <StandarComeBackButton
                     isLink={true}
                     link="/incidentes"
                     icon='icon-reports'
                 />
-                <div className="card">
+                <div className="standar-card-container">
                     <div className="card-title-container">
                         <h4>Reportes Generados</h4>
                     </div>
                     <div className="reports">
                         {fakeReports.map(report => (
-                            <Report report={report} id={report.id}/>
+                            <Report report={report} id={report.id} key={report.id}/>
                         ))}
                     </div>
                 </div>
-                <LateralMenu />
-            </AlternativeBackground>
+            </StandarContainer>
+            
         </section>
     );
 };

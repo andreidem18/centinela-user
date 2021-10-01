@@ -13,7 +13,7 @@
         max-width: 576px;
         border-radius: 30px;
         margin: 70px auto 0 auto;
-        padding: 60px 30px 25px 30px;
+        padding: 50px 30px 25px 30px;
         background: $white;
         box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.3);
         position: relative;
@@ -57,23 +57,15 @@
         .add-vehicle-button{
             display: flex;
             justify-content: flex-end;
+            margin-bottom: 20px;
             button{
                 @include button-configuration();
                 display: flex;
                 align-items: center;
-                .plus-icon{
-                    @include make-circle(40px);
-                    @include center();
-                    background: $dark-blue-variation;
-                    color: $white;
-                    font-size: 23px;
-                    margin-right: -25px;
-                    z-index: 9;
-                }
                 .text{
                     display: inline-block;
-                    background: $dark-blue-variation;
-                    padding: 6px 10px 6px 25px;
+                    background: $main-green;
+                    padding: 8px 10px;
                     border-radius: 10px;
                     color: $white;
                     font-weight: 500;

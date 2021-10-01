@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth, useGuest } from 'hooks';
 import "./styles.scss";
-import { StandarContainer } from 'UI/components/standar-container2';
+import { StandarContainer } from 'UI/components';
 import { PaymentsHome, SectionsSlider, StatementsHome, VisitsHome } from './components';
 
 export const Home = () => {
@@ -39,11 +39,17 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="view-container">
-                    <div className="view" style={{transform: `translateX(-${viewSelected * 100 / 3}%)`}}>
-                        <StatementsHome />
-                        <VisitsHome />
-                        <PaymentsHome />
-                    </div>
+                    {
+                        viewSelected === 0 ? ( 
+                            <StatementsHome />
+                        ) : ( 
+                            viewSelected === 1 ? (
+                                <VisitsHome />
+                            ) : ( 
+                                <PaymentsHome /> 
+                            )
+                        )
+                    }
                 </div>
             </section>
         </StandarContainer>
