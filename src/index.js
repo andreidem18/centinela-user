@@ -13,11 +13,15 @@ import thunk from "redux-thunk";
 import './UI/vendors/aileron/aileron.css';
 import 'UI/vendors/icomoon/style.css';
 
-const store = createStore(
-  rootReducer, 
-  compose(applyMiddleware(thunk), composeWithDevTools())
-);
+// const store = createStore(
+//   rootReducer, 
+//   compose(applyMiddleware(thunk), composeWithDevTools())
+// );
 
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(thunk),
+  // other store enhancers if any
+));
 
 ReactDOM.render(
   <React.StrictMode>
