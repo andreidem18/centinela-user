@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from 'redux/reducers';
 import { Provider } from 'react-redux';
 import thunk from "redux-thunk";
@@ -13,15 +13,10 @@ import thunk from "redux-thunk";
 import './UI/vendors/aileron/aileron.css';
 import 'UI/vendors/icomoon/style.css';
 
-// const store = createStore(
-//   rootReducer, 
-//   compose(applyMiddleware(thunk), composeWithDevTools())
-// );
-
-const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk),
-  // other store enhancers if any
-));
+const store = createStore(
+  rootReducer, 
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
   <React.StrictMode>
