@@ -1,5 +1,5 @@
+import React, { useState, useMemo } from 'react';
 import { useAuth } from 'hooks';
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { escudoAncho } from 'UI/assets';
 
@@ -9,9 +9,11 @@ export const NavBar = () => {
 
     const [ showMenu, setShowMenu ] = useState(false);
     const { doLogout } = useAuth();
+    // Para colocarle un height del 8% del tamaño de la pantalla, que no se altere si se abre el teclado
+    const height = useMemo(() => 8 * window.innerHeight / 100, [])
 
     return (
-        <div className="nav-bar-container">
+        <div className="nav-bar-container" style={{height}}>
             <div className="nav-bar">
                 <nav>
                     <button className='notifications-button'>

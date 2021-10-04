@@ -33,7 +33,9 @@ export const getGuestsThunk = () => {
                 const expiredInvitations = res.data.data.filter(invitation => invitation.status === 0);
                 dispatch(setGuests(guests));
                 // Para que aparezcan primero las invitaciones activas
-                dispatch(setInvitations(invitations.concat(expiredInvitations)));
+                dispatch(setInvitations(
+                    invitations.reverse().concat(expiredInvitations.reverse())
+                ));
             })
             .catch(error => error)
             .finally(() => dispatch(setLoading(false)))

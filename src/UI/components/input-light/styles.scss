@@ -16,11 +16,11 @@
         border-radius: 8px;
         transition: .4s;
         &:focus{
-            border-color: #1da1f2;
+            border-color: $main-green;
             transition: .4s;
         }
         &:focus ~ label, &:valid ~ label{
-            color: #1da1f2;
+            color: $main-green;
             transform: translateY(-29px);
             font-size: 14px;
             transition: .4s;

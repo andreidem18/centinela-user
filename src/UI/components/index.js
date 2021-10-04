@@ -11,6 +11,7 @@ export { ShareInSocialMedia } from './share-in-social-media';
 export { ChatButton } from './chat-button';
 export { StandarMainSectionContainer } from './standar-main-section-container';
 export { StandarContainer } from './standar-container';
+export { MainLayout } from './main-layout';
 export { MenuButton } from './menu-button';
 export { StandarComeBackButton } from './standar-come-back-button';
 export { HomeLink } from './home-link';
