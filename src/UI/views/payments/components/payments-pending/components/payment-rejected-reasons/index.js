@@ -24,9 +24,9 @@ export const PaymentRejectedReasons = ({ payment, comeback }) => {
                     $ {payment.amount}
                 </div>
                 <h4 className='reject-reason-title'>Motivos de rechazo</h4>
-                <div className="reject-reason">
+                <p className="reject-reason">
                     {payment.reject_cause}
-                </div>
+                </p>
                 <button 
                     onClick={() => setShowDetail(true)}
                     className='main-button'>

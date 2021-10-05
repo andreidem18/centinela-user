@@ -1,14 +1,7 @@
 @import 'App.scss';
 
 .events .create-event-form{
-    .comeback-button{
-        @include button-configuration();
-        position: absolute;
-        top: 10px;
-        left: 24px;
-        font-size: 25px;
-        z-index: 9;
-    }
+    padding-bottom: 20px;
     h4{
         font-size: 20px;
         font-weight: 600;
@@ -20,9 +13,13 @@
     form{
         width: 90%;
         margin: 30px auto 0 auto;
-        .input-box{
+        .input-box.light{
             width: 100%;
-            margin: 20px 0;
+            margin: 20px 0 40px;
+            input{
+                &:focus, &:valid{ border-bottom-color: $purple; }
+                &:focus ~ span, &:valid ~ span{ color: $purple; }
+            }
         }
         .description{
             width: 100%;
@@ -33,11 +30,11 @@
             padding: 8px;
             font-size: 16px;
             outline: none;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
             color: rgba(0, 0, 0, 0.7);
             letter-spacing: 1px;
             &:focus{
-                border-color: $dark-blue-variation;
+                border-color: $purple;
             }
         }
         .hour{
@@ -64,11 +61,12 @@
             @include button-configuration();
             width: 100%;
             padding: 10px 4px;
-            background: $dark-blue-variation;
+            background: $main-green;
             color: $white;
             display: block;
             font-size: 15px;
             font-weight: 500;
+            margin-top: 40px;
         }
     }
 }

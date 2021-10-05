@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from 'UI/components';
+import { Input, MainLayout } from 'UI/components';
 import { formatTimeToMilitaryHour, getSpanishMonth, formatStringTime, handleTime, formatTime} from 'utils';
 import { InfoModal } from 'UI/modals';
 
@@ -45,52 +45,51 @@ export const CreateEventForm = ({ date, place, comeBack }) => {
     const dateObj = getSpanishMonth(date);
 
     return (
-        <div className='create-event-form'>
-            <button className='comeback-button' onClick={comeBack}>
-                <i className='icon-arrow-left'></i>
-            </button>
-            <h4>{place.name}</h4>
-            <p className='date'>{dateObj.day} de {dateObj.month} del {dateObj.year}</p>
-            <form action="" onSubmit={submit}>
-                <Input className='light' label='Nombre del evento' required />
-                <textarea placeholder='Descripción' rows='6' className='description' /> 
-                <div className='hour'>
-                    <label htmlFor='start'>Hora de inicio</label>
-                    <input type="time" id="start" />
-                    <select>
-                        <option>am</option>
-                        <option>pm</option>
-                    </select>
-                </div>
-                <div className='hour'>
-                    <label htmlFor='end'>Hora de cierre</label>
-                    <input type="time" name="" id="end" />
-                    <select>
-                        <option>am</option>
-                        <option>pm</option>
-                    </select>
-                </div>
-                <button className='submit-button'>Agendar evento</button>
-            </form>
-            { showSuccessModal &&
-                <InfoModal 
-                    type='success' 
-                    title='evento creado exitosamente' 
-                    message='Tu evento esta en proceso de revisión, ¡te estaremos informando acerca del mismo!' 
-                    handleClose={() => setShowSuccessModal(false)}
-                    autoClose={true}
-                    showingTime={3000}
-                />
-            }
-            { error &&
-                <InfoModal
-                    type='error'
-                    title='Problema con las horas'
-                    message={error}
-                    handleClose={() => setError('')}
-                />
-            }
-        </div>
+        <MainLayout sectionSelected='events' title='Eventos' comeback={comeBack} bottomMenu={false}>
+            <div className='create-event-form'>
+                <h4>{place.name}</h4>
+                <p className='date'>{dateObj.day} de {dateObj.month} del {dateObj.year}</p>
+                <form action="" onSubmit={submit}>
+                    <Input className='light' label='Nombre del evento' required />
+                    <textarea placeholder='Descripción' rows='6' className='description' /> 
+                    <div className='hour'>
+                        <label htmlFor='start'>Hora de inicio</label>
+                        <input type="time" id="start" />
+                        <select>
+                            <option>am</option>
+                            <option>pm</option>
+                        </select>
+                    </div>
+                    <div className='hour'>
+                        <label htmlFor='end'>Hora de cierre</label>
+                        <input type="time" name="" id="end" />
+                        <select>
+                            <option>am</option>
+                            <option>pm</option>
+                        </select>
+                    </div>
+                    <button className='submit-button'>Agendar evento</button>
+                </form>
+                { showSuccessModal &&
+                    <InfoModal 
+                        type='success' 
+                        title='evento creado exitosamente' 
+                        message='Tu evento esta en proceso de revisión, ¡te estaremos informando acerca del mismo!' 
+                        handleClose={() => setShowSuccessModal(false)}
+                        autoClose={true}
+                        showingTime={3000}
+                    />
+                }
+                { error &&
+                    <InfoModal
+                        type='error'
+                        title='Problema con las horas'
+                        message={error}
+                        handleClose={() => setError('')}
+                    />
+                }
+            </div>
+        </MainLayout>
     );
 };
 

@@ -1,25 +1,24 @@
 @import 'App.scss';
 
 .payments-made{
+    margin-top: 30px;
     li{
         position: relative;
         padding-left: 13px;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 14px;
         font-weight: 600;
-        .date{
-            color: $green;
-        }
+        .date{ color: $dark; }
         .amount{
-            color: $dark-blue;
+            color: $green;
         }
         &::before{
             @include make-circle(5px);
             content: '';
-            background: $dark-blue;
+            background: $main-green;
             position: absolute;
             left: 0;
         }

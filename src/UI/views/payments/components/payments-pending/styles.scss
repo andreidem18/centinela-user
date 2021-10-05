@@ -10,16 +10,10 @@
             display: inline-block;
             margin: 20px 0;
         }
+        .title-payment{ text-align: left; }
     }
     .pendings{
         margin-bottom: 20px;
-        .title-payment{
-            color: #004483;
-        }
     }
-    .rejects{
-        .title-payment{
-            color: $red;
-        }
-    }
+    .rejects .title-payment{ color: $red; }
 }

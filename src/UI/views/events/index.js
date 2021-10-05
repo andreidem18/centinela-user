@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
-import { HomeLink, StandarContainer } from 'UI/components';
-import { eventos } from 'UI/assets';
+import { MainLayout } from 'UI/components';
 import { Calendar, PlaceInfo } from './components';
 
 import './styles.scss';
@@ -14,32 +13,23 @@ export const Events = () => {
 
     return (
         <section className='events'>
-            <StandarContainer sectionSelected='events' background>
-                <HomeLink />
-                <h3 className='standar-section-title'>Eventos</h3>
-                <div className="main-image">
-                    <img src={eventos} alt="" />
-                </div>
-                <div className="standar-card-container">
-                    {
-                        dateSelected ? (
-                            <PlaceInfo date={dateSelected} place={place} comeBack={() => setDateSelected(null)} />
-                        ) : (
-                            <>
-                                <select value={place?.id || ''} onChange={e => handlePlace(e.target.value)} className='place-select'>
-                                    <option value={null}>Selecciona el lugar del evento</option>
-                                    {places.map(place => (
-                                        <option value={place.id} key={place.id}>
-                                            {place.name}
-                                        </option>
-                                    ))}
-                                </select>
-                                {place && <Calendar place={place} setDate={setDateSelected} />}
-                            </>
-                        )
-                    }
-                </div>
-            </StandarContainer>
+                {
+                    dateSelected ? (
+                        <PlaceInfo date={dateSelected} place={place} comeBack={() => setDateSelected(null)} />
+                    ) : (
+                        <MainLayout sectionSelected='events' title='Eventos'>
+                            <select value={place?.id || ''} onChange={e => handlePlace(e.target.value)} className='place-select'>
+                                <option value={null}>Selecciona el lugar del evento</option>
+                                {places.map(place => (
+                                    <option value={place.id} key={place.id}>
+                                        {place.name}
+                                    </option>
+                                ))}
+                            </select>
+                            {place && <Calendar place={place} setDate={setDateSelected} />}
+                        </MainLayout>
+                    )
+                }
         </section>
     );
 };

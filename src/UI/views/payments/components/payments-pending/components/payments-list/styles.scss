@@ -13,19 +13,20 @@
         font-size: 14px;
         font-weight: 600;
         .date{
-            color: rgba(0, 0, 0, .8);
+            color: $dark;
         }
         .amount{
-            color: $dark-blue;
+            color: $dark;
             button{
                 @include button-configuration();
                 margin-left: 10px;
+                i:before{ color: $main-green }
             }
         }
         &::before{
             @include make-circle(5px);
             content: '';
-            background: $dark-blue;
+            background: $main-green;
             position: absolute;
             left: 0;
         }

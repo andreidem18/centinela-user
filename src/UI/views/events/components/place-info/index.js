@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MainLayout } from 'UI/components';
 import { getSpanishMonth, withoutTime, formatTime, formatStringTime } from 'utils';
 import { CreateEventForm } from '../create-event-form';
 
@@ -17,37 +18,36 @@ export const PlaceInfo = ({ date, place, comeBack }) => {
     const dateObj = getSpanishMonth(date);
     return (
         showForm ? <CreateEventForm comeBack={() => setShowForm(false)} date={date} place={place} /> :
-        <div className='place-info'>
-            <button className='comeback-button' onClick={comeBack}>
-                <i className='icon-arrow-left'></i>
-            </button>
-            <div className="header">
-                <div style={{width: '50%'}}>
-                    <h4>{place.name}</h4>
-                    <p className='date'>{dateObj.day} de {dateObj.month} del {dateObj.year}</p>
+        <MainLayout title='Eventos' sectionSelected='events' comeback={comeBack}>
+            <div className='place-info'>
+                <div className="header">
+                    <div style={{width: '50%'}}>
+                        <h4>{place.name}</h4>
+                        <p className='date'>{dateObj.day} de {dateObj.month} del {dateObj.year}</p>
+                    </div>
+                    {place.image && <img src={place.image} alt="Imagen" />}
                 </div>
-                {place.image && <img src={place.image} alt="Imagen" />}
+                <p className="description">
+                    {place.description}
+                </p>
+                <div className="detail"><strong>Apertura</strong> <span>{formatStringTime(place.opening_hour)}</span></div>
+                <div className="detail"><strong>Cierre</strong> <span>{formatStringTime(place.close_hour)}</span></div>
+                <div className="detail"><strong>Capacidad</strong> <span>{place.people_capacity}</span></div>
+                
+                <div className="bottom-section">
+                    {
+                        events.length > 0 &&
+                            <div className="hours-taken">
+                                <p>Las siguientes horas ya se encuentran apartadas:</p>
+                                <ul>
+                                    {events.map(e => <li key={e.id}>de {formatTime(e.from)} a {formatTime(e.to)}</li>)}
+                                </ul>
+                            </div>
+                    }
+                    <button onClick={() => setShowForm(true)}>Agendar evento</button>
+                </div>
             </div>
-            <p className="description">
-                {place.description}
-            </p>
-            <div className="detail"><strong>Apertura</strong> <span>{formatStringTime(place.opening_hour)}</span></div>
-            <div className="detail"><strong>Cierre</strong> <span>{formatStringTime(place.close_hour)}</span></div>
-            <div className="detail"><strong>Capacidad</strong> <span>{place.people_capacity}</span></div>
-            
-            <div className="bottom-section">
-                {
-                    events.length > 0 &&
-                        <div className="hours-taken">
-                            <p>Las siguientes horas ya se encuentran apartadas:</p>
-                            <ul>
-                                {events.map(e => <li key={e.id}>de {formatTime(e.from)} a {formatTime(e.to)}</li>)}
-                            </ul>
-                        </div>
-                }
-                <button onClick={() => setShowForm(true)}>Agendar evento</button>
-            </div>
-        </div>
+        </MainLayout>
     );
 };
 

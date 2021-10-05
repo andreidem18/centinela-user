@@ -9,7 +9,11 @@
     & > .content{ 
         overflow: auto; 
         height: 83%;
+        flex-grow: 1;
         position: relative;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
         .alternative-background{ 
             position: absolute;
             background-position: center 200%;

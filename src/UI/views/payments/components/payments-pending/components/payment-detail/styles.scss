@@ -3,10 +3,9 @@
 .payments .payment-detail{
 
     .title-payment{
-        padding-top: 9px;
         position: relative;
-        color: #004483;
-        margin-bottom: 20px;
+        color: $dark;
+        margin-bottom: 30px;
     }
 
     .reasons{
@@ -15,22 +14,18 @@
         li{
             position: relative;
             padding-left: 13px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
             font-weight: 600;
-            .date{
-                color: rgba(0, 0, 0, .8);
-            }
-            .amount{
-                color: $dark-blue;
-            }
+            .reason{ color: $dark; }
+            .amount{ color: $main-green; }
             &::before{
                 @include make-circle(5px);
                 content: '';
-                background: $dark-blue;
+                background: $purple;
                 position: absolute;
                 left: 0;
             }
@@ -45,9 +40,10 @@
                 font-size: 18px;
                 margin-right: 20px;
                 font-weight: 600;
+                color: $dark;
             }
             .amount{
-                color: $dark-blue-variation;
+                color: $main-green;
                 font-weight: 600;
                 font-size: 20px;
             }
@@ -56,16 +52,18 @@
 
     .upload-button{
         @include button-configuration();
-        margin-top: 20px;
+        margin: 10px 0 15px;
         i{
             display: block;
             font-size: 50px;
+            margin-bottom: 5px;
+            &::before{ color: $main-green; }
         }
         span{
             font-weight: 600;
             font-size: 12px;
             letter-spacing: 0.1em;
-            color: #004483;
+            color: $main-green;
         }
         input[type=file]{
             display: none;
@@ -74,20 +72,20 @@
     .files{
         list-style: none;
         text-align: left;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         li{
             display: inline-block;
             padding: 4px 5px;
             margin: 4px;
-            background: #cff9f3;
+            background: #01ad8a1f;
             border-radius: 5px;
-            border: 2px solid $light-blue;
+            border: 2px solid $main-green;
             font-size: 12px;
             button{
                 @include button-configuration;
                 margin-left: 10px;
                 font-size: 14px;
-                color: $light-blue;
+                color: $main-green;
             }
         }
     }
@@ -105,7 +103,7 @@
         letter-spacing: 1px;
         background: transparent;
         &:focus{
-            border-color: $dark-blue-variation;
+            border-color: $main-green;
         }
     }
 }

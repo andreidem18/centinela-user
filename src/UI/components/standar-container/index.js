@@ -3,7 +3,7 @@ import { AlternativeBackground, BottomMenu, NavBar } from '..';
 
 import './styles.scss';
 
-export const StandarContainer = ({ children, sectionSelected, background }) => {
+export const StandarContainer = ({ children, sectionSelected, background, bottomMenu = true }) => {
     return (
         <div>
             <div className="standar-container">
@@ -17,7 +17,7 @@ export const StandarContainer = ({ children, sectionSelected, background }) => {
                         ) : children
                     }
                 </div>
-                <BottomMenu selected={sectionSelected} />
+                { bottomMenu && <BottomMenu selected={sectionSelected} /> }
             </div>
         </div>
     );

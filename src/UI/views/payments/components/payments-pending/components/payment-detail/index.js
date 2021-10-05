@@ -47,7 +47,8 @@ export const PaymentDetail = ({ payment, comeback }) => {
             <h4 className="title-payment">
                 <button 
                     onClick={ files.length > 0 ? () => setShowWarning(true) : comeback} 
-                    className='comeback-button'>
+                    className='comeback-button'
+                >
                     <i className="icon-arrow-left"></i>
                 </button>
                 {date.month} {date.year}

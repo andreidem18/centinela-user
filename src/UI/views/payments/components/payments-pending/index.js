@@ -5,14 +5,15 @@ import { PaymentsList, PaymentDetail, PaymentRejectedReasons } from './component
 
 import './styles.scss';
 
-export const PaymentsPending = () => {
+export const PaymentsPending = ({ setShowBottomMenu }) => {
 
     const [ paymentSelected, setPaymentSelected ] = useState(null);
     const paymentsPending = fakePayments.filter(p => p.status === 'pending');
     const paymentsRejected = fakePayments.filter(p => p.status === 'rejected');
     const { id } = useParams();
 
-    useEffect(() => setPaymentSelected(fakePayments.find(p => p.id === parseInt(id))), [id])
+    useEffect(() => setPaymentSelected(fakePayments.find(p => p.id === parseInt(id))), [id]);
+    useEffect(() => setShowBottomMenu(Boolean(!paymentSelected)), [ paymentSelected, setShowBottomMenu ])
 
     return (
         !paymentSelected ? (
