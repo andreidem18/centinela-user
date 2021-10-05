@@ -17,7 +17,7 @@ export const MainLayout = ({ children, sectionSelected, bottomMenu = true, title
                     <div className="header">
                         <div className="header-content">
                             <h2>
-                                <Textfit mode="single" alignHoriz={false} max={30}> {title} </Textfit>
+                                <Textfit mode="single" max={30}> {title} </Textfit>
                             </h2>
                             <button onClick={comeback ?? (() => history.goBack())}>
                                 <i className="fas fa-chevron-left"></i>

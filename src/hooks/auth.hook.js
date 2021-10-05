@@ -1,7 +1,7 @@
 import { useApp } from "hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { getUserThunk, createUserThunk, quitLoggedUser, doLoginThunk, recoveryPasswordThunk, changePasswordThunk } from "redux/actions";
+import { getUserThunk, createUserThunk, quitLoggedUser, doLoginThunk, recoveryPasswordThunk, changePasswordThunk, clearGuestAndInvitations } from "redux/actions";
 
 export const useAuth = () => {
     const dispatch = useDispatch();
@@ -101,6 +101,7 @@ export const useAuth = () => {
 
     const cleanUserLogged = () => {
         dispatch(quitLoggedUser());
+        dispatch(clearGuestAndInvitations());
     }
 
 

@@ -12,8 +12,8 @@ export const Login = () => {
     const { doLogin, loginError } = useAuth();
 
     const login = e => {
-        e.preventDefault();
-        doLogin({email: e.target[0].value, password: e.target[1].value});
+        e.preventDefault();            // Para que no vengan espacios
+        doLogin({email: e.target[0].value.replace(/\s/g,''), password: e.target[1].value});
     }
 
     return (

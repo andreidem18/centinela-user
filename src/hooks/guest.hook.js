@@ -1,7 +1,7 @@
 import { useAuth } from "hooks";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router";
-import { deleteGuestThunk, getGuestsThunk, addGuestThunk, createInvitationThunk } from "redux/actions";
+import { deleteGuestThunk, getGuestsThunk, addGuestThunk, createInvitationThunk, clearGuestAndInvitations } from "redux/actions";
 
 export const useGuest = () => {
 
@@ -40,5 +40,7 @@ export const useGuest = () => {
         }
     }
 
-    return { getGuests, deleteGuest, addGuest, createInvitation, guests, invitations }
+    const cleanGuests = async () => dispatch(clearGuestAndInvitations())
+
+    return { getGuests, deleteGuest, addGuest, createInvitation, cleanGuests, guests, invitations }
 }

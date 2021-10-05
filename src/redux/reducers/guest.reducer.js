@@ -9,6 +9,9 @@ const guestReducer = (state = initialState, action) => {
 
         case guestActions.setInvitations:
             return { ...state, invitations: action.payload}
+
+        case guestActions.clearGuestAndInvitations:
+            return initialState;
         
         default:
             return state;

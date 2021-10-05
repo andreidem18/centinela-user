@@ -3,7 +3,8 @@ import { setLoading } from ".";
 
 export const guestActions = {
     setGuests: "SET_GUESTS",
-    setInvitations: "SET_INVITATIONS"
+    setInvitations: "SET_INVITATIONS",
+    clearGuestAndInvitations: "CLEAR_GUESTS_AND_INVITATIONS"
 }
 
 export const setGuests = guests => ({ 
@@ -16,6 +17,7 @@ export const setInvitations = invitations => ({
     payload: invitations
 })
 
+export const clearGuestAndInvitations = () => ({ type: guestActions.clearGuestAndInvitations })
 
 export const getGuestsThunk = () => {
     return dispatch => {
