@@ -4,6 +4,7 @@ import { useIncident } from 'hooks';
 import { FinalScreen } from '../final-screen';
 
 import './styles.scss';
+import { MainLayout } from 'UI/components';
 
 export const Images = ({ comeBack }) => {
 
@@ -14,10 +15,13 @@ export const Images = ({ comeBack }) => {
 
     const handleSelectedFile = e => {
         let canUpload = true;
+        if(e.target.files.length < 1) return;
         for (let i = 0; i < e.target.files.length; i++) {
-            if(e.target.files[i].type !== 'image/jpeg'){
+            console.log(e.target.files[i].type)
+            if(e.target.files[i].type !== 'image/jpeg' && e.target.files[i].type !== 'image/png'){
                 setError(true);
                 canUpload = false;
+                break;
             }
         }
         if(canUpload){
@@ -32,7 +36,7 @@ export const Images = ({ comeBack }) => {
 
     const deleteFile = () => {
         setSelectedFiles(null);
-        setImgData("");
+        setImgData(null);
     }
 
     const { setStep } = useIncident();
@@ -57,18 +61,15 @@ export const Images = ({ comeBack }) => {
         nextScreen ? (
             <FinalScreen comeBack={() => setNextScreen(false)} images={selectedFiles} />
         ) : (
-            <>
-                <div className="card-title-container">
-                    <h4>Reporte de incidentes</h4>
-                </div>
+            <MainLayout title='Reportar incidente' bottomMenu={false} comeback={comeBack}>
                 <StepProgressBar />
-                <p className="description">
-                    Adjunta imagenes como evidencia <strong>(opcional)</strong>
+                <p className="description" style={{marginBottom: '30px'}}>
+                    Adjunta imagenes como evidencia <b>(opcional)</b>
                 </p>
                 <div className="upload-images-container">
                     <div className="wrapper">
                         <div className="image" onClick={() => defaultBtn.click()}>
-                            <img src={imgData} alt="" />
+                            <img src={imgData === '' ? null : imgData} alt="" />
                         </div>
                         <div className="content">
                             <div className="icon">
@@ -83,11 +84,11 @@ export const Images = ({ comeBack }) => {
                     <input type="file" id="default-btn" ref={el => defaultBtn=el} onChange={handleSelectedFile} multiple />
                 </div>
                 <div className="buttons-container">
-                    <button className="btn-secondary" onClick={comeBack}>
-                        Atras
-                    </button>
                     <button className="btn-primary" onClick={() => setNextScreen(true)}>
                         Siguiente
+                    </button>
+                    <button className="btn-secondary" onClick={comeBack}>
+                        Atras
                     </button>
                 </div>
                 { error &&
@@ -95,13 +96,13 @@ export const Images = ({ comeBack }) => {
                         <div className="content">
                             <i className="far fa-times-circle"></i>
                             <p>
-                                Sólo puedes subir archivos .jpg
+                                Sólo puedes subir archivos .jpg o .png
                             </p>
                         </div>
                         <div className="overlay"></div>
                     </div>
                 }
-            </>
+            </MainLayout>
         )
     );
 };

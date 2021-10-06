@@ -10,31 +10,29 @@ export const MainLayout = ({ children, sectionSelected, bottomMenu = true, title
     const history = useHistory();
 
     return (
-        <div>
-            <div className="main-layout">
-                <NavBar />
-                <div className="content">
-                    <div className="header">
-                        <div className="header-content">
-                            <h2>
-                                <Textfit mode="single" max={30}> {title} </Textfit>
-                            </h2>
-                            <button onClick={comeback ?? (() => history.goBack())}>
-                                <i className="fas fa-chevron-left"></i>
-                            </button>
-                        </div>
-                        <div className="wave wave1"></div>
-                        <div className="wave wave2"></div>
-                        <div className="wave wave3"></div>
+        <div className="main-layout">
+            <NavBar />
+            <div className="content">
+                <div className="header">
+                    <div className="header-content">
+                        <h2>
+                            <Textfit mode="single" max={30}> {title} </Textfit>
+                        </h2>
+                        <button onClick={comeback ?? (() => history.goBack())}>
+                            <i className="fas fa-chevron-left"></i>
+                        </button>
                     </div>
-                    <div className='main-section-content'>
-                        <div className='content'>
-                            {children}
-                        </div>
+                    <div className="wave wave1"></div>
+                    <div className="wave wave2"></div>
+                    <div className="wave wave3"></div>
+                </div>
+                <div className='main-section-content'>
+                    <div className='content'>
+                        {children}
                     </div>
                 </div>
-                { bottomMenu && <BottomMenu selected={sectionSelected} /> }
             </div>
+            { bottomMenu && <BottomMenu selected={sectionSelected} /> }
         </div>
     );
 };

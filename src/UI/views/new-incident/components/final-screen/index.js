@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useIncident } from 'hooks';
 
 import './styles.scss';
+import { MainLayout } from 'UI/components';
 
 export const FinalScreen = ({ comeBack }) => {
 
@@ -16,23 +17,20 @@ export const FinalScreen = ({ comeBack }) => {
     }
 
     return (
-        <>
-            <div className="card-title-container">
-                <h4>Reporte de incidentes</h4>
-            </div>
+        <MainLayout title='Reportar incidente' comeback={comeBack}>
             <h4 className="done-title">¡Listo!</h4>
             <p className="description">
-                Al darle “enviar”, el administrador del complejo recibirá tu reporte, y procederá a 
+                Al pulsar “enviar”, el administrador del complejo recibirá tu reporte, y procederá a 
                 darle seguimiento, notificandote las acciones y cierre del mismo.
             </p>
             <div className="buttons-container">
-                <button className="btn-secondary" onClick={comeBack}>
-                    Atras
-                </button>
                 <button className="btn-primary" onClick={submit}>
                     Enviar
                 </button>
+                <button className="btn-secondary" onClick={comeBack}>
+                    Atras
+                </button>
             </div>
-        </>
+        </MainLayout>
     );
 };

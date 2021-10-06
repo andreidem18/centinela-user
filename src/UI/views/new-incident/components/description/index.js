@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StepProgressBar } from '..';
 import { useIncident } from 'hooks';
 import { Images } from '../images';
+import { MainLayout } from 'UI/components';
 
 export const Description = ({ comeBack }) => {
 
@@ -17,10 +18,7 @@ export const Description = ({ comeBack }) => {
         nextScreen ? (
             <Images comeBack={() => setNextScreen(false)} />
         ) : (
-            <>
-                <div className="card-title-container">
-                    <h4>Reporte de incidentes</h4>
-                </div>
+            <MainLayout title='Reportar incidente' bottomMenu={false} comeback={comeBack}>
                 <StepProgressBar />
                 <p className="description">
                     Describe detalladamente el incidente que quieres reportar.
@@ -33,14 +31,14 @@ export const Description = ({ comeBack }) => {
                     required 
                 />
                 <div className="buttons-container">
-                    <button className="btn-secondary" onClick={comeBack}>
-                        Atras
-                    </button>
                     <button className="btn-primary" onClick={() => setNextScreen(true)}>
                         Siguiente
                     </button>
+                    <button className="btn-secondary" onClick={comeBack}>
+                        Atras
+                    </button>
                 </div>
-            </>
+            </MainLayout>
         )
     );
 };

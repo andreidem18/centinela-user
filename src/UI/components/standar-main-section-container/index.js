@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StandarContainer } from '../standar-container';
+import { BottomMenu, NavBar } from '..';
 
 import './styles.scss';
 
 export const StandarMainSectionContainer = ({children, title, sectionSelected}) => {
     return (
-            <StandarContainer sectionSelected={sectionSelected}>
+        <div className="main-layout">
+            <NavBar />
                 <div className="standar-main-section-container">
                     <div className="header">
                         <div className="header-content">
@@ -23,6 +24,7 @@ export const StandarMainSectionContainer = ({children, title, sectionSelected}) 
                         </div>
                     </div>
                 </div>
-            </StandarContainer>
+            <BottomMenu selected={sectionSelected} />
+        </div>
     );
 };
