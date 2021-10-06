@@ -1,25 +1,18 @@
 import React from 'react';
-import { StandarComeBackButton, StandarContainer } from 'UI/components';
+import { MainLayout } from 'UI/components';
 
 import './styles.scss';
 
 export const SendComment = () => {
     return (
-        <section className='send-comment'>
-            <StandarContainer background>
-                <StandarComeBackButton 
-                    isLink={true}
-                    link='/comentarios'
-                    icon='icon-reports'
-                />
-                <div className="standar-card-container">
-                    <h4>Enviar comentario</h4>
-                    <form action="">
-                        <textarea rows="7" placeholder='Cuéntanos, ¿En qué podemos mejorar?' />
-                        <button>Enviar</button>
-                    </form>
-                </div>
-            </StandarContainer>
-        </section>
+        <MainLayout title='Enviar comentario' bottomMenu={false}>
+            <section className='send-comment'>
+                <form action="">
+                    <label htmlFor="comment">Cuéntanos, ¿En qué podemos mejorar?</label>
+                    <textarea rows="9" id="comment" />
+                    <button className='btn-primary'>Enviar</button>
+                </form>
+            </section>
+        </MainLayout>
     );
 };

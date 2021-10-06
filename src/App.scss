@@ -151,22 +151,22 @@ body {
   border-radius: 5px;
 }
 
-button.btn-primary{
+.btn-primary{
   background: $main-green;
 }
-button.btn-secondary{
+.btn-secondary{
   background: #ebebeb;
   color: #000;
 }
-button.btn-danger{
+.btn-danger{
   background: $red;
   color: #fff;
 }
-button.btn-success{
+.btn-success{
   background: $light-green;
   color: #fff;
 }
-button.btn-info{
+.btn-info{
   background: $light-blue;
   color: rgba(0,0,0,.8);
 }

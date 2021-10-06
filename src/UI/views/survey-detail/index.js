@@ -22,7 +22,7 @@ export const SurveyDetail = () => {
 
     return (
         <section className="survey">
-            <MainLayout title='Encuesta' comeback={comeback}>
+            <MainLayout title='Encuesta' comeback={comeback} bottomMenu={false}>
                 <h4>{survey?.title}</h4>
                 <div className="questions">
                     {
