@@ -26,11 +26,11 @@ export const Statements = () => {
                             </button>
                             <div className={`statement-body ${open === statement.id ? 'open' : ''}`}>
                                 <div className="message">
+                                    <button className="button-download">
+                                        <i className="icon-download"></i>
+                                    </button>
                                     {statement.text}
                                 </div>
-                                <button className="button-download">
-                                    <i className="icon-download"></i>
-                                </button>
                             </div>
                         </div>
                     ))
