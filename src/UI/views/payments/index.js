@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PaymentsMade, PaymentsPending } from './components';
-import { StandarContainer } from 'UI/components';
+import { ChatButton, StandarContainer } from 'UI/components';
 
 import "./styles.scss";
 
@@ -35,6 +35,7 @@ export const Payments = () => {
                         <PaymentsMade />
                     )
                 }
+                <ChatButton />
             </section>
         </StandarContainer>
     );

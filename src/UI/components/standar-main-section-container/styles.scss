@@ -1,8 +1,10 @@
 @import "App.scss";
 
 .standar-main-section-container{
+    height: 83%;
+    flex-grow: .9999;
+    position: relative;
     background: #fff;
-    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: auto;
