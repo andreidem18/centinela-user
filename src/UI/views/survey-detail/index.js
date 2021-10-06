@@ -1,4 +1,4 @@
-import { StandarComeBackButton, StandarContainer } from 'UI/components';
+import { MainLayout } from 'UI/components';
 import { useParams, useHistory } from 'react-router-dom';
 import { MultipleSelection, Opinion } from './components';
 
@@ -12,7 +12,7 @@ export const SurveyDetail = () => {
     const survey = fakeSurveys.find(s => s.id === parseInt(id));
     const { showInfoModal } = useApp();
 
-    const comeBack = () => {
+    const comeback = () => {
         if(survey.questions[0].answer){
             history.push('/encuestas');
         } else {
@@ -22,39 +22,29 @@ export const SurveyDetail = () => {
 
     return (
         <section className="survey">
-            <StandarContainer background>
-                
-                <StandarComeBackButton
-                    onClick={comeBack}
-                    icon='icon-survey-bold'
-                />
-
-                <div className="standar-card-container">
-                    <div className="card-title-container">
-                        <h4>{survey?.title}</h4>
-                    </div>
-                    <div className="questions">
-                        {
-                            survey?.questions?.map((question, i) => (
-                                question.type === 'multiple' ? (
-                                    <MultipleSelection question={question} key={question.id} number={i+1}/>
-                                ) : (
-                                    <Opinion question={question} key={question.id} number={i+1}/>
-                                )
-                            ))
-                        }
-                    </div> 
+            <MainLayout title='Encuesta' comeback={comeback}>
+                <h4>{survey?.title}</h4>
+                <div className="questions">
                     {
-                        !survey.questions[0].answer &&
-                            <button 
-                                className='save-survey'
-                                onClick={() => showInfoModal({ type: 'success', actionModal: () => history.push('/encuestas'), message: 'Gracias por tomarte el tiempo de responder. Tu respuesta será enviada a los administradores', title: 'Encuesta enviada con exito' })}
-                            >
-                                Enviar
-                            </button>
+                        survey?.questions?.map((question, i) => (
+                            question.type === 'multiple' ? (
+                                <MultipleSelection question={question} key={question.id} number={i+1}/>
+                            ) : (
+                                <Opinion question={question} key={question.id} number={i+1}/>
+                            )
+                        ))
                     }
-                </div>
-            </StandarContainer>
+                </div> 
+                {
+                    !survey.questions[0].answer &&
+                        <button 
+                            className='btn-primary'
+                            onClick={() => showInfoModal({ type: 'success', actionModal: () => history.push('/encuestas'), message: 'Gracias por tomarte el tiempo de responder. Tu respuesta será enviada a los administradores', title: 'Encuesta enviada con exito' })}
+                        >
+                            Enviar
+                        </button>
+                }
+            </MainLayout>
         </section>
     );
 };

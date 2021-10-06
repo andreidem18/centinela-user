@@ -10,16 +10,16 @@ import "./styles.scss";
 export const QRScreen = () => {
 
     const [ showShare, setShowShare ] = useState(false);
+    const [ imgLoaded, setImgLoaded ] = useState(false);
     const history = useHistory();
     const { code } = useParams();
-    const [ imgLoaded, setImgLoaded ] = useState(false);
     const { showLoading, hideLoading } = useApp();
 
     const handleOpenShare = async() => {
         if(isMobileOrTablet()){
             navigator.share({
                 title: "Visítame a través de este código QR!",
-                url: "https://paraquienlonece.site"
+                url: `${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`
             })
         } else {
             setShowShare(true);
@@ -27,8 +27,10 @@ export const QRScreen = () => {
     }
 
     useEffect(() => {
-        if(imgLoaded) hideLoading();
-        else showLoading();
+        if(localStorage.getItem('token')){
+            if(imgLoaded) hideLoading();
+            else showLoading();
+        }
     }, [ hideLoading, showLoading, imgLoaded ])
 
     const generateQr = () => `https://api.qrserver.com/v1/create-qr-code/?size=550x550&data=${encodeURIComponent(`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`)}`
@@ -37,17 +39,17 @@ export const QRScreen = () => {
         !localStorage.getItem('token') ? <GuestsView qr={ generateQr() } /> : (
             <section className="qr-screen">
                 <StandarContainer sectionSelected='visits' background>
-                        <h3>
-                            <button onClick={() => history.goBack()}>
-                                <i className="icon-arrow-left"></i>
-                            </button>
-                            Invitados
-                        </h3>
-    
-    
-                        <img src={generateQr()} alt="código QR" className="qr-image" onLoad={() => setImgLoaded(true)} />
-    
-    
+                    <h3>
+                        <button onClick={() => history.goBack()}>
+                            <i className="icon-arrow-left"></i>
+                        </button>
+                        Invitados
+                    </h3>
+
+
+                    <img src={generateQr()} alt="código QR" className="qr-image" onLoad={() => setImgLoaded(true)} />
+
+                    <div className="buttons-container">
                         <button className="btn-primary" onClick={handleOpenShare}>
                             <span>Compartir</span>
                             <div className="icon">
@@ -55,8 +57,13 @@ export const QRScreen = () => {
                             </div>
                         </button>
                         <button className="btn-secondary" onClick={() => history.goBack()}>Salir</button>
-    
-                        <ShareInSocialMedia isOpened={showShare} handleClose={() => setShowShare(false)} />
+                    </div>
+
+                    <ShareInSocialMedia 
+                        isOpened={showShare} 
+                        handleClose={() => setShowShare(false)} 
+                        link={`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`}
+                    />
                 </StandarContainer>
             </section>
         )

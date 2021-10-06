@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { encuestas } from 'UI/assets';
-import { ChatButton, StandarContainer } from 'UI/components';
+import { ChatButton, MainLayout } from 'UI/components';
 
 import "./styles.scss";
 
@@ -9,37 +8,31 @@ export const Surveys = () => {
 
     return (
         <section className="surveys">
-            <StandarContainer background >
-                <h3 className='surveys-title'>Encuestas</h3>
-                <div className='survey-icon'>
-                    <img src={encuestas} alt="Icono Encuestas" />
-                </div>
-                <div className="card">
-                    <h4 className="survey-title">
-                        Pendientes
-                    </h4>
-                    {
-                        fakeSurveys.map(survey => (
-                            survey.status === 'pending' &&
-                                <Link className='survey' key={survey.id} to={`/encuestas/${survey.id}`}>
-                                    {survey.title}
-                                </Link>
-                        ))
-                    }
-                    <h4 className="survey-title mt">
-                        Realizadas
-                    </h4>
-                    {
-                        fakeSurveys.map(survey => (
-                            survey.status === 'done' &&
-                                <Link className='survey' key={survey.id} to={`/encuestas/${survey.id}`}>
-                                    {survey.title}
-                                </Link>
-                        ))
-                    }
-                </div>
+            <MainLayout title='Encuestas'>
+                <h4 className="survey-title">
+                    Pendientes
+                </h4>
+                {
+                    fakeSurveys.map(survey => (
+                        survey.status === 'pending' &&
+                            <Link className='survey' key={survey.id} to={`/encuestas/${survey.id}`}>
+                                {survey.title}
+                            </Link>
+                    ))
+                }
+                <h4 className="survey-title mt">
+                    Realizadas
+                </h4>
+                {
+                    fakeSurveys.map(survey => (
+                        survey.status === 'done' &&
+                            <Link className='survey' key={survey.id} to={`/encuestas/${survey.id}`}>
+                                {survey.title}
+                            </Link>
+                    ))
+                }
                 <ChatButton />
-            </StandarContainer>
+            </MainLayout>
         </section>
     );
 };

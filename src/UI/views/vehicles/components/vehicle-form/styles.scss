@@ -1,72 +1,26 @@
 @import "App.scss";
 
 .vehicle-form{
-    .come-back-button{
-        @include center();
-        position: relative;
-        max-width: 400px;
-        padding: 50px 0 10px;
-        button, a{
-            @include button-configuration();
-            @include center();
-            text-decoration: none;
-            color: $light-blue;
-            position: absolute;
-            font-size: 35px;
-            left: 20px;
-            top: 10px;
-        }
-        img{
-            width: 70px;
-            display: block;
-            margin: 0 auto;
-        }
-    }
     h3.vehicle-name{
-        font-size: 5vw;
-        margin: 0 0 15px 0;
-        color: $white;
+        color: $purple;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        margin-bottom: 15px;
     }
     form{
-        width: 95%;
-        max-width: 576px;
-        border-radius: 30px;
-        margin: 0 auto;
-        padding: 15px 30px;
-        background: rgba(255, 255, 255, .7);
-        .buttons-container{
-            text-align: right;
-            button{
-                @include button-configuration();
-                height: 33px;
-                padding: 0 5px;
-                display: inline-block;
-                margin-bottom: 10px;
-                border-radius: 5px;
-                font-size: 12px;
-                font-weight: 500;
-                letter-spacing: 0.05em;
-                margin: 0 5px;
-                &.primary{
-                    background: $dark-blue-variation;
-                    color: $white;
-                }
-                &.secondary{
-                    background: $white;
-                    border: 1px solid $dark-blue-variation;
-                    color: $dark-blue-variation;
-                }
-            }
+        [class*=btn]{
+            margin-bottom: 20px;
         }
         label{
-            font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
             text-align: left;
             margin-bottom: 20px;
             display: block;
-            #text{
-                padding-left: 6px;
-            }
+            color: $dark;
             input{
                 display: block;
                 padding: 10px;
@@ -76,7 +30,7 @@
                 border: 1px solid rgba(0, 0, 0, .3);
                 width: 100%;
                 font-size: 15px;
-                margin-top: 5px;
+                margin-top: 2px;
             }
         }
     }

@@ -9,10 +9,6 @@ export { default as iconoAñadirEmergencia } from "./icono-añadir-emergencia.sv
 export { default as iconoAdvertencia } from "./icono-advertencia.svg";
 export { default as backgroundVisits } from "./background-visits.svg";
 export { default as ejemploQR } from "./ejemplo-qr.png";
-export { default as vehiculo } from "./vehiculo.svg";
-export { default as comunicados } from "./comunicados.svg";
-export { default as eventos } from "./eventos.svg";
-export { default as encuestas } from "./encuestas.svg";
 export { default as comentarios } from "./comentarios.svg";
 export { default as comunicateConNosotros } from "./comunicate-con-nosotros.svg";
 export { default as invitacionesEnviadas } from "./invitaciones-enviadas.svg";

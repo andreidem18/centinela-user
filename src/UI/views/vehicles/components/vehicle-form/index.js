@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { vehiculo } from 'UI/assets';
+import { MainLayout } from 'UI/components';
 
 import "./styles.scss";
 
@@ -11,58 +11,52 @@ export const VehicleForm = ({ selected, comeBack }) => {
     const [ property4, setProperty4 ] = useState(selected?.property4 || '');
 
     return (
-        <div className="vehicle-form">
-            <div className="come-back-button">
-                <button onClick={comeBack}>
-                    <i className="icon-arrow-left"></i>
-                </button>
-                <img src={vehiculo} alt="Vehiculo" />
+        <MainLayout title='Vehiculos' comeback={comeBack} bottomMenu={false}>
+            <div className="vehicle-form">
+                <h3 className='vehicle-name'>
+                    {((selected.property1 || '') + ' ' + (selected.property2 || ''))}
+                </h3>
+                <form action="">
+                    <label>
+                        Nombre
+                        <input 
+                            label='nombre' 
+                            value={property1}
+                            onChange={e => setProperty1(e.target.value)}
+                            required 
+                        />
+                    </label>
+                    <label>
+                        Nombre
+                        <input 
+                            label='nombre' 
+                            value={property2}
+                            onChange={e => setProperty2(e.target.value)}
+                            required 
+                        />
+                    </label>
+                    <label>
+                        Nombre
+                        <input 
+                            label='nombre' 
+                            value={property3}
+                            onChange={e => setProperty3(e.target.value)}
+                            required 
+                        />
+                    </label>
+                    <label>
+                        Nombre
+                        <input 
+                            label='nombre' 
+                            value={property4}
+                            onChange={e => setProperty4(e.target.value)}
+                            required 
+                        />
+                    </label>
+                    <button className='btn-primary'>Guardar cambios</button>
+                    <button className='btn-secondary' type='button'>Asignar auto</button>
+                </form>
             </div>
-            <h3 className='vehicle-name'>
-                {((selected.property1 || '') + ' ' + (selected.property2 || ''))}
-            </h3>
-            <form action="">
-                <label>
-                    Nombre
-                    <input 
-                        label='nombre' 
-                        value={property1}
-                        onChange={e => setProperty1(e)}
-                        required 
-                    />
-                </label>
-                <label>
-                    Nombre
-                    <input 
-                        label='nombre' 
-                        value={property2}
-                        onChange={e => setProperty2(e)}
-                        required 
-                    />
-                </label>
-                <label>
-                    Nombre
-                    <input 
-                        label='nombre' 
-                        value={property3}
-                        onChange={e => setProperty3(e)}
-                        required 
-                    />
-                </label>
-                <label>
-                    Nombre
-                    <input 
-                        label='nombre' 
-                        value={property4}
-                        onChange={e => setProperty4(e)}
-                        required 
-                    />
-                </label>
-                <div className="buttons-container">
-                    <button className='secondary' type='button'>Asignar auto</button>
-                    <button className='primary'>Guardar cambios</button>
-                </div>
-            </form>
-        </div>
+        </MainLayout>
     );
 };

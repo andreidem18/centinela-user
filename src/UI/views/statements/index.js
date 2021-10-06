@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { HomeLink, StandarContainer } from 'UI/components';
-import { comunicados } from 'UI/assets';
+import { MainLayout } from 'UI/components';
 
 import './styles.scss';
 
@@ -15,37 +14,28 @@ export const Statements = () => {
 
     return (
         <section className='statements'>
-            <StandarContainer background>
-                <HomeLink />
-                <h3 className='standar-section-title'>Comunicados</h3>
-                <div className="main-image">
-                    <img src={comunicados} alt="" />
-                </div>
-                <div className="standar-card-container">
-                    <div className="statements-container">
-                        {
-                            fakeStatements.map(statement => (
-                                <div className="statement" key={statement.id}>
-                                    <button className="statement-header" onClick={() => handleOpen(statement.id)}>
-                                        <span>{statement.title}</span>
-                                        <div className={`icon ${open === statement.id ? 'rotate' : ''}`}>
-                                            <i className="icon-arrow-left"></i>
-                                        </div>
-                                    </button>
-                                    <div className={`statement-body ${open === statement.id ? 'open' : ''}`}>
-                                        <div className="message">
-                                            {statement.text}
-                                        </div>
-                                        <button className="button-download">
-                                            <i className="icon-download"></i>
-                                        </button>
-                                    </div>
+            <MainLayout title='Comunicados'>
+                {
+                    fakeStatements.map(statement => (
+                        <div className="statement" key={statement.id}>
+                            <button className="statement-header" onClick={() => handleOpen(statement.id)}>
+                                <span>{statement.title}</span>
+                                <div className={`icon ${open === statement.id ? 'rotate' : ''}`}>
+                                    <i className="icon-arrow-left"></i>
                                 </div>
-                            ))
-                        }
-                    </div>
-                </div>
-            </StandarContainer>
+                            </button>
+                            <div className={`statement-body ${open === statement.id ? 'open' : ''}`}>
+                                <div className="message">
+                                    {statement.text}
+                                </div>
+                                <button className="button-download">
+                                    <i className="icon-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    ))
+                }
+            </MainLayout>
         </section>
     );
 };

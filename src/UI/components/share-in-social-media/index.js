@@ -14,12 +14,12 @@ import {
 
 import './styles.scss';
 
-export const ShareInSocialMedia = ({isOpened, handleClose}) => {
+export const ShareInSocialMedia = ({isOpened, handleClose, link}) => {
 
     const [ showCopied, setShowCopied ] = useState(false);
     const copyLink = () => {
         var type = "text/plain";
-        var blob = new Blob(["https://paraquienlonece.site"], { type });
+        var blob = new Blob([link], { type });
         var data = [new window.ClipboardItem({ [type]: blob })];
         navigator.clipboard.write(data);
         setShowCopied(true);
@@ -45,27 +45,27 @@ export const ShareInSocialMedia = ({isOpened, handleClose}) => {
                     </button>
                 </div>
                 <div className="button-container">
-                    <WhatsappShareButton url='https://paraquienlonece.site' title="Visítame a través de este código QR!" >
+                    <WhatsappShareButton url={link} title="Visítame a través de este código QR!" >
                         <WhatsappIcon size={60} borderRadius={20} />
                     </WhatsappShareButton>
                 </div>
                 <div className="button-container">
-                    <TelegramShareButton url='https://paraquienlonece.site' body="Visítame a través de este código QR!" >
+                    <TelegramShareButton url={link} body="Visítame a través de este código QR!" >
                         <TelegramIcon size={60} borderRadius={20} />
                     </TelegramShareButton>
                 </div>
                 <div className="button-container">
-                    <LinkedinShareButton url='https://paraquienlonece.site' title="Visítame a través de este código QR!" >
+                    <LinkedinShareButton url={link} title="Visítame a través de este código QR!" >
                         <LinkedinIcon size={60} borderRadius={20} />
                     </LinkedinShareButton>
                 </div>
                 <div className="button-container">
-                    <TwitterShareButton url='https://paraquienlonece.site' title="Visítame a través de este código QR!" >
+                    <TwitterShareButton url={link} title="Visítame a través de este código QR!" >
                         <TwitterIcon size={60} borderRadius={20} />
                     </TwitterShareButton>
                 </div>
                 <div className="button-container">
-                    <EmailShareButton url='https://paraquienlonece.site' body="Visítame a través de este código QR!" >
+                    <EmailShareButton url={link} body="Visítame a través de este código QR!" >
                         <EmailIcon size={60} borderRadius={20} />
                     </EmailShareButton>
                 </div>

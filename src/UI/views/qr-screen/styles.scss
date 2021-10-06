@@ -39,45 +39,27 @@
         margin: 0 auto;
     }
 
-    [class*=btn-]{
-        margin: 0 auto 20px auto;
-    }
-    .btn-primary{
-        background: $dark-blue-variation;
-        width: 34%;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        padding: 5px 9px;
-        color: $white;
-        border-radius: 9px;
-        display: flex;
-        align-items: center;
-        width: 140px;
-        height: 45px;
-        span{
-            display: block;
-            width: 75%;
-            font-weight: 600;
-            font-size: 11px;
-            padding-right: 2px;
+    .buttons-container{
+        max-width: 360px;
+        padding: 0 20px;
+        margin: 0 auto 30px;
+        .btn-primary{
+            background: $dark-blue-variation;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            span{
+                display: block;
+                width: 75%;
+                padding-right: 2px;
+            }
+            .icon{
+                display: inline-block;
+                width: 25%;
+                padding-left: 7px;
+                border-left: 1px solid rgba(255, 255, 255, .2);
+                i{ font-size: 20px; }
+            }
         }
-        .icon{
-            display: inline-block;
-            width: 25%;
-            padding-left: 7px;
-            border-left: 1px solid rgba(255, 255, 255, .2);
-            i{ font-size: 20px; }
-        }
-    }
-
-    .chat-button{
-        @include button-configuration();
-        @include make-circle(60px);
-        @include center();
-        background: #004483;
-        position: fixed;
-        right: 20px;
-        bottom: 40px;
-        box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.4);
-        img{width: 50%;}
     }
 }
