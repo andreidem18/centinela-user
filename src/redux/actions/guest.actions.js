@@ -1,5 +1,6 @@
 import { get, patch, post } from "utils";
 import { setLoading } from ".";
+import { Guests, Invitations } from '../constructors';
 
 export const guestActions = {
     setGuests: "SET_GUESTS",
@@ -24,20 +25,8 @@ export const getGuestsThunk = () => {
         dispatch(setLoading(true));
         return get(`items/guest_code_unique?filter[user]=${localStorage.getItem('user_id')}&fields=*,guest.*`)
             .then(res => {
-                const guests = [];
-                const invitations = [];
-                res.data.data.forEach(invitation => {
-                    if(!guests.find(g => g.id === invitation.guest.id) && invitation.guest.favorite === 1){
-                        guests.push(invitation.guest);
-                    }
-                    if(invitation.status) invitations.push(invitation);
-                });
-                const expiredInvitations = res.data.data.filter(invitation => invitation.status === 0);
-                dispatch(setGuests(guests));
-                // Para que aparezcan primero las invitaciones activas
-                dispatch(setInvitations(
-                    invitations.reverse().concat(expiredInvitations.reverse())
-                ));
+                dispatch(setGuests(new Guests(res.data.data)));
+                dispatch(setInvitations(new Invitations(res.data.data)));
             })
             .catch(error => error)
             .finally(() => dispatch(setLoading(false)))
