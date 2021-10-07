@@ -1,0 +1,59 @@
+$main-background: linear-gradient(to bottom, #007bb1, #007bb1, #01ffcd 140%);
+$dark-blue: #2d63a6;
+$dark-blue-variation: #007bb1;
+$light-blue: #01ffcd;
+$light-blue-variation: #94ffed;
+$red: #E30000;
+$light-green: #00F00A;
+$green: #00A807;
+$main-green: #01AD8A;
+$white: #f5f5f5;
+$dark: #565656;
+$purple: #8360c3;
+
+
+
+@mixin center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button-configuration(){
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+@mixin custom-scrollbar($thumb-color, $thumb-hover-color){
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #fff;
+        box-shadow: inset 0 0 10px rgba(0,0,0,.3);
+        border-radius: 40px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $thumb-color;
+        border-radius: 40px;
+        &:hover{
+            background: $thumb-hover-color;
+        }
+    }
+}
+
+@mixin make-circle($size){
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+}
+
+@mixin wrap(){
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

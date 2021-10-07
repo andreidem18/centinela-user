@@ -1,4 +1,4 @@
-@import "App.scss";
+@import "assets.scss";
 
 .home-user{
     display: flex;
@@ -69,5 +69,11 @@
                 text-decoration: none;
             }
         }
+    }
+}
+
+@media (min-width: 375px) {
+    .home-user h1{
+        font-size: 34px;
     }
 }

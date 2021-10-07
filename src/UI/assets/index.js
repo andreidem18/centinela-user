@@ -1,15 +1,8 @@
 export { default as escudo } from './escudo.svg';
 export { default as escudoAncho} from './escudo-ancho.svg';
-export { default as logOut } from './log-out.svg';
 export { default as nombreApp } from "./nombre-app.svg";
 export { default as logo } from "./logo.svg";
-export { default as iconoRegistrarAuto } from "./icono-registrar-auto.svg";
-export { default as backgroundMenuUser } from "./background-menu-user.svg";
-export { default as iconoAñadirEmergencia } from "./icono-añadir-emergencia.svg";
-export { default as iconoAdvertencia } from "./icono-advertencia.svg";
 export { default as backgroundVisits } from "./background-visits.svg";
-export { default as ejemploQR } from "./ejemplo-qr.png";
-export { default as comentarios } from "./comentarios.svg";
 export { default as comunicateConNosotros } from "./comunicate-con-nosotros.svg";
 export { default as invitacionesEnviadas } from "./invitaciones-enviadas.svg";
 export { default as agregarInvitado } from "./agregar-invitado.svg";

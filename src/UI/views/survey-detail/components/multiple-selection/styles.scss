@@ -1,4 +1,4 @@
-@import 'App.scss';
+@import 'assets.scss';
 
 .survey .multiple-selection{
     margin-bottom: 30px;
@@ -7,17 +7,17 @@
             display: none;
         }
         input[type=radio]:checked + label{
-            background: #01ad8a;
+            background: $main-green;
             color: $white;
         }
         input[type=radio]:checked + label:before{
             @include make-circle(7px);
             border: 4.5px solid $white;
-            background: #01ad8a;
+            background: $main-green;
         }
         label{
             position: relative;
-            color: #01ad8a;
+            color: $main-green;
             font-size: 16px;
             border: 1px solid rgba(0, 0, 0, .1);
             border-radius: 3px;
@@ -31,7 +31,7 @@
                 position: absolute;
                 left: 15px;
                 content: "";
-                border: 2px solid #01ad8a;
+                border: 2px solid $main-green;
                 margin-right: 20px;
             }
         }
