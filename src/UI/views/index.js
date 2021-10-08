@@ -22,3 +22,4 @@ export { AppComments } from './app-comments';
 export { SendComment } from './send-comment';
 export { ReportError } from './report-error';
 export { PasswordRecovery } from './password-recovery';
+export { GeneratedReportsDetail } from './generated-reports-detail';

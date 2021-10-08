@@ -60,6 +60,9 @@ function App() {
           <ProtectedRoute path='/pagos' exact>
             <views.Payments />
           </ProtectedRoute>
+          <ProtectedRoute path='/incidentes/reportes-generados/:id'>
+            <views.GeneratedReportsDetail />
+          </ProtectedRoute>
           <ProtectedRoute path='/incidentes/reportes-generados' exact>
             <views.GeneratedReports />
           </ProtectedRoute>

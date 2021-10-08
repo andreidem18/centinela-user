@@ -1,4 +1,5 @@
 export function formatTime(date) {
+    if(!date) return;
     var hours = date.getHours();
     var minutes = date.getMinutes();
     var ampm = hours >= 12 ? 'pm' : 'am';

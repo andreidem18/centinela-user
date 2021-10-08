@@ -27,7 +27,7 @@ export const Vehicles = () => {
                                             className='vehicle-name' 
                                             onClick={() => setSelected(vehicle)}
                                         >
-                                            {vehicle.property1} {vehicle.property2}</button>
+                                            {vehicle.brand} {vehicle.model}</button>
                                         <button className='trash' onClick={() => console.log('clic a trash')}><i className="far fa-trash-alt"></i></button>
                                     </div>
                                 ))
@@ -44,16 +44,16 @@ export const Vehicles = () => {
 const fakeVehicles = [
     {
         id: 1,
-        property1: 'Nissan',
-        property2: 'Sentra',
-        property3: 'LXD 2034',
-        property4: 'Perla'
+        brand: 'Nissan',
+        model: 'Sentra',
+        license: 'LXD 2034',
+        color: 'Perla'
     },
     {
         id: 2,
-        property1: 'Ford',
-        property2: 'Fusion',
-        property3: 'LXD 2034',
-        property4: 'Perla'
+        brand: 'Ford',
+        model: 'Fusion',
+        license: 'LXD 2034',
+        color: 'Perla'
     }
 ]
