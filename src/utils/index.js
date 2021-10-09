@@ -1,9 +1,9 @@
 export * from './services';
 export { isMobileOrTablet } from './isMobileOrTablet';
 export { getCurrentDate } from './getCurrentDate';
-export { fromDateToObject } from './fromDateToObject';
 export { formatTimeToMilitaryHour } from './formatTimeToMilitaryHour';
 export { formatDate } from './formatDate';
+export { formatDateString } from './formatDateString';
 export { getSpanishMonth } from './getSpanishMonth';
 export { withoutTime } from './withoutTime';
 export { formatTime } from './formatTime';

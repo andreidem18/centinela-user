@@ -12,7 +12,7 @@ export const AddGuest = ({ guest, comeback }) => {
     const [ vehicle, setVehicle ] = useState(guest?.vehicle_type || '');
     const [ licensePlate, setLicensePlate ] = useState(guest?.license_plate || '');
     const [ saveGuest, setSaveGuest ] = useState(false);
-    const [ isUniqueAccess, setIsUniqueAccess ] = useState(false);
+    const [ isUniqueAccess, setIsUniqueAccess ] = useState(true);
     const [ dateFrom, setDateFrom ] = useState('');
     const [ dateTo, setDateTo ] = useState('');
     // Estado para que al hacer submit validar si el invitado se ha editado, y habría que crear uno nuevo, 
@@ -20,24 +20,22 @@ export const AddGuest = ({ guest, comeback }) => {
     const [ isNewGuest, setIsNewGuest ] = useState(false);
     const { createInvitation } = useGuest();
 
-    // const history = useHistory();
-
     const handleEnter = e => { 
         if(e.key === 'Enter') submit(); 
         else setIsNewGuest(true);
     } 
 
     const submit = () => {
-        if(isNewGuest && !guest.id){
-            createInvitation({
-                first_name: name, 
-                last_name: lastName, 
-                vehicle_type: vehicle, 
-                license_plate: licensePlate,
-                favorite: saveGuest ? 1 : 0
-            })
-        } else createInvitation(guest.id)
+        const guestSelected = !isNewGuest && guest.id ? guest.id : {
+            first_name: name, 
+            last_name: lastName, 
+            vehicle_type: vehicle, 
+            license_plate: licensePlate,
+            favorite: saveGuest ? 1 : 0
+        }                            // ↓ Tipo: si es unico 1, si es especial 2
+        createInvitation(guestSelected, isUniqueAccess ? 1 : 2, dateFrom, dateTo)
     }
+
     return (
         <MainLayout sectionSelected='visits' title='Nueva Invitación' comeback={comeback} bottomMenu={false}>
             <div className="container add-guest">
@@ -52,7 +50,7 @@ export const AddGuest = ({ guest, comeback }) => {
                     <InputLight label="Vehículo (carro, moto...)" value={vehicle} onChange={e => setVehicle(e.target.value)} onKeyDown={handleEnter} required />
                     <InputLight label="Placas" value={licensePlate} onChange={e => setLicensePlate(e.target.value)} onKeyDown={handleEnter} required />
                     {
-                        isUniqueAccess &&
+                        !isUniqueAccess &&
                             <div className="calendars">
                                 <div className="date-container">
                                     <label htmlFor="date-from">Desde</label>
