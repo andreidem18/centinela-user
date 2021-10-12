@@ -1,34 +1,31 @@
-import { useApp, useAuth } from "hooks";
+import { useApp } from "hooks";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router";
 import { deleteGuestThunk, getGuestsThunk, addGuestThunk, createInvitationThunk, clearGuestAndInvitations } from "redux/actions";
+import { useError } from "./error.hook";
 
 export const useGuest = () => {
-
-    const dispatch = useDispatch();
     const history = useHistory();
     const { showInfoModal } = useApp();
+    const { error, handleError } = useError();
 
+    const dispatch = useDispatch();
     const guests = useSelector(state => state.guests.guests);
     const invitations = useSelector(state => state.guests.invitations);
 
-    const { validateSession } = useAuth();
-
     const getGuests = async () => {
-        if(!guests){
-            const res = await dispatch(getGuestsThunk());
-            if(res) validateSession(res);
-        }
+        try { if(!error && !guests) dispatch(getGuestsThunk());  } 
+        catch(error) { handleError(error) }
     }
 
     const deleteGuest = async id => {
-        const res = await dispatch(deleteGuestThunk(id));
-        if(res) validateSession(res);
+        try { dispatch(deleteGuestThunk(id));  } 
+        catch(error) { handleError(error) }
     }
 
     const addGuest = async id => {
-        const res = await dispatch(addGuestThunk(id));
-        if(res) validateSession(res);
+        try { dispatch(addGuestThunk(id));  } 
+        catch(error) { handleError(error) }
     }
 
     const createInvitation = async (guest, type, date_start, date_end) => {
@@ -38,7 +35,7 @@ export const useGuest = () => {
             showInfoModal({ type: 'success', autoClose: true, message: 'Tu invitación fue creada correctamente', title: '¡Bien hecho!' })
             history.push(`/visitas/codigo/${res.data.data.code}`)
         } catch (error){
-            if(error) validateSession(error);
+            if(error) handleError(error);
         }
     }
 

@@ -32,8 +32,6 @@ export const useAuth = () => {
         if(res.response){
             if(res.response?.data?.error?.code === 3) doLogout();
             console.log(res.response?.data?.error);
-        } else if(res.message === "Network Error"){
-            showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Revisa tu conexión a internet' });
         } else { 
             console.log(res);
             showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, reportalo ', link: '/comentarios/reportar-error', linkMessage: 'aquí', title: 'Lo sentimos...' });

@@ -17,6 +17,7 @@ function App() {
   const { isLoading, infoModal } = useApp();
 
   return (
+    navigator.onLine ? (
     <Router>
         { isLoading && <LoadingScreen />}
         { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} link={infoModal.link} linkMessage={infoModal.linkMessage} title={infoModal.title} />}
@@ -87,6 +88,9 @@ function App() {
           <ProtectedRoute path="/visitas">
             <views.Visits />
           </ProtectedRoute>
+          <ProtectedRoute path='/chat'>
+            <views.Chat />
+          </ProtectedRoute>
           <Route path="/recuperar-contraseña">
             <views.PasswordRecovery />
           </Route>
@@ -104,6 +108,7 @@ function App() {
           </ProtectedRoute>
         </Switch>
     </Router>
+    ) : ( 'Sin internet' )
   );
 }
 

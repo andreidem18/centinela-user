@@ -5,3 +5,5 @@ export * from './incident.actions';
 export * from './survey.actions';
 export * from './guest.actions';
 export * from './residence.actions';
+export * from './errors.actions';
+export * from './basicActionExample';

@@ -11,38 +11,45 @@ import { Background } from 'UI/components/background';
 
 export const SignUp = () => {
 
-    const { residences, getResidences } = useResidence();
+    const { residences, nomenclatures, getResidences, getNomenclatures, clearNomenclatures } = useResidence();
 
     const [ dataForm, setDataForm ] = useState(null);
     const [ residenceSelected, setResidenceSelected ] = useState([]);
+    const [ nomenclatureSelected, setNomenclatureSelected ] = useState([]);
+    const [ valueSelected, setValueSelected ] = useState([]);
     const { showInfoModal } = useApp();
 
+    useEffect(() => getResidences(), [ getResidences ]);
 
-    useEffect(() => getResidences(), [getResidences]);
+
+    useEffect(() => {
+        if(residenceSelected.length) getNomenclatures(residenceSelected[0].id);
+        else clearNomenclatures();
+    }, [ residenceSelected, getNomenclatures, clearNomenclatures ]);
+
+
+    // Para que se reinicien los valores cada vez que escriban otra residencia o nomenclatura
+    useEffect(() => {
+        if(residenceSelected.length === 0) setNomenclatureSelected([]);
+    }, [ residenceSelected ]);
+    useEffect(() => {
+        if(nomenclatureSelected.length === 0) setValueSelected([]); 
+    }, [ nomenclatureSelected ])
+
+
 
     const handleSubmit = e => {
         e.preventDefault();
-        // Lógica para traer los id's de los valores de las nomenclaturas (typeaheads)
-        const values = [];
-        for(let i = 3; i < e.target.length; i++){ // i = 3 porque es donde empiezan los typeaheads de los valores
-            if(e.target[i].value){ // Para evitar que itere sobre algo que no sea un input
-                residenceSelected[0].nomenclature.forEach(n => { // Se itera sobre cada una de las nomenclaturas para buscar la que coincida con el valor del typeahead, y así guardar el id
-                    const value = n.values.find(v => v.value === e.target[i].value );
-                    if(value) values.push({ nomenclatures_values_id: value.id })
-                })
-            }
-        }
         // Validar que los typeaheads no estén vacíos, ya que no se les puede poner required
-        if(residenceSelected.length === 0 || values.length !== residenceSelected[0].nomenclature.length){
-            showInfoModal({ type: 'error', autoClose: true, showingTime: 3000, message: 'Por favor, llena todos los datos', title: 'Error de validación' });
-            return;
+        if(!valueSelected.length){
+            return showInfoModal({ type: 'error', autoClose: true, showingTime: 3000, message: 'Por favor, llena todos los datos', title: 'Error de validación' });
         } 
 
         const data = { 
             email: e.target[0].value, 
             data_residential: {
                 residential_unit: residenceSelected[0].id,
-                nomenclature_values: values
+                nomenclature_values: [ { nomenclatures_values_id: { id: valueSelected[0].id, status: 1 } } ]
             }
         }
         setDataForm(data);
@@ -74,22 +81,33 @@ export const SignUp = () => {
                                         placeholder="Unidad residencial"
                                     />
                                 </div>
-                                { residenceSelected.length > 0 &&
-                                    <div className="doble-input-container">
-                                        {residenceSelected[0].nomenclature?.map((n, i) => (
-                                            <div className="container" key={n.id}>
-                                                <Typeahead 
-                                                    id='values'
-                                                    className='residences-typeahead'
-                                                    // selected={valuesSelected[i]}
-                                                    // onChange={handleValue}
-                                                    labelKey='value'
-                                                    options={n.values} 
-                                                    placeholder={n.type}
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
+                                {
+                                    nomenclatures.length > 0 &&
+                                        <div className="input-container">
+                                            <Typeahead 
+                                                id='residences'
+                                                className='residences-typeahead'
+                                                selected={nomenclatureSelected}
+                                                onChange={setNomenclatureSelected}
+                                                labelKey='value'
+                                                options={nomenclatures} 
+                                                placeholder={nomenclatures[0].type}
+                                            />
+                                        </div>
+                                }
+                                {
+                                    nomenclatureSelected.length > 0 &&
+                                        <div className="input-container">
+                                            <Typeahead 
+                                                id='residences'
+                                                className='residences-typeahead'
+                                                selected={valueSelected}
+                                                onChange={setValueSelected}
+                                                labelKey='value'
+                                                options={nomenclatureSelected[0].values} 
+                                                placeholder={nomenclatureSelected[0].values[0].type}
+                                            />
+                                        </div>
                                 }
                                 <div className="buttons-signup">
                                     <button type="submit" className="button-next">

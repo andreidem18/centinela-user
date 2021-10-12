@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
 export const ChatButton = () => {
     return (
-        <button className="chat-button">
+        <Link to='/chat' className="chat-button">
             <i className='icon-chat'></i>
-        </button>
+        </Link>
     );
 };

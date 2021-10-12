@@ -6,13 +6,9 @@ export const useApp = () => {
     const isLoading = useSelector(state => state.app.isLoading);
     const infoModal = useSelector(state => state.app.infoModal);
 
-    const showLoading = () => {
-        dispatch(setLoading(true));
-    }
+    const showLoading = () => { dispatch(setLoading(true)); }
 
-    const hideLoading = () => {
-        dispatch(setLoading(false));
-    }
+    const hideLoading = () => { dispatch(setLoading(false)); }
 
     const showInfoModal = config => {
         // Config es un objeto con lo siguiente 
@@ -23,5 +19,5 @@ export const useApp = () => {
 
     const hideInfoModal = () => dispatch(removeInfoModal())
 
-    return { showLoading, hideLoading, showInfoModal, hideInfoModal, isLoading, infoModal }
+    return { showLoading, hideLoading, showInfoModal, hideInfoModal, isLoading, infoModal, }
 }

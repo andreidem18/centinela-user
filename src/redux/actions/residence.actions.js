@@ -1,9 +1,12 @@
+import { Nomenclatures } from "redux/constructors";
 import { get } from "utils";
 import { setLoading } from ".";
-import { Residences } from '../constructors';
+
 
 export const residenceActions = {
-    setResidences: "SET_RESIDENCE"
+    setResidences: "SET_RESIDENCE",
+    setNomenclatures: "SET_NOMENCLATURES",
+    removeNomenclatures: "REMOVE_NOMENCLATURES"
 }
 
 export const setResidences = residences => ({
@@ -11,16 +14,32 @@ export const setResidences = residences => ({
     payload: residences
 });
 
+export const setNomenclatures = nomenclatures => ({
+    type: residenceActions.setNomenclatures,
+    payload: nomenclatures
+})
+
+
+export const removeNomenclatures = () => ({ type: residenceActions.removeNomenclatures })
+
 
 export const getResidencesThunk = () => {
     return dispatch => {
         dispatch(setLoading(true));
-        return get('items/nomenclatures_values?fields=*.*.*')
-            .then(res => { 
-                const residences = new Residences(res.data.data);
-                dispatch(setResidences(residences));
+        return get('items/residential_units?fields=*')
+            .then(res => dispatch(setResidences(res.data.data)))
+            .finally(() => dispatch(setLoading(false)));
+    }
+}
+
+export const getNomenclaturesThunk = residenceId => {
+    return dispatch => {
+        dispatch(setLoading(true));
+        return get(`items/nomenclatures_values?fields=*.*.*.*&filter[rel_type_unit.residential_unit]=${residenceId}&filter[status]=0`)
+            .then(res => {
+                const nomenclatures = new Nomenclatures(res.data.data);
+                dispatch(setNomenclatures(nomenclatures.nomenclatures));
             })
-            .catch(error => console.log(error))
             .finally(() => dispatch(setLoading(false)));
     }
 }

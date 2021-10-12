@@ -1,6 +1,7 @@
 export { Login } from './login';
 export { SignUp } from './signup';
 export { Home } from './home';
+export { Chat } from './chat';
 export { Visits } from './visits';
 export { NewInvitation } from './new-invitation';
 export { InvitationsSent } from './invitations-sent';

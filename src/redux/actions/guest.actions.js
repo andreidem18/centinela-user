@@ -28,7 +28,6 @@ export const getGuestsThunk = () => {
                 dispatch(setGuests(new Guests(res.data.data)));
                 dispatch(setInvitations(new Invitations(res.data.data)));
             })
-            .catch(error => error)
             .finally(() => dispatch(setLoading(false)))
     }
 }
@@ -39,7 +38,6 @@ export const deleteGuestThunk = id => {
         dispatch(setLoading(true));
         return patch(`items/guests/${id}`, { favorite: 0 })
             .then(() => dispatch(getGuestsThunk()))
-            .catch(error => error)
             .finally(() => setLoading(false))
     }
 }
@@ -50,7 +48,6 @@ export const addGuestThunk = id => {
         dispatch(setLoading(true));
         return patch(`items/guests/${id}`, { favorite: 1 })
             .then(() => dispatch(getGuestsThunk()))
-            .catch(error => error)
             .finally(() => setLoading(false))
     }
 }
@@ -63,7 +60,6 @@ export const createInvitationThunk = data => {
                 dispatch(getGuestsThunk());
                 return res;
             })
-            .catch(error => error)
             .finally(() => setLoading(false));
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth, useGuest } from 'hooks';
 import "./styles.scss";
-import { StandarContainer } from 'UI/components';
+import { ChatButton, StandarContainer } from 'UI/components';
 import { PaymentsHome, SectionsSlider, StatementsHome, VisitsHome } from './components';
 
 export const Home = () => {
@@ -51,6 +51,7 @@ export const Home = () => {
                         )
                     }
                 </div>
+                <ChatButton />
             </section>
         </StandarContainer>
     );
