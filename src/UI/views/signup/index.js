@@ -42,7 +42,7 @@ export const SignUp = () => {
         e.preventDefault();
         // Validar que los typeaheads no estén vacíos, ya que no se les puede poner required
         if(!valueSelected.length){
-            return showInfoModal({ type: 'error', autoClose: true, showingTime: 3000, message: 'Por favor, llena todos los datos', title: 'Error de validación' });
+            return showInfoModal({ type: 'error', autoClose: false, message: 'Tienes algunos campos vacíos o con valores inválidos. Recuerda que debes pulsar en las opciones de autocompletado para que queden seleccionadas', title: 'Error de validación' });
         } 
 
         const data = { 

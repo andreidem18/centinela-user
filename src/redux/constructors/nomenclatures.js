@@ -5,14 +5,14 @@ export function Nomenclatures(values){
         // Si no tiene la propiedad no habitable, significa que es un elemento de nomenclatura principal
         if(value.nomenclature_non_habitable) {
 
-        let nomenclatureIndex = this.nomenclatures.findIndex(nomenclature => {
-            return nomenclature.id === value.nomenclature_non_habitable.id;
-        });
-        if(nomenclatureIndex === -1){     // Si no existe, agregarla
-            this.nomenclatures.push(new Nomenclature(value.nomenclature_non_habitable));
-            nomenclatureIndex = this.nomenclatures.length - 1;
-        }
-        this.nomenclatures[nomenclatureIndex].values.push(new Value(value))
+            let nomenclatureIndex = this.nomenclatures.findIndex(nomenclature => {
+                return nomenclature.id === value.nomenclature_non_habitable.id;
+            });
+            if(nomenclatureIndex === -1){     // Si no existe, agregarla
+                this.nomenclatures.push(new Nomenclature(value.nomenclature_non_habitable));
+                nomenclatureIndex = this.nomenclatures.length - 1;
+            }
+            this.nomenclatures[nomenclatureIndex].values.push(new Value(value))
         }
     })
 }

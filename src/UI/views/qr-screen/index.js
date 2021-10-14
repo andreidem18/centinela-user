@@ -43,7 +43,7 @@ export const QRScreen = () => {
         }
     }, [ hideLoading, showLoading, isInvalid, imgLoaded ]);
 
-    const generateQr = () => `https://api.qrserver.com/v1/create-qr-code/?size=550x550&data=${encodeURIComponent(`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`)}`
+    const generateQr = () => `https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=${encodeURIComponent(`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`)}`
     
     return (
         !localStorage.getItem('token') ? <GuestsView qr={ generateQr() } isInvalid={isInvalid} /> : (
