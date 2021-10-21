@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { logo } from 'UI/assets';
-import { NextForm } from './components';
-import { InputLight } from 'UI/components';
-import { useHistory, Link } from 'react-router-dom';
-import { useApp, useResidence } from 'hooks';
-
-import "./styles.scss";
-import { Typeahead } from 'react-bootstrap-typeahead';
-import { Background } from 'UI/components/background';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { createUserThunk, getNomenclaturesThunk, getResidencesThunk, removeNomenclatures, showInfoModal } from 'redux/actions';
+import { FirstForm, NextForm } from './components';
+import SignupView from './signup-view';
 
 export const SignUp = () => {
 
-    const { residences, nomenclatures, getResidences, getNomenclatures, clearNomenclatures } = useResidence();
-
-    const [ dataForm, setDataForm ] = useState(null);
+    const [ form, setForm ] = useState(1);
     const [ residenceSelected, setResidenceSelected ] = useState([]);
     const [ nomenclatureSelected, setNomenclatureSelected ] = useState([]);
     const [ valueSelected, setValueSelected ] = useState([]);
-    const { showInfoModal } = useApp();
+    const [ email, setEmail ] = useState('');
+    const dispatch = useDispatch();
+    const residences = useSelector(state => state.residences.residences);
+    const nomenclatures = useSelector(state => state.residences.nomenclatures);
 
-    useEffect(() => getResidences(), [ getResidences ]);
+    useEffect(() => dispatch(getResidencesThunk()), [ dispatch ]);
 
 
     useEffect(() => {
-        if(residenceSelected.length) getNomenclatures(residenceSelected[0].id);
-        else clearNomenclatures();
-    }, [ residenceSelected, getNomenclatures, clearNomenclatures ]);
+        if(residenceSelected.length) dispatch(getNomenclaturesThunk(residenceSelected[0].id));
+        else dispatch(removeNomenclatures());
+    }, [ dispatch, residenceSelected ]);
 
 
     // Para que se reinicien los valores cada vez que escriban otra residencia o nomenclatura
@@ -38,90 +35,63 @@ export const SignUp = () => {
 
 
 
-    const handleSubmit = e => {
+    const handleFirstSubmit = e => {
         e.preventDefault();
         // Validar que los typeaheads no estén vacíos, ya que no se les puede poner required
         if(!valueSelected.length){
-            return showInfoModal({ type: 'error', autoClose: false, message: 'Tienes algunos campos vacíos o con valores inválidos. Recuerda que debes pulsar en las opciones de autocompletado para que queden seleccionadas', title: 'Error de validación' });
+            return dispatch(showInfoModal({ 
+                type: 'error', 
+                autoClose: false, 
+                title: 'Error de validación',
+                message: 'Tienes algunos campos vacíos o con valores inválidos. Recuerda que debes pulsar en las opciones de autocompletado para que queden seleccionadas'
+            }));
         } 
+        setForm(2);
+    }
+    
 
+    const handleSecondSubmit = (e, passwordStrength, password) => {
+        e.preventDefault();
+        if(passwordStrength.number < 3) return dispatch(showInfoModal({ type: 'error', message: 'Una buena contraseña debería tener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número', title: 'Error de validación' }));
+        if(e.target[4].value !== password){ 
+            return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 2500, message: 'Las contraseñas no coinciden', title: 'Error de validación' }));
+        };
         const data = { 
-            email: e.target[0].value, 
+            first_name: e.target[0].value, 
+            last_name: e.target[1].value, 
+            password,
+            email: email,
+            status: 'draft',
+            role: 4,
             data_residential: {
                 residential_unit: residenceSelected[0].id,
                 nomenclature_values: [ { nomenclatures_values_id: { id: valueSelected[0].id, status: 1 } } ]
             }
         }
-        setDataForm(data);
+        dispatch(createUserThunk(data));
     }
 
-    const history = useHistory();
 
+    const getForm = () => {
+        if(form === 1) {
+            return  <FirstForm 
+                        email={email}
+                        setEmail={setEmail}
+                        handleSubmit={handleFirstSubmit}
+                        residences={residences}
+                        residenceSelected={residenceSelected}
+                        setResidenceSelected={setResidenceSelected}
+                        nomenclatures={nomenclatures}
+                        nomenclatureSelected={nomenclatureSelected}
+                        setNomenclatureSelected={setNomenclatureSelected}
+                        valueSelected={valueSelected}
+                        setValueSelected={setValueSelected}
+                    />
+        }
+        else return <NextForm handleSubmit={handleSecondSubmit} comeback={() => setForm(1)} />
+    }
 
     return (
-        <Background>
-            <section className="signup">
-                <div>
-                    <img src={logo} alt="Logo" />
-                    <div className="form-container">
-                        { dataForm ? <NextForm previusData={dataForm} comeback={() => setDataForm(null)} />
-                        : (
-                            <form action="" onSubmit={handleSubmit}>
-                                <div className="input-container">
-                                    <InputLight label="Correo electrónico" required/> 
-                                </div>
-                                <div className="input-container">
-                                    <Typeahead 
-                                        id='residences'
-                                        className='residences-typeahead'
-                                        selected={residenceSelected}
-                                        onChange={setResidenceSelected}
-                                        labelKey='name'
-                                        options={residences} 
-                                        placeholder="Unidad residencial"
-                                    />
-                                </div>
-                                {
-                                    nomenclatures.length > 0 &&
-                                        <div className="input-container">
-                                            <Typeahead 
-                                                id='residences'
-                                                className='residences-typeahead'
-                                                selected={nomenclatureSelected}
-                                                onChange={setNomenclatureSelected}
-                                                labelKey='value'
-                                                options={nomenclatures} 
-                                                placeholder={nomenclatures[0].type}
-                                            />
-                                        </div>
-                                }
-                                {
-                                    nomenclatureSelected.length > 0 &&
-                                        <div className="input-container">
-                                            <Typeahead 
-                                                id='residences'
-                                                className='residences-typeahead'
-                                                selected={valueSelected}
-                                                onChange={setValueSelected}
-                                                labelKey='value'
-                                                options={nomenclatureSelected[0].values} 
-                                                placeholder={nomenclatureSelected[0].values[0].type}
-                                            />
-                                        </div>
-                                }
-                                <div className="buttons-signup">
-                                    <button type="submit" className="button-next">
-                                        <span>SIGUIENTE</span>
-                                        <div className="inner"></div>
-                                    </button>
-                                    <button type="button" onClick={() => history.push("/login")}>CANCELAR</button>
-                                </div>
-                                <span className="login-link">¿Ya tienes una cuenta? <Link to="login">INGRESAR</Link></span>
-                            </form>
-                        )}
-                    </div>
-                </div>
-            </section>
-        </Background>
+        <SignupView getForm={getForm} />
     );
 };

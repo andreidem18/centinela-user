@@ -1,72 +1,95 @@
 import React, { useState } from 'react';
 import { InputLight, MainLayout } from 'UI/components';
-import { useGuest } from 'hooks';
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.scss";
 
-export const AddGuest = ({ guest, comeback }) => {
+export const AddGuest = props => {
 
-    const [ name, setName ] = useState(guest?.first_name || '');
-    const [ lastName, setLastName ] = useState(guest?.last_name || '');
-    const [ vehicle, setVehicle ] = useState(guest?.vehicle_type || '');
-    const [ licensePlate, setLicensePlate ] = useState(guest?.license_plate || '');
-    const [ saveGuest, setSaveGuest ] = useState(false);
-    const [ isUniqueAccess, setIsUniqueAccess ] = useState(true);
-    const [ dateFrom, setDateFrom ] = useState('');
-    const [ dateTo, setDateTo ] = useState('');
+    const guest = props.guest
     // Estado para que al hacer submit validar si el invitado se ha editado, y habría que crear uno nuevo, 
     // o si ya es uno guardado y sólo hay que enviar el id
     const [ isNewGuest, setIsNewGuest ] = useState(false);
-    const { createInvitation } = useGuest();
 
     const handleEnter = e => { 
-        if(e.key === 'Enter') submit(); 
+        if(e.key === 'Enter') props.submit(isNewGuest); 
         else setIsNewGuest(true);
     } 
 
-    const submit = () => {
-        const guestSelected = !isNewGuest && guest.id ? guest.id : {
-            first_name: name, 
-            last_name: lastName, 
-            vehicle_type: vehicle, 
-            license_plate: licensePlate,
-            favorite: saveGuest ? 1 : 0
-        }                            // ↓ Tipo: si es unico 1, si es especial 2
-        createInvitation(guestSelected, isUniqueAccess ? 1 : 2, dateFrom, dateTo)
+    const changeGuest = (e, field) => {
+        props.setGuest(guest => ({...guest, [field]: e.target.value}))
     }
 
     return (
-        <MainLayout sectionSelected='visits' title='Nueva Invitación' comeback={comeback} bottomMenu={false}>
+        <MainLayout sectionSelected='visits' title='Nueva Invitación' comeback={props.comeback} bottomMenu={false}>
             <div className="container add-guest">
-                <button className="new-guest-link" onClick={() => setIsUniqueAccess(!isUniqueAccess)}>
-                    {isUniqueAccess ? 'Acceso único' : 'Acceso especial'}
+                <button className="new-guest-link" onClick={() => props.setIsUniqueAccess(!props.isUniqueAccess)}>
+                    {props.isUniqueAccess ? 'Acceso único' : 'Acceso especial'}
                     <i className="icon-toggle"></i>
                 </button>
                 {/* No es un formulario para que el required no interfiera, ya que no todos los campos son requeridos. Pero el required es necesario para el efecto de label flotante */}
                 <div className='form-container'>
-                    <InputLight label="Nombre" value={name} onChange={e => setName(e.target.value)} onKeyDown={handleEnter} required />
-                    <InputLight label="Apellido" value={lastName} onChange={e => setLastName(e.target.value)} onKeyDown={handleEnter} required />
-                    <InputLight label="Vehículo (carro, moto...)" value={vehicle} onChange={e => setVehicle(e.target.value)} onKeyDown={handleEnter} required />
-                    <InputLight label="Placas" value={licensePlate} onChange={e => setLicensePlate(e.target.value)} onKeyDown={handleEnter} required />
+                    <InputLight 
+                        label="Nombre" 
+                        value={guest?.first_name || ''} 
+                        onChange={e => changeGuest(e, 'first_name')} 
+                        onKeyDown={handleEnter} 
+                        required 
+                    />
+                    <InputLight 
+                        label="Apellido" 
+                        value={guest?.last_name || ''} 
+                        onChange={e => changeGuest(e, 'last_name')} 
+                        onKeyDown={handleEnter} 
+                        required 
+                    />
+                    <InputLight 
+                        label="Vehículo (carro, moto...)" 
+                        value={guest?.vehicle || ''} 
+                        onChange={e => changeGuest(e, 'vehicle')} 
+                        onKeyDown={handleEnter} 
+                        required 
+                    />
+                    <InputLight 
+                        label="Placas" 
+                        value={guest?.license_plate || ''} 
+                        onChange={e => changeGuest(e, 'license_plate')} 
+                        onKeyDown={handleEnter} 
+                        required 
+                    />
                     {
-                        !isUniqueAccess &&
+                        !props.isUniqueAccess &&
                             <div className="calendars">
                                 <div className="date-container">
                                     <label htmlFor="date-from">Desde</label>
-                                    <input type="date" id="date-from" value={dateFrom} onChange={e => setDateFrom(e.target.value)} />
+                                    <input 
+                                        type="date" 
+                                        id="date-from" 
+                                        value={props.dateFrom} 
+                                        onChange={e => props.setDateFrom(e.target.value)} 
+                                    />
                                 </div>
                                 <div className="date-container">
                                     <label htmlFor="date-to">Hasta</label>
-                                    <input type="date" id="date-to" value={dateTo} onChange={e => setDateTo(e.target.value)} />
+                                    <input 
+                                        type="date" 
+                                        id="date-to" 
+                                        value={props.dateTo} 
+                                        onChange={e => props.setDateTo(e.target.value)} 
+                                    />
                                 </div>
                             </div>
                     }
                     <div className="check-container">
-                        <input type="checkbox" id="save-check" checked={saveGuest} onChange={e => setSaveGuest(e.target.checked)} />
+                        <input 
+                            type="checkbox" 
+                            id="save-check" 
+                            checked={ guest.favorite ?? false } 
+                            onChange={e => props.setGuest(guest => ({...guest, favorite: +e.target.checked}))} 
+                        />
                         <label htmlFor="save-check">Guardar como frecuente</label>
                     </div>
-                    <button className="form-button" onClick={submit}>Enviar invitación</button>
+                    <button className="form-button" onClick={() => props.submit(isNewGuest)}>Enviar invitación</button>
                 </div>
             </div>
         </MainLayout>

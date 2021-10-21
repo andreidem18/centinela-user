@@ -1,20 +1,17 @@
 import React from 'react';
 import { MainLayout } from 'UI/components';
 import { getAvatar } from 'utils';
-import { useGuest } from 'hooks';
 import { useHistory } from 'react-router';
 import { formatDateString, formatTime } from 'utils';
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.scss";
 
-export const InvitationDetail = ({ comeBack, invitation }) => {
+export const InvitationDetail = ({ comeBack, invitation, addGuest }) => {
 
     const history = useHistory();
     const creationDate = formatDateString(new Date(invitation.created_on));
     const creationHour = formatTime(new Date(invitation.created_on));
-
-    const { addGuest } = useGuest();
 
     return (
         <MainLayout title='invitación' sectionSelected='visits' comeback={comeBack}>

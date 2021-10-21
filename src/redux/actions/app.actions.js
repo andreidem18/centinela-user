@@ -5,6 +5,14 @@ export const appActions = {
     removeInfoModal: "REMOVE_INFO_MODAL",
 }
 
+// Config es un objeto con lo siguiente 
+// { type: 'success, error, warning', autoClose, showingTime, actionModal, message, title }
+export const showInfoModal = config => {
+    return dispatch => {
+        config.handleClose = () => dispatch(removeInfoModal())
+        dispatch(setInfoModal(config));
+    }
+}
 
 export const addTitle = title => ({
     type: appActions.addTitle,

@@ -1,11 +1,8 @@
 import React from 'react';
-import { useIncident } from 'hooks';
 
 import './styles.scss';
 
-export const StepProgressBar = () => {
-
-    const { step } = useIncident();
+export const StepProgressBar = ({ step }) => {
     
     return (
         <div className='step-progress-bar-container'>

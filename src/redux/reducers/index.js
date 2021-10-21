@@ -4,7 +4,6 @@ import authReducer from './auth.reducer';
 import incidentReducer from './incident.reducer';
 import residenceReducer from './residence.reducer';
 import guestReducer from './guest.reducer';
-import errorReducer from './error.reducer';
 import { combineReducers } from "redux";
 
 export default combineReducers({
@@ -14,5 +13,4 @@ export default combineReducers({
     incident: incidentReducer,
     residences: residenceReducer,
     guests: guestReducer,
-    error: errorReducer
 });

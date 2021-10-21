@@ -27,7 +27,7 @@ const authReducer = (state = initialState, action) => {
             return{
                 ...state, loggedUser: { id, email, role, apartment, residence, first_name, last_name }
             }
-        case authActions.quitLoggedUser:
+        case authActions.removeLoggedUser:
             return{
                 ...state, loggedUser: initialState.loggedUser
             }

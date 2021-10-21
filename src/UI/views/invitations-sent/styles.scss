@@ -1,55 +1,6 @@
 @import "assets.scss";
 
 .invitations-sent{
-    .button-filter{
-        background: $purple;
-        border-radius: 20px;
-        padding: 7px 25px;
-        color: $white;
-        display: flex;
-        align-items: center;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-        margin-bottom: 20px;
-        font-size: 15px;
-        letter-spacing: 1px;
-        font-weight: 500;
-        margin-left: auto;
-    }
-    .guest{
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 10px;
-        img{
-            width: 13%;
-            border-radius: 50%;
-        }
-        .name{
-            width: 60%;
-            padding: 10px;
-            font-size: 15px;
-            * { text-align: left; }
-            span{ display: block; }
-            .date{ 
-                color: #ababab; 
-                font-size: 14px;
-            }
-        }
-        .status{
-            width: 27%;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            color: $main-green;
-            padding: 4px;
-            text-align: center;
-            font-size: 15px;
-            &.active{
-                border: none;
-                background: $main-green;
-                color: #fff;
-            }
-        }
-    }
     .message-empty{
         margin-top: 20px;
     }

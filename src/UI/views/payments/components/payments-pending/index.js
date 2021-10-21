@@ -1,89 +1,85 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { PaymentsList, PaymentDetail, PaymentRejectedReasons } from './components';
+import { PaymentDetail, PaymentRejectedReasons } from './components';
+import { PaymentsPendingView } from './payments-pending-view';
 
 
 import './styles.scss';
 
-export const PaymentsPending = ({ setShowBottomMenu }) => {
+export const PaymentsPending = ({ setShowBottomMenu, payments }) => {
 
     const [ paymentSelected, setPaymentSelected ] = useState(null);
-    const paymentsPending = fakePayments.filter(p => p.status === 'pending');
-    const paymentsRejected = fakePayments.filter(p => p.status === 'rejected');
-    const { id } = useParams();
+    const [ comments, setComments ] = useState([]);
+    const [ showDetail, setShowDetail ] = useState(false);
 
-    useEffect(() => setPaymentSelected(fakePayments.find(p => p.id === parseInt(id))), [id]);
-    useEffect(() => setShowBottomMenu(Boolean(!paymentSelected)), [ paymentSelected, setShowBottomMenu ])
+    const paymentsPending = payments.filter(p => p.status === 'pending');
+    const paymentsRejected = payments.filter(p => p.status === 'rejected');
+
+    
+
+    // ******* LÓGICA DE ARCHIVOS SUBIDOS ********* //
+    const [ selectedFiles, setSelectedFiles ] = useState([]);
+    // Array de archivos a visualizar debido a que filelist no permite hacer .map
+    const [ filesArray, setFilesArray ] = useState([]);
+
+    const handleSelectedFiles = e => {
+        const files = Array.from(selectedFiles).concat(Array.from(e.target.files));
+        setSelectedFiles(files);
+        getFilesArray(files);
+    }
+    
+    const getFilesArray = files => {
+        const array = Array.from(files).map(file => {
+            return {name: file.name, lastModified: file.lastModified}
+        });
+        setFilesArray(array);
+    }
+
+    
+    const deleteFile = index => {
+        const newFileArray = [];
+        for(let i = 0; i < selectedFiles.length; i++){
+            if(i !== index) newFileArray.push(selectedFiles[i]);
+        }
+        setSelectedFiles(newFileArray);
+        getFilesArray(newFileArray);
+    }
+    
+
+
+
+    // En caso de que venga desde params
+    const { id } = useParams();
+    useEffect(() => setPaymentSelected(payments.find(p => p.id === parseInt(id))), [ id, payments ]);
+
+
+    useEffect(() => setShowBottomMenu(Boolean(!paymentSelected)), [ paymentSelected, setShowBottomMenu ]);
 
     return (
         !paymentSelected ? (
-            <div className='payments-pending'>
-                <div className="pendings">
-                    <h4 className="title-payment">
-                        Pagos pendientes
-                    </h4>
-                    {
-                        paymentsPending.length > 0 ? (
-                            <PaymentsList payments={paymentsPending} setPayment={setPaymentSelected}/>
-                        ) : (
-                            <span className='is-empty-message'>
-                                No tienes pagos pendientes, ¡Enhorabuena!
-                            </span>
-                        )
-                    }
-                </div>
-                <div className="rejects">
-                    { paymentsRejected.length > 0 && 
-                        <>
-                            <h4 className="title-payment">
-                                Pagos rechazados
-                            </h4>
-                            <PaymentsList payments={paymentsRejected} setPayment={setPaymentSelected} />
-                        </>
-                    }
-                </div>
-            </div>
+            <PaymentsPendingView 
+                paymentsPending={paymentsPending} 
+                paymentsRejected={paymentsRejected}
+                setPaymentSelected={setPaymentSelected} 
+            />
         ) : (
-            paymentSelected.status === 'pending' ? (
-                <PaymentDetail  payment={paymentSelected} comeback={() => setPaymentSelected(null)} />
+            paymentSelected.status === 'pending' || showDetail ? (
+                <PaymentDetail  
+                    payment={paymentSelected} 
+                    comeback={() => setPaymentSelected(null)} 
+                    comments={comments}
+                    setComments={setComments} 
+                    handleSelectedFiles={handleSelectedFiles}
+                    filesArray={filesArray}
+                    deleteFile={deleteFile}
+                />
             ) : (
-                <PaymentRejectedReasons  payment={paymentSelected} comeback={() => setPaymentSelected(null)} />
+                <PaymentRejectedReasons  
+                    payment={paymentSelected} 
+                    comeback={() => setPaymentSelected(null)} 
+                    setShowDetail={setShowDetail}
+                />
             )
         )
     );
 };
-
-const fakePayments = [
-    {
-        id: 1, 
-        amount: 790, 
-        date: new Date("August 24, 2021 14:00:00"),
-        status: 'pending',
-        reasons: [
-            {
-                id: 1,
-                reason: 'Mantenimiento',
-                amount: 600
-            },
-            {
-                id: 2,
-                reason: 'Uso de salón',
-                amount: 190
-            }
-        ]
-    }, 
-    {
-        id: 3, 
-        amount: 600, 
-        date: new Date("June 24, 2021 23:00:00"),
-        status: 'rejected',
-        reject_cause: 'La transferencia fue enviada por un monto de $60, no $600, parece que faltó un cero por equivocación. Por favor, deposite el faltante para que quede aprobado',
-        reasons: [
-            {
-                id: 1,
-                reason: 'Mantenimiento',
-                amount: 600
-            },
-        ]
-    },
-]

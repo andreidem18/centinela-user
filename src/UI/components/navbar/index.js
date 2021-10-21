@@ -1,16 +1,18 @@
 import React, { useState, useMemo } from 'react';
-import { useAuth } from 'hooks';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { escudoAncho } from 'UI/assets';
 
 import "./styles.scss";
+import { doLogout } from 'redux/actions';
+import { useDispatch } from 'react-redux';
 
 export const NavBar = () => {
 
     const [ showMenu, setShowMenu ] = useState(false);
-    const { doLogout } = useAuth();
     // Para colocarle un height del 8% del tamaño de la pantalla, que no se altere si se abre el teclado
-    const height = useMemo(() => 8 * window.innerHeight / 100, [])
+    const height = useMemo(() => 8 * window.innerHeight / 100, []);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     return (
         <div className="nav-bar-container" style={{height}}>
@@ -52,7 +54,7 @@ export const NavBar = () => {
                         <i className="fas fa-exclamation-circle"></i>   
                         Envía tu comentario
                     </Link>
-                    <button onClick={doLogout}>
+                    <button onClick={() => dispatch(doLogout(history))}>
                         <i className="fas fa-sign-out-alt"></i>
                         Salir
                     </button>

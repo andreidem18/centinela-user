@@ -1,24 +1,28 @@
 import { 
-  HashRouter as Router,
+  Router,
   Switch,
   Route,
 } from 'react-router-dom';
 import { ProtectedRoute } from "./auth";
 import * as views from "./UI/views";
-import { useApp } from 'hooks';
+// import { useApp } from 'hooks';
 import { LoadingScreen } from 'UI/components';
 import { InfoModal } from 'UI/modals';
+import history from 'utils/history';
+import { useSelector } from 'react-redux';
 
 // Importando estilos
 import "./App.scss";
 
 function App() {
 
-  const { isLoading, infoModal } = useApp();
+  const isLoading = useSelector(state => state.app.isLoading);
+  const infoModal = useSelector(state => state.app.infoModal);
+  // const { isLoading, infoModal } = useApp();
 
   return (
     navigator.onLine ? (
-    <Router>
+    <Router history={history}>
         { isLoading && <LoadingScreen />}
         { infoModal.type && <InfoModal type={infoModal.type} handleClose={infoModal.handleClose} autoClose={infoModal.autoClose} showingTime={infoModal.showingTime} action={infoModal.action} message={infoModal.message} link={infoModal.link} linkMessage={infoModal.linkMessage} title={infoModal.title} />}
         <Switch>

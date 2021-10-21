@@ -1,24 +1,13 @@
-import React, { useState, useEffect} from 'react';
-import { useApp } from 'hooks';
+import React from 'react';
 import { logo } from 'UI/assets';
 import { MessageEmpty } from 'UI/components';
 
 import './styles.scss';
 
-export const GuestsView = ({ qr, isInvalid }) => {
-    
-    const [ imgLoaded, setImgLoaded ] = useState(false);
-    const { showLoading, hideLoading } = useApp();
-
-    useEffect(() => {
-        if(!isInvalid){
-            if(imgLoaded) hideLoading();
-            else showLoading();
-        }
-    }, [ hideLoading, showLoading, isInvalid, imgLoaded ])
+export const VisitorView = ({ qr, isInvalid, setImgLoaded }) => {
 
     return (
-        <section className="guests-view">
+        <section className="qr-screen visitor-view">
             {
                 isInvalid ? (
                     <MessageEmpty message='Esta invitación no existe o ya expiró' />

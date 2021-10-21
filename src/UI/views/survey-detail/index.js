@@ -1,51 +1,29 @@
-import { MainLayout } from 'UI/components';
-import { useParams, useHistory } from 'react-router-dom';
-import { MultipleSelection, Opinion } from './components';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { showInfoModal } from 'redux/actions';
+import { useParams } from 'react-router-dom';
 
 import "./styles.scss";
-import { useApp } from 'hooks';
+import { SurveyDetailView } from './survey-detail-view';
 
 export const SurveyDetail = () => {
 
-    const history = useHistory();
     const { id } = useParams();
+    const history = useHistory();
+    const dispatch = useDispatch();
     const survey = fakeSurveys.find(s => s.id === parseInt(id));
-    const { showInfoModal } = useApp();
 
     const comeback = () => {
+        // Para que al volver muestre advertencia sólo si son encuestas no respondidas
         if(survey.questions[0].answer){
             history.push('/encuestas');
         } else {
-            showInfoModal({ type: 'warning', actionModal: () => history.push('/encuestas'), message: 'Si cambias de pantalla se perderá la información ingresada', title: '¿Seguro que quieres salir?' })
+            dispatch(showInfoModal({ type: 'warning', actionModal: () => history.push('/encuestas'), message: "¿Seguro que deseas salir? Se perderá toda la información guardada", title: "Advertencia" }));
         }
     }
 
     return (
-        <section className="survey">
-            <MainLayout title='Encuesta' comeback={comeback} bottomMenu={false}>
-                <h4>{survey?.title}</h4>
-                <div className="questions">
-                    {
-                        survey?.questions?.map((question, i) => (
-                            question.type === 'multiple' ? (
-                                <MultipleSelection question={question} key={question.id} number={i+1}/>
-                            ) : (
-                                <Opinion question={question} key={question.id} number={i+1}/>
-                            )
-                        ))
-                    }
-                </div> 
-                {
-                    !survey.questions[0].answer &&
-                        <button 
-                            className='btn-primary'
-                            onClick={() => showInfoModal({ type: 'success', actionModal: () => history.push('/encuestas'), message: 'Gracias por tomarte el tiempo de responder. Tu respuesta será enviada a los administradores', title: 'Encuesta enviada con exito' })}
-                        >
-                            Enviar
-                        </button>
-                }
-            </MainLayout>
-        </section>
+        <SurveyDetailView survey={survey} comeback={comeback} />
     );
 };
 

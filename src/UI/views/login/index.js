@@ -2,18 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { escudoAncho, nombreApp } from "UI/assets";
 import { InputLight } from 'UI/components';
-import { useAuth } from 'hooks';
 
 import "./styles.scss";
 import { Background } from 'UI/components/background';
+import { doLoginThunk } from 'redux/actions';
+import { useDispatch } from 'react-redux';
 
 export const Login = () => {
 
-    const { doLogin, loginError } = useAuth();
+    const dispatch = useDispatch();
 
     const login = e => {
         e.preventDefault();            // Para que no vengan espacios
-        doLogin({email: e.target[0].value.replace(/\s/g,''), password: e.target[1].value});
+        dispatch(doLoginThunk({email: e.target[0].value.replace(/\s/g,''), password: e.target[1].value}));
     }
 
     return (
@@ -34,7 +35,6 @@ export const Login = () => {
                         <div className="input-container">
                             <InputLight type="password" label="Contraseña" required={true} />
                             <Link to="/recuperar-contraseña">Olvidé mi contraseña</Link>
-                            <div className="error"><span>{loginError}</span></div>
                         </div>
                         <button className="login-button">
                             <span>Ingresar</span>

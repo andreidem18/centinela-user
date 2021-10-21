@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { buscando } from 'UI/assets';
-import { useGuest } from 'hooks';
 import { formatDate, getAvatar } from 'utils';
 
 import './styles.scss';
 
-export const VisitsHome = () => {
+export const VisitsHome = ({ invitations }) => {
 
-    const { invitations } = useGuest();
     return (
         <div className='visits-home'>
             { invitations?.length > 0 ? (

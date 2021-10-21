@@ -1,13 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { getAvatar } from 'utils';
-import { useGuest } from 'hooks';
 
 import './styles.scss';
 
-export const Guest = ({guest, select}) => {
+export const Guest = ({guest, select, deleteGuest}) => {
 
     const [ showOptions, setShowOptions ] = useState(false);
-    const { deleteGuest } = useGuest();
     const avatar = useMemo(() => getAvatar(guest.first_name, guest.last_name), [guest]);
 
     return (

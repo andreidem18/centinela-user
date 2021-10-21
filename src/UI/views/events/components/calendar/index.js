@@ -19,7 +19,7 @@ export const Calendar = ({place, setDate}) => {
         if(isDisabled) e.isDisabled = true;
     }
 
-    const minDate = getCurrentDate(2);
+    const minDate = getCurrentDate(1);
     
     return (
         <div className='calendar'>

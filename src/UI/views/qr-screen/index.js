@@ -1,32 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { ShareInSocialMedia, StandarContainer, MessageEmpty } from 'UI/components';
-import { isMobileOrTablet } from 'utils';
-import { GuestsView } from './components';
-import { useApp } from 'hooks';
+import { useParams } from 'react-router-dom';
+import { UserView, VisitorView } from './components';
 import { get } from 'utils';
 
 import "./styles.scss";
+import { useDispatch } from 'react-redux';
+import { setLoading } from 'redux/actions';
 
 export const QRScreen = () => {
 
-    const [ showShare, setShowShare ] = useState(false);
     const [ imgLoaded, setImgLoaded ] = useState(false);
     const [ isInvalid, setIsInvalid ] = useState(false);
-    const history = useHistory();
     const { code } = useParams();
-    const { showLoading, hideLoading } = useApp();
-
-    const handleOpenShare = async() => {
-        if(isMobileOrTablet()){
-            navigator.share({
-                title: "Visítame a través de este código QR!",
-                url: `${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`
-            })
-        } else {
-            setShowShare(true);
-        }
-    }
+    const dispatch = useDispatch();
 
     // Validación para saber si el código existe
     useEffect(() => {
@@ -36,52 +22,23 @@ export const QRScreen = () => {
             })
     }, [ code ]);
 
+    
     useEffect(() => {
         if(localStorage.getItem('token') && !isInvalid){
-            if(imgLoaded) hideLoading();
-            else showLoading();
+            if(imgLoaded) dispatch(setLoading(false));
+            else dispatch(setLoading(true));
         }
-    }, [ hideLoading, showLoading, isInvalid, imgLoaded ]);
+    }, [ dispatch, isInvalid, imgLoaded ]);
 
-    const generateQr = () => `https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=${encodeURIComponent(`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`)}`
+
+    const generateQr = () => `https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=${encodeURIComponent(`${process.env.REACT_APP_HOST}/visitas/codigo/${code}`)}`
     
+
     return (
-        !localStorage.getItem('token') ? <GuestsView qr={ generateQr() } isInvalid={isInvalid} /> : (
-            <section className="qr-screen">
-                <StandarContainer sectionSelected='visits' background>
-                    {isInvalid ? (
-                        <div className='card'>
-                            <MessageEmpty message='Esta invitación no existe o ya expiró'  />
-                        </div>
-                    ) : (<>
-                        <h3>
-                            <button onClick={() => history.goBack()}>
-                                <i className="icon-arrow-left"></i>
-                            </button>
-                            Invitados
-                        </h3>
-
-
-                        <img src={generateQr()} alt="código QR" className="qr-image" onLoad={() => setImgLoaded(true)} />
-
-                        <div className="buttons-container">
-                            <button className="btn-primary" onClick={handleOpenShare}>
-                                <span>Compartir</span>
-                                <div className="icon">
-                                    <i className="icon-share"></i>
-                                </div>
-                            </button>
-                            <button className="btn-secondary" onClick={() => history.goBack()}>Salir</button>
-                        </div>
-
-                        <ShareInSocialMedia 
-                            isOpened={showShare} 
-                            handleClose={() => setShowShare(false)} 
-                            link={`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`}
-                        />
-                    </>)}
-                </StandarContainer>
-            </section>
+        !localStorage.getItem('token') ? (
+            <VisitorView qr={ generateQr() } isInvalid={isInvalid} setImgLoaded={setImgLoaded} />
+        ) : (
+            <UserView qr={ generateQr() } isInvalid={isInvalid} code={code} setImgLoaded={setImgLoaded} />
         )
     );
 };

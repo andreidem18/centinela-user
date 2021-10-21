@@ -1,23 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useIncident } from 'hooks';
-
-import './styles.scss';
 import { MainLayout } from 'UI/components';
 
-export const FinalScreen = ({ comeBack }) => {
+import './styles.scss';
 
-    const history = useHistory();
-
-    const { resetForm } = useIncident();
-
-    const submit = () => {
-        history.push('/incidentes');
-        resetForm();
-    }
-
+export const FinalScreen = ({ comeback, submit }) => {
     return (
-        <MainLayout title='Reportar incidente' comeback={comeBack}>
+        <MainLayout title='Reportar incidente' comeback={comeback}>
             <h4 className="done-title">¡Listo!</h4>
             <p className="description">
                 Al pulsar “enviar”, el administrador del complejo recibirá tu reporte, y procederá a 
@@ -27,7 +15,7 @@ export const FinalScreen = ({ comeBack }) => {
                 <button className="btn-primary" onClick={submit}>
                     Enviar
                 </button>
-                <button className="btn-secondary" onClick={comeBack}>
+                <button className="btn-secondary" onClick={comeback}>
                     Atras
                 </button>
             </div>

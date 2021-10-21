@@ -1,58 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth, useGuest } from 'hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGuestsThunk, getUserThunk } from 'redux/actions';
+import { PaymentsHome, StatementsHome, VisitsHome } from './components';
+import { HomeView } from './home-view';
+
 import "./styles.scss";
-import { ChatButton, StandarContainer } from 'UI/components';
-import { PaymentsHome, SectionsSlider, StatementsHome, VisitsHome } from './components';
 
 export const Home = () => {
 
-    const { loggedUser, getUser } = useAuth();
-    const { getGuests } = useGuest();
+    const dispatch = useDispatch();
+    const loggedUser = useSelector(state => state.auth.loggedUser);
+    const invitations = useSelector(state => state.guests.invitations);
     const [ viewSelected, setViewSelected ] = useState(0);
 
-
     useEffect(() => {
-        getUser();
-        getGuests();
-    }, [getUser, getGuests]);
-    
+        dispatch(getUserThunk());
+        dispatch(getGuestsThunk());
+    }, [ dispatch ]);
+
+    const getViewSelected = () => {
+        switch(viewSelected){
+            case 0:
+                return <StatementsHome />
+            case 1:
+                return <VisitsHome invitations={invitations} />
+            default:
+                return <PaymentsHome />
+        }
+    }
 
     return (
-        <StandarContainer sectionSelected='home'>
-            <section className="home-user">
-                <div>
-                    <h1>Hola <span>{loggedUser.first_name}</span></h1>
-                    <div className="sections-slider-container">
-                        <p className='question'>¿Qué vas a consultar?</p>
-                        <SectionsSlider />
-                    </div>
-                    <div className="view-buttons">
-                        <button className={viewSelected === 0 ? 'selected' : ''} onClick={() => setViewSelected(0)}>
-                            Comunicados
-                        </button>
-                        <button className={viewSelected === 1 ? 'selected' : ''} onClick={() => setViewSelected(1)}>
-                            Visitas
-                        </button>
-                        <button className={viewSelected === 2 ? 'selected' : ''} onClick={() => setViewSelected(2)}>
-                            Pagos
-                        </button>
-                    </div>
-                </div>
-                <div className="view-container">
-                    {
-                        viewSelected === 0 ? ( 
-                            <StatementsHome />
-                        ) : ( 
-                            viewSelected === 1 ? (
-                                <VisitsHome />
-                            ) : ( 
-                                <PaymentsHome /> 
-                            )
-                        )
-                    }
-                </div>
-                <ChatButton />
-            </section>
-        </StandarContainer>
+        <HomeView  
+            viewSelected={viewSelected} 
+            setViewSelected={setViewSelected}
+            getViewSelected={getViewSelected}
+            invitations={invitations}
+            loggedUser={loggedUser}
+        />
     );
 };

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useApp } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { showInfoModal } from 'redux/actions';
+
 
 import './styles.scss';
 
 export const BottomMenu = ({ selected }) => {
 
-    const { showInfoModal } = useApp();
+    const dispatch = useDispatch();
 
     return (
         <div className='bottom-menu'>
@@ -18,7 +20,7 @@ export const BottomMenu = ({ selected }) => {
                 <i className="icon-group"></i>
                 <span>Visitas</span>
             </Link>
-            <button className={selected === 'emergency' ? 'active' : ''} onClick={() => showInfoModal({ type: 'warning', actionModal: null, title: 'Advertencia', message: '¿Estas seguro de querer enviar una alerta?' })}>
+            <button className={selected === 'emergency' ? 'active' : ''} onClick={() => dispatch(showInfoModal({ type: 'warning', actionModal: null, title: 'Advertencia', message: '¿Estas seguro de querer enviar una alerta?' }))}>
                 <i className="icon-warning"></i>
                 <span>Emergencia</span>
             </button>

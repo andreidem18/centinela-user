@@ -1,9 +1,7 @@
 @import "assets.scss";
 
 .signup{
-    @include center();
-    height: 150vw;
-
+    height: 100vh;
     img{
         width: 90%;
         z-index: 9;

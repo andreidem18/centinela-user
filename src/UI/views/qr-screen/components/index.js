@@ -1,1 +1,2 @@
-export { GuestsView } from './visitors';
+export { VisitorView } from './visitors-view';
+export { UserView } from './user-view';

@@ -1,44 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StepProgressBar } from '..';
-import { useIncident } from 'hooks';
-import { Images } from '../images';
 import { MainLayout } from 'UI/components';
 
-export const Description = ({ comeBack }) => {
-
-    const [ nextScreen, setNextScreen ] = useState(false);
-
-    const { incidentDescription, setIncidentDescription, setStep } = useIncident();
-
-    useEffect(() => {
-        setStep(2)
-    }, [setStep]);
+export const Description = ({ comeback, incidentDescription, setIncidentDescription, submit }) => {
 
     return (
-        nextScreen ? (
-            <Images comeBack={() => setNextScreen(false)} />
-        ) : (
-            <MainLayout title='Reportar incidente' bottomMenu={false} comeback={comeBack}>
-                <StepProgressBar />
-                <p className="description">
-                    Describe detalladamente el incidente que quieres reportar.
-                </p>
+        <MainLayout title='Reportar incidente' bottomMenu={false} comeback={comeback}>
+            <StepProgressBar step={2} />
+            <p className="description">
+                Describe detalladamente el incidente que quieres reportar.
+            </p>
+            <form action="" onSubmit={submit}>
                 <textarea 
                     type="text" 
                     value={incidentDescription} 
-                    onChange={setIncidentDescription} 
+                    onChange={e => setIncidentDescription(e.target.value)} 
                     rows="5"
                     required 
                 />
                 <div className="buttons-container">
-                    <button className="btn-primary" onClick={() => setNextScreen(true)}>
+                    <button className="btn-primary">
                         Siguiente
                     </button>
-                    <button className="btn-secondary" onClick={comeBack}>
+                    <button className="btn-secondary" onClick={comeback} type='button'>
                         Atras
                     </button>
                 </div>
-            </MainLayout>
-        )
+            </form>
+        </MainLayout>
     );
 };

@@ -1,4 +1,5 @@
 export * from './services';
+export * from './history';
 export { isMobileOrTablet } from './isMobileOrTablet';
 export { getCurrentDate } from './getCurrentDate';
 export { formatTimeToMilitaryHour } from './formatTimeToMilitaryHour';

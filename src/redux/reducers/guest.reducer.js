@@ -1,6 +1,9 @@
 import { guestActions } from "redux/actions";
 
-const initialState = {}
+const initialState = {
+    guests: [],
+    invitations: []
+}
 
 const guestReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -50,9 +50,10 @@
         }
     }
 
-    .upload-button{
-        @include button-configuration();
-        margin: 10px 0 15px;
+    .input-upload{
+        display: block;
+        width: 160px;
+        margin: 10px auto 15px;
         i{
             display: block;
             font-size: 50px;

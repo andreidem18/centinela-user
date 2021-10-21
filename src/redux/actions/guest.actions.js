@@ -1,6 +1,7 @@
 import { get, patch, post } from "utils";
-import { setLoading } from ".";
+import { setLoading, handleError, showInfoModal } from ".";
 import { Guests, Invitations } from '../constructors';
+import history from 'utils/history';
 
 export const guestActions = {
     setGuests: "SET_GUESTS",
@@ -28,7 +29,8 @@ export const getGuestsThunk = () => {
                 dispatch(setGuests(new Guests(res.data.data)));
                 dispatch(setInvitations(new Invitations(res.data.data)));
             })
-            .finally(() => dispatch(setLoading(false)))
+            .catch(error => handleError(error))
+            .finally(() => dispatch(setLoading(false)));
     }
 }
 
@@ -38,6 +40,7 @@ export const deleteGuestThunk = id => {
         dispatch(setLoading(true));
         return patch(`items/guests/${id}`, { favorite: 0 })
             .then(() => dispatch(getGuestsThunk()))
+            .catch(error => handleError(error))
             .finally(() => setLoading(false))
     }
 }
@@ -48,6 +51,7 @@ export const addGuestThunk = id => {
         dispatch(setLoading(true));
         return patch(`items/guests/${id}`, { favorite: 1 })
             .then(() => dispatch(getGuestsThunk()))
+            .catch(error => handleError(error))
             .finally(() => setLoading(false))
     }
 }
@@ -58,8 +62,10 @@ export const createInvitationThunk = data => {
         return post('items/guest_code_unique', data)
             .then(res => {
                 dispatch(getGuestsThunk());
-                return res;
+                dispatch(showInfoModal({ type: 'success', autoClose: true, message: 'Tu invitación fue creada correctamente', title: '¡Bien hecho!' }));
+                history.push(`/visitas/codigo/${res.data.data.code}`);
             })
+            .catch(error => handleError(error))
             .finally(() => setLoading(false));
     }
 }
