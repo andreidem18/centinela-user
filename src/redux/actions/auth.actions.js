@@ -20,23 +20,30 @@ export const setLoggedUser = user => ({
     payload: user
 });
 
-
+// Manejo de errores para peticiones de autenticación
 const handleAuthError = error => {
     return dispatch => {
-        if(error.response?.data?.error?.code === 204){
-            dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Ya existe un usuario con esta dirección de correo electrónico.', title: 'Email duplicado' }));
-        } else if(error.response?.data?.error?.code === 105){
-            dispatch(showInfoModal({ type: 'error', actionModal: () => history.push('/login'), showingTime: 4000, message: 'Esta solicitud ya expiró', title: 'Error' }));
-        } else if(error.response?.data?.error?.code === 4){
-            dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Esta dirección de correo es errónea o esta mal escrita.', title: 'Error de validación' }));
-        } else if(error.response?.data?.error?.code === 107){
-            dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'No existen usuarios con este email', title: 'Email no encontrado' }));
-        } else {
-            dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, comunícate con el administrador de tu unidad residencial.`, title: 'Lo sentimos' }));
+        switch(error.response?.data?.error?.code){
+            // Para el login
+            case 100:
+            case 114:
+                return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Credenciales incorrectas.`, title: 'Error' }));
+            // Para el registro
+            case 204:
+                return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Ya existe un usuario con esta dirección de correo electrónico.', title: 'Email duplicado' }));
+            // Para el cambio de contraseña
+            case 105:
+                return dispatch(showInfoModal({ type: 'error', actionModal: () => history.push('/login'), showingTime: 4000, message: 'Esta solicitud ya expiró', title: 'Error' }));
+            case 4:
+                return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'Esta dirección de correo es errónea o esta mal escrita.', title: 'Error de validación' }));
+            case 107:
+                return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: 'No existen usuarios con este email', title: 'Email no encontrado' }));
+            // Genérico
+            default:
+                return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, comunícate con el administrador de tu unidad residencial.`, title: 'Lo sentimos' }));
         }
     }
 }
-
 
 
 export const removeLoggedUser = () => ({ type: authActions.removeLoggedUser });
@@ -67,11 +74,7 @@ export const doLoginThunk = data => {
                     history.push('/');
                 } return null;
             })
-            .catch(error => {
-                if(error.response.status === 404){
-                    dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 4000, message: `Credenciales incorrectas.`, title: 'Error' }));
-                } else dispatch(handleAuthError(error));
-            })
+            .catch(error => dispatch(handleAuthError(error)))
             .finally(() => dispatch(setLoading(false)));
     }
 }

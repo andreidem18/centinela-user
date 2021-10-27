@@ -9,7 +9,7 @@ export const appActions = {
 // { type: 'success, error, warning', autoClose, showingTime, actionModal, message, title }
 export const showInfoModal = config => {
     return dispatch => {
-        config.handleClose = () => dispatch(removeInfoModal())
+        config.handleClose = () => dispatch(removeInfoModal());
         dispatch(setInfoModal(config));
     }
 }
