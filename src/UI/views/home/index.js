@@ -14,9 +14,11 @@ export const Home = () => {
     const [ viewSelected, setViewSelected ] = useState(0);
 
     useEffect(() => {
-        dispatch(getUserThunk());
-        dispatch(getGuestsThunk());
-    }, [ dispatch ]);
+        if(!loggedUser.id){
+            dispatch(getUserThunk());
+            dispatch(getGuestsThunk());
+        }
+    }, [ dispatch, loggedUser ]);
 
     const getViewSelected = () => {
         switch(viewSelected){

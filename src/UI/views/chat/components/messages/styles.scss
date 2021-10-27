@@ -1,0 +1,38 @@
+.chat .messages{
+    flex-grow: 1;
+    overflow: auto;
+    padding: 15px 0 0;
+    .message{
+        display: flex;
+        align-items: flex-end;
+        padding: 10px 5px;
+    }
+    .message-text{
+        padding: 15px 20px;
+        border-radius: 50px 50px 50px 0;
+        background: #E6E6E6;
+        color: #00251e;
+        text-align: left;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .message-hour{
+        width: 30%;
+        font-size: 13px;
+        color: #B2AFAF;
+        text-align: left;
+        padding: 0 0 10px 5px;
+    }
+    .message.myself{
+        flex-direction: row-reverse;
+        .message-text{
+            border-radius: 50px 50px 0 50px;
+            background: #01AD8A;
+            color: #fff;
+        }
+        .message-hour{
+            text-align: right;
+            padding: 0 5px 10px 0;
+        }
+    }
+}

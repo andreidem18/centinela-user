@@ -11,3 +11,4 @@ export { default as registroDeReportes } from "./registro-de-reportes.svg";
 export { default as reportarIncidente } from "./reportar-incidente.svg";
 export { default as buscando } from "./buscando.svg";
 export { default as celebracion } from "./celebracion.svg";
+export { default as defaultAvatar } from "./default-avatar.jpg";
