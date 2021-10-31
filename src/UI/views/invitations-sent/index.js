@@ -4,7 +4,7 @@ import { InvitationDetail, InvitationsList } from './components';
 import { useParams } from 'react-router';
 import { InvitationsFilterModal } from 'UI/modals';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGuestsThunk, addGuestThunk } from 'redux/actions';
+import { getGuestsThunk, addGuestThunk, showInfoModal, expireInvitationThunk } from 'redux/actions';
 
 import "./styles.scss";
 
@@ -18,13 +18,22 @@ export const InvitationsSent = () => {
     const [ filteredInvitations, setFilteredInvitations ] = useState([]);
     const [ showFiltersModal, setShowFiltersModal ] = useState(false);
 
-    useEffect(() => dispatch(getGuestsThunk()), [ dispatch ]);
+    useEffect(() => {
+        if(!invitations.length) dispatch(getGuestsThunk())
+    }, [ dispatch, invitations ]);
     useEffect(() => setFilteredInvitations(invitations), [ invitations ]);
 
     // En caso de que venga un id de params
     useEffect(() => setInvitationSelected(invitations?.find(i => i.id === parseInt(id))), [id, invitations]);
 
     const addGuest = id => dispatch(addGuestThunk(id));
+
+    const expireInvitation = id => {
+        dispatch(showInfoModal({ 
+            type: 'warning', actionModal: () => dispatch(expireInvitationThunk(id)), 
+            title: 'Desactivar invitación?', message: 'Una vez canceles la invitación, no podrás volverla a activar' 
+        }))
+    }
     
     return (
         <section className="invitations-sent">
@@ -33,6 +42,7 @@ export const InvitationsSent = () => {
                         invitation={invitationSelected} 
                         comeBack={() => setInvitationSelected(null)} 
                         addGuest={addGuest}
+                        expireInvitation={expireInvitation}
                     />
 
                 ) : (

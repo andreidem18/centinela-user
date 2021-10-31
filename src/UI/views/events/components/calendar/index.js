@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getCurrentDate, withoutTime } from 'utils';
+import { calculateDate, withoutTime } from 'utils';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 
 import './styles.scss';
@@ -19,7 +19,7 @@ export const Calendar = ({place, setDate}) => {
         if(isDisabled) e.isDisabled = true;
     }
 
-    const minDate = getCurrentDate(1);
+    const minDate = calculateDate(new Date(), 1);
     
     return (
         <div className='calendar'>

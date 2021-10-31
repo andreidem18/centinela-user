@@ -7,7 +7,7 @@ import { formatDateString, formatTime } from 'utils';
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.scss";
 
-export const InvitationDetail = ({ comeBack, invitation, addGuest }) => {
+export const InvitationDetail = ({ comeBack, invitation, addGuest, expireInvitation }) => {
 
     const history = useHistory();
     const creationDate = formatDateString(new Date(invitation.created_on));
@@ -54,12 +54,17 @@ export const InvitationDetail = ({ comeBack, invitation, addGuest }) => {
                     }
                     {
                         invitation.status ? (
-                            <button 
-                                className="finish-button" 
-                                onClick={() => history.push(`/visitas/codigo/${invitation.code}`)}    
-                            >
-                                Ver invitación <i className="fas fa-qrcode"></i>
-                            </button>
+                            <>
+                                <button 
+                                    className="finish-button" 
+                                    onClick={() => history.push(`/visitas/codigo/${invitation.code}`)}    
+                                >
+                                    Ver invitación <i className="fas fa-qrcode"></i>
+                                </button>
+                                <button className='expire-button' onClick={() => expireInvitation(invitation.id)}>
+                                    Expirar
+                                </button>
+                            </>
                         ) : (
                             <button className="finish-button" onClick={comeBack}>Terminar</button>
                         )

@@ -16,7 +16,9 @@ export const NewInvitation = () => {
 
     const deleteGuest = id => dispatch(deleteGuestThunk(id));
 
-    useEffect(() => dispatch(getGuestsThunk()), [ dispatch ]);
+    useEffect(() => {
+        if(!guests.length) dispatch(getGuestsThunk())
+    }, [ dispatch, guests ]);
 
     const submitNewGuest = isNewGuest => {
         const invitation = { 

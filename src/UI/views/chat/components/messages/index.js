@@ -10,7 +10,7 @@ export const Messages = ({ userId, messages}) => {
                 messages.map(message => {
                     const hour = formatTime(message.created_at)
                     return (
-                        <div className={`message ${message.user === userId ? 'myself' : ''}`}>
+                        <div className={`message ${message.user === userId ? 'myself' : ''}`} key={message.id}>
                             <div className="message-text">
                                 {message.message}
                             </div>

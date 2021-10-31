@@ -35,23 +35,21 @@ const messages = [
         created_at: new Date('October 28, 2021 12:11:00')
     },
     {
-        id: 2,
+        id: 3,
         user: 3,
         message: '¿Tiene comida por entrar?',
         created_at: new Date('October 28, 2021 12:11:00')
     },
     {
-        id: 1, 
+        id: 4, 
         user: 5,
         message: 'Si',
         created_at: new Date('October 28, 2021 12:12:00')
     },
     {
-        id: 1, 
+        id: 5, 
         user: 5,
         message: 'Ya lo registré en la aplicación',
         created_at: new Date('October 28, 2021 12:12:00')
     }
 ]
-
-// const contact = null;

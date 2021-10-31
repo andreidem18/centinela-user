@@ -1,7 +1,7 @@
 export * from './services';
 export * from './history';
 export { isMobileOrTablet } from './isMobileOrTablet';
-export { getCurrentDate } from './getCurrentDate';
+export { calculateDate } from './calculateDate';
 export { formatTimeToMilitaryHour } from './formatTimeToMilitaryHour';
 export { formatDate } from './formatDate';
 export { formatDateString } from './formatDateString';

@@ -69,3 +69,16 @@ export const createInvitationThunk = data => {
             .finally(() => setLoading(false));
     }
 }
+
+export const expireInvitationThunk = id => {
+    return dispatch => {
+        dispatch(setLoading(true));
+        return patch(`items/guest_code_unique/${id}`, {status: 0})
+            .then(() => {
+                dispatch(getGuestsThunk());
+                history.push(`/visitas/invitaciones-enviadas`);
+            })
+            .catch(error => handleError(error))
+            .finally(() => setLoading(false));
+    }
+}

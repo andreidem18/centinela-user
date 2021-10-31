@@ -6,7 +6,7 @@ export const appActions = {
 }
 
 // Config es un objeto con lo siguiente 
-// { type: 'success, error, warning', autoClose, showingTime, actionModal, message, title }
+// { type: 'success, error, warning', autoClose: true, showingTime: 2000, actionModal: () => {}, title: '', message: '' }
 export const showInfoModal = config => {
     return dispatch => {
         config.handleClose = () => dispatch(removeInfoModal());
