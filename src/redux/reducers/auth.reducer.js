@@ -1,36 +1,24 @@
 import { authActions } from "redux/actions";
 
 const initialState = {
-    loginError: "",
-    loggedUser: {
-        id: 0, 
-        email: "", 
-        role: "", 
-        residence: "",
-        apartment: "",
-        first_name: "", 
-        last_name: ""
-    }
+    id: 0, 
+    email: "", 
+    role: "", 
+    residence: "",
+    apartment: "",
+    profiles: []
 }
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case authActions.setLoginError:
-            return{
-                ...state,
-                loginError: action.payload
-            }
-
         case authActions.setLoggedUser:
-            const { id, email, role, apartment, residence, first_name, last_name } = action.payload;
+            const { id, email, role, apartment, residence, profiles } = action.payload;
             return{
-                ...state, loggedUser: { id, email, role, apartment, residence, first_name, last_name }
+                id, email, role, apartment, residence, profiles
             }
         case authActions.removeLoggedUser:
-            return{
-                ...state, loggedUser: initialState.loggedUser
-            }
+            return initialState
 
         case authActions.removeProfile:
             return{

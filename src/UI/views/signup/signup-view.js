@@ -2,6 +2,8 @@ import React from 'react';
 import { logo } from 'UI/assets';
 import { Background } from 'UI/components/background';
 
+import './styles.scss';
+
 const SignupView = ({ getForm }) => {
     return (
         <Background>

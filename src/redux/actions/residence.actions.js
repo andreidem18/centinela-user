@@ -1,12 +1,11 @@
-import { Nomenclatures } from "redux/constructors";
-import { get } from "utils";
+import { notTokenGet } from "utils";
 import { setLoading } from ".";
 
 
 export const residenceActions = {
     setResidences: "SET_RESIDENCE",
-    setNomenclatures: "SET_NOMENCLATURES",
-    removeNomenclatures: "REMOVE_NOMENCLATURES"
+    setApartments: "SET_APARTMENTS",
+    removeApartments: "REMOVE_APARTMENTS"
 }
 
 export const setResidences = residences => ({
@@ -14,32 +13,32 @@ export const setResidences = residences => ({
     payload: residences
 });
 
-export const setNomenclatures = nomenclatures => ({
-    type: residenceActions.setNomenclatures,
-    payload: nomenclatures
+export const setApartments = apartments => ({
+    type: residenceActions.setApartments,
+    payload: apartments
 })
 
 
-export const removeNomenclatures = () => ({ type: residenceActions.removeNomenclatures })
+export const removeApartments = () => ({ type: residenceActions.removeApartments })
 
 
 export const getResidencesThunk = () => {
     return dispatch => {
         dispatch(setLoading(true));
-        return get('items/residential_units?fields=*')
-            .then(res => dispatch(setResidences(res.data.data)))
+        return notTokenGet('residences/')
+            .then(res => dispatch(setResidences(res.data)))
             .finally(() => dispatch(setLoading(false)));
     }
 }
 
-export const getNomenclaturesThunk = residenceId => {
+export const getApartmentsThunk = residenceId => {
     return dispatch => {
         dispatch(setLoading(true));
-        return get(`items/nomenclatures_values?fields=*.*.*.*&filter[rel_type_unit.residential_unit]=${residenceId}&filter[status]=0`)
+        return notTokenGet(`residences/${residenceId}/not_taken_apartments/`)
             .then(res => {
-                const nomenclatures = new Nomenclatures(res.data.data);
-                dispatch(setNomenclatures(nomenclatures.nomenclatures));
+                dispatch(setApartments(res.data));
             })
             .finally(() => dispatch(setLoading(false)));
     }
 }
+

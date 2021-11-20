@@ -3,8 +3,7 @@ import { profileActions } from "redux/actions";
 const initialState = {
     id: 0,
     name: "",
-    phone_numbers: [],
-    is_logged: true
+    phone_numbers: []
 }
 
 const profileReducer = (state = initialState, action) => {

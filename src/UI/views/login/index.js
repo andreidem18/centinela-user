@@ -13,8 +13,11 @@ export const Login = () => {
     const dispatch = useDispatch();
 
     const login = e => {
-        e.preventDefault();            // Para que no vengan espacios
-        dispatch(doLoginThunk({email: e.target[0].value.replace(/\s/g,''), password: e.target[1].value}));
+        e.preventDefault();            
+        dispatch(doLoginThunk({                 // Para que no vengan espacios
+            email: e.target[0].value.toLowerCase().replace(/\s/g,''), 
+            password: e.target[1].value
+        }));
     }
 
     return (

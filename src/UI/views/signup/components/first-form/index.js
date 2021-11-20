@@ -13,11 +13,9 @@ export const FirstForm = ({
     residences, 
     residenceSelected, 
     setResidenceSelected, 
-    nomenclatures, 
-    nomenclatureSelected, 
-    setNomenclatureSelected,
-    valueSelected,
-    setValueSelected
+    apartments, 
+    apartmentSelected, 
+    setApartmentSelected
 }) => {
 
     const history = useHistory();
@@ -39,30 +37,16 @@ export const FirstForm = ({
                 />
             </div>
             {
-                nomenclatures.length > 0 &&
+                apartments.length > 0 &&
                     <div className="input-container">
                         <Typeahead 
-                            id='residences'
+                            id='apartments'
                             className='residences-typeahead'
-                            selected={nomenclatureSelected}
-                            onChange={setNomenclatureSelected}
-                            labelKey='value'
-                            options={nomenclatures} 
-                            placeholder={nomenclatures[0].type}
-                        />
-                    </div>
-            }
-            {
-                nomenclatureSelected.length > 0 &&
-                    <div className="input-container">
-                        <Typeahead 
-                            id='residences'
-                            className='residences-typeahead'
-                            selected={valueSelected}
-                            onChange={setValueSelected}
-                            labelKey='value'
-                            options={nomenclatureSelected[0].values} 
-                            placeholder={nomenclatureSelected[0].values[0].type}
+                            selected={apartmentSelected}
+                            onChange={setApartmentSelected}
+                            labelKey='apartment'
+                            options={apartments} 
+                            placeholder='Casa'
                         />
                     </div>
             }

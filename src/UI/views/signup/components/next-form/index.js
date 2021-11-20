@@ -4,7 +4,7 @@ import { validatePassword } from 'utils';
 
 import "./styles.scss";
 
-export const NextForm = ({handleSubmit, comeback}) => {
+export const NextForm = ({ handleSubmit, comeback }) => {
 
     const [ passwordStrength, setPasswordStrength ] = useState(null);
     const [ password, setPassword ] = useState("");
@@ -19,10 +19,7 @@ export const NextForm = ({handleSubmit, comeback}) => {
         <form action="" onSubmit={e => handleSubmit(e, passwordStrength, password)}>
 
             <div className="input-container">
-                    <InputLight label='Nombre' required />
-                </div>
-            <div className="input-container">
-                <InputLight label='Apellido' required />
+                <InputLight label='Nombre' required />
             </div>
 
             <div className="input-container">
@@ -48,6 +45,10 @@ export const NextForm = ({handleSubmit, comeback}) => {
 
             <div className="input-container">
                 <InputLight label="Confirmar contraseña" type="password" required/> 
+            </div>
+            
+            <div className="input-container">
+                <InputLight label="número de teléfono" type="tel" required/>
             </div>
 
             <div className="buttons-signup">

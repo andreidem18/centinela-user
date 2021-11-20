@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
-import { useProfile } from 'hooks';
+import React, { useState, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteProfileThunk, selectProfileThunk, showInfoModal } from 'redux/actions';
+import { getAvatar } from 'utils';
 
 import './styles.scss';
 
-export const Profile = ({profile}) => {
+export const Profile = ({ profile }) => {
 
     const [ showOptions, setShowOptions ] = useState(false);
-    const { deleteProfile, selectProfile } = useProfile();
+    const dispatch = useDispatch();
 
     const handleDelete = id => {
         setShowOptions(false);
-        deleteProfile(id);
+        dispatch(showInfoModal({ type: 'warning', actionModal: () => dispatch(deleteProfileThunk(id)), title: '¿Estas seguro de borrar este perfil?', message: 'Se eliminará permanentemente toda la información de este perfil, ¿Deseas continuar?' }));
     }
 
-    const avatarBackground = colors[Math.floor(Math.random()*4)];
+    const avatar = useMemo(() => getAvatar(profile.name), [ profile.name ]);
+
+    const selectProfile = () => {
+        if(profile.is_logged){
+            dispatch(showInfoModal({ type: 'error', title: 'Perfil actualmente en uso', message: 'Por seguridad, un perfil sólo puede tener una sesión iniciada a la vez. ¡Crea uno nuevo!' }))
+        } else dispatch(selectProfileThunk(profile));
+    }
 
     return (
         <div className="profile-container">
             <div className="profile">
                 <div className="img">
-                    <img src={`https://ui-avatars.com/api/?background=${avatarBackground}&name=${profile.name}&color=fff`} alt="" />
+                    <img src={avatar} alt="" />
                 </div>
-                <button className="name" onClick={() => selectProfile(profile.id)}>
+                <button className="name" onClick={() => selectProfile()}>
                     {profile.name}
                 </button>
                 <button className="options-profile" onClick={() => setShowOptions(!showOptions)}>
@@ -39,5 +47,3 @@ export const Profile = ({profile}) => {
         </div>
     );
 };
-
-const colors = ['D5ED8B', 'FFA17A', 'FFCD7E', 'D6E2B3']

@@ -14,3 +14,4 @@ export { MainLayout } from './main-layout';
 export { MenuButton } from './menu-button';
 export { MessageEmpty } from './message-empty';
 export { BottomMenu } from './bottom-menu';
+export { Background } from './background';

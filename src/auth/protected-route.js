@@ -9,7 +9,9 @@ export const ProtectedRoute = ({ children, ...props}) => {
                 !localStorage.getItem('token') ? (
                     <Redirect to="/login"/>
                 ) : (
-                    children
+                    !localStorage.getItem('profile') ? (
+                        <Redirect to="/perfiles" />
+                    ) : children
                 )
             }
         />

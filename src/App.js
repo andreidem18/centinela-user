@@ -95,6 +95,9 @@ function App() {
           <ProtectedRoute path='/chat'>
             <views.Chat />
           </ProtectedRoute>
+          <Route path="/recuperar-contraseña/:id">
+            <views.PasswordRecovery />
+          </Route>
           <Route path="/recuperar-contraseña">
             <views.PasswordRecovery />
           </Route>

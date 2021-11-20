@@ -9,6 +9,7 @@ export const handleError = error => {
         } else if(error.message === "Network Error"){
             dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Revisa tu conexión a internet' }));
         } else { 
+            console.log(error)
             dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 6000, message: 'Ha ocurrido un error, vuelve a intentarlo. Si el problema persiste, reportalo ', link: '/comentarios/reportar-error', linkMessage: 'aquí', title: 'Lo sentimos...' }));
         }
         dispatch(setLoading(false));

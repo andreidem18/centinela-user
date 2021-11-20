@@ -2,12 +2,13 @@
 
 .select-profile{
     padding: 30px 10px 0 10px;
-    height: 100vh;
+    height: 100%;
+    width: 100vw;
     background: #f7fffe;
     .select-profile-content{
         display: flex;
         flex-direction: column;
-        height: 83vh;
+        height: 84%;
         overflow: auto;
         .logo{
             height: 90px;
@@ -35,7 +36,7 @@
         }
     }
     .logout-button{
-        height: 13vh;
+        height: 15%;
         padding: 17px;
         button{
             @include button-configuration();

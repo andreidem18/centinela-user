@@ -36,3 +36,21 @@ export const patch = (endpoint, data) => new Promise((resolve, reject) => {
         .then(res => resolve(res))
         .catch(err => reject(err))
 })
+
+export const remove = endpoint => new Promise((resolve, reject) => {
+    axios.delete(setURL(endpoint), getConfig())
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+})
+
+export const notTokenGet = endpoint => new Promise((resolve, reject) => {
+    axios.get(setURL(endpoint))
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+})
+
+export const notTokenPost = (endpoint, data) => new Promise((resolve, reject) => {
+    axios.post(setURL(endpoint), data)
+        .then(res => resolve(res))
+        .catch(err => reject(err))
+})

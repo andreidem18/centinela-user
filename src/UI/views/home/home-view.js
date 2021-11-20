@@ -2,13 +2,13 @@ import React from 'react';
 import { ChatButton, StandarContainer } from 'UI/components';
 import { SectionsSlider } from './components';
 
-export const HomeView = ({ loggedUser, viewSelected, setViewSelected, getViewSelected, views }) => {
+export const HomeView = ({ name, viewSelected, setViewSelected, getViewSelected }) => {
 
     return (
         <StandarContainer sectionSelected='home'>
             <section className="home-user">
                 <div>
-                    <h1>Hola <span>{loggedUser.first_name}</span></h1>
+                    <h1>Hola <span>{name}</span></h1>
                     <div className="sections-slider-container">
                         <p className='question'>¿Qué vas a consultar?</p>
                         <SectionsSlider />

@@ -52,11 +52,11 @@
         border-bottom-color: rgba(0,0,0,.15);
         color: rgba(0, 0, 0, 0.7);
         &:focus, &:valid{
-            border-bottom-color: $dark-blue-variation;
+            border-bottom-color: $purple;
         }
         &:focus ~ span, &:valid ~ span{
             transform: translateY(-24px);
-            color: $dark-blue-variation;
+            color: $purple;
             font-size: 14px;
         }
     }

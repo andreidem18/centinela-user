@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGuestsThunk, getUserThunk } from 'redux/actions';
+// import { getGuestsThunk, getUserThunk } from 'redux/actions';
+import { getUserThunk } from 'redux/actions';
 import { PaymentsHome, StatementsHome, VisitsHome } from './components';
 import { HomeView } from './home-view';
 
@@ -9,16 +10,16 @@ import "./styles.scss";
 export const Home = () => {
 
     const dispatch = useDispatch();
-    const loggedUser = useSelector(state => state.auth.loggedUser);
+    const profile = useSelector(state => state.profile);
     const invitations = useSelector(state => state.guests.invitations);
     const [ viewSelected, setViewSelected ] = useState(0);
 
     useEffect(() => {
-        if(!loggedUser.id){
+        if(!profile.id){
             dispatch(getUserThunk());
-            dispatch(getGuestsThunk());
+            // dispatch(getGuestsThunk());
         }
-    }, [ dispatch, loggedUser ]);
+    }, [ dispatch, profile ]);
 
     const getViewSelected = () => {
         switch(viewSelected){
@@ -37,7 +38,7 @@ export const Home = () => {
             setViewSelected={setViewSelected}
             getViewSelected={getViewSelected}
             invitations={invitations}
-            loggedUser={loggedUser}
+            name={profile.name.split(' ')[0]}
         />
     );
 };

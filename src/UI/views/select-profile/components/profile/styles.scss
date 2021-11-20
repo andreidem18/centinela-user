@@ -8,7 +8,7 @@
         align-items: center;
         position: relative;
         .img{
-            width: 25%;
+            width: 22%;
             padding: 8px;
             img{
                 width: 100%;
@@ -19,7 +19,7 @@
             @include button-configuration();
         }
         .name{
-            width: 66.6666%;
+            width: 69.6666%;
             height: 100%;
             text-align: left;
             font-weight: 600;
