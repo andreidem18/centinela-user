@@ -32,14 +32,18 @@ export const Profile = ({ profile }) => {
                 <button className="name" onClick={() => selectProfile()}>
                     {profile.name}
                 </button>
-                <button className="options-profile" onClick={() => setShowOptions(!showOptions)}>
-                    <i className="fas fa-ellipsis-v"></i>
-                </button>
-                <div className="options-profile-list" style={{transform: showOptions ? 'scale(1)' : 'scale(0)'}}>
-                    <button onClick={() => handleDelete(profile.id)}>
-                        Eliminar perfil
-                    </button>
-                </div>
+                {
+                    !profile.is_main && <>
+                        <button className="options-profile" onClick={() => setShowOptions(!showOptions)}>
+                            <i className="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div className="options-profile-list" style={{transform: showOptions ? 'scale(1)' : 'scale(0)'}}>
+                            <button onClick={() => handleDelete(profile.id)}>
+                                Eliminar perfil
+                            </button>
+                        </div>
+                    </>
+                }
                 { showOptions &&
                     <div className="overlay" onClick={() => setShowOptions(false)}></div>
                 }

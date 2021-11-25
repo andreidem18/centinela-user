@@ -51,10 +51,22 @@ export const doLoginThunk = data => {
         return notTokenPost('login/', data)
             .then(res => {
                 localStorage.setItem('token', res.data.access);
-                dispatch(getUserThunk());
+                return get('users/myself/');
             })
-            .then(() => {
-                history.push('/profiles');
+            .then(res => {
+                if(!res.data.verified){
+                    localStorage.setItem('token', '');
+                    return dispatch(showInfoModal({ type: 'error', autoClose: true, showingTime: 3000, title: 'Perfil inactivo', message: 'Los administradores de tu unidad residencial están verificando tu identidad. ¡Te avisaremos cuando puedas entrar!' }))
+                } 
+                // Si hay un perfil en el local storage, que lo busque en el response, lo guarde y luego
+                // guarde el usuario. Sino, que sólo guarde el usuario
+                let profile = +localStorage.getItem('profile');
+                if(profile){
+                    profile = res.data.profiles.find(p => profile === p.id);
+                    dispatch(setProfile(profile));
+                }
+                dispatch(setLoggedUser(res.data));
+                history.push('/perfiles');
             })
             .catch(error => dispatch(handleAuthError(error)))
             .finally(() => dispatch(setLoading(false)));
@@ -67,8 +79,8 @@ export const getUserThunk = () => {
         dispatch(setLoading(true));
         return get('users/myself/')
             .then(res => {
-                // Si hay un perfil en el local storage, que lo busque en la respuesta y lo guarde y luego
-                // Guarde el usuario. Sino, que sólo guarde el usuario
+                // Si hay un perfil en el local storage, que lo busque en el response, lo guarde y luego
+                // guarde el usuario. Sino, que sólo guarde el usuario
                 let profile = +localStorage.getItem('profile');
                 if(profile){
                     profile = res.data.profiles.find(p => profile === p.id);
@@ -95,7 +107,7 @@ export const createUserThunk = data => {
 export const recoveryPasswordThunk = email => {
     return dispatch => {
         dispatch(setLoading(true));
-        return notTokenPost('recovery_password/', { user: email })
+        return notTokenPost('recovery_password/', { user: email, link: `${process.env.REACT_APP_HOST}recuperar-contraseña` })
             .then(() => dispatch(showInfoModal({ type: 'success', actionModal: () => history.push('/login'), message: 'Se envió un email a tu correo electrónico con los siguientes pasos para restaurar tu contraseña', title: 'En camino...' })))
             .catch(error => {
                 if(error.response.status === 404){
