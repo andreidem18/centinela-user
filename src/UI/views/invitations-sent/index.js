@@ -19,8 +19,8 @@ export const InvitationsSent = () => {
     const [ showFiltersModal, setShowFiltersModal ] = useState(false);
 
     useEffect(() => {
-        if(!invitations.length) dispatch(getGuestsThunk())
-    }, [ dispatch, invitations ]);
+        dispatch(getGuestsThunk());
+    }, [ dispatch ]);
     useEffect(() => setFilteredInvitations(invitations), [ invitations ]);
 
     // En caso de que venga un id de params
