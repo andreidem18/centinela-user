@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { escudoAncho } from 'UI/assets';
 
 import "./styles.scss";
@@ -12,7 +12,6 @@ export const NavBar = () => {
     // Para colocarle un height del 8% del tamaño de la pantalla, que no se altere si se abre el teclado
     const height = useMemo(() => 8 * window.innerHeight / 100, []);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     return (
         <div className="nav-bar-container" style={{height}}>
@@ -54,7 +53,7 @@ export const NavBar = () => {
                         <i className="fas fa-exclamation-circle"></i>   
                         Envía tu comentario
                     </Link>
-                    <button onClick={() => dispatch(doLogout(history))}>
+                    <button onClick={() => dispatch(doLogout())}>
                         <i className="fas fa-sign-out-alt"></i>
                         Salir
                     </button>

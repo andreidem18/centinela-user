@@ -31,7 +31,7 @@ export const QRScreen = () => {
     }, [ dispatch, isInvalid, imgLoaded ]);
 
 
-    const generateQr = () => `https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=${encodeURIComponent(`${process.env.REACT_APP_HOST}/visitas/codigo/${code}`)}`
+    const generateQr = () => `https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=${code}`
     
 
     return (

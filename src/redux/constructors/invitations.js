@@ -6,7 +6,6 @@ export function Invitations(invitations){
     const activeInvitations = [];
 
     invitations.forEach(invitation => {
-
         // Filtrado de invitaciones de acceso único (tipo 1)
         if(invitation.type === 1){
             const created_date = calculateDate(new Date(invitation.created_on), 1);

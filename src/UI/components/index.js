@@ -5,6 +5,7 @@ export { Select } from './select';
 export { Textarea } from './textarea';
 export { NavBar } from './navbar';
 export { LoadingScreen } from './loading-screen';
+export { Background } from './background';
 export { AlternativeBackground } from './alternative-background';
 export { ShareInSocialMedia } from './share-in-social-media';
 export { ChatButton } from './chat-button';

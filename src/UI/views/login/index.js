@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { escudoAncho, nombreApp } from "UI/assets";
-import { InputLight } from 'UI/components';
+import { InputLight, Background } from 'UI/components';
 
 import "./styles.scss";
-import { Background } from 'UI/components/background';
 import { doLoginThunk } from 'redux/actions';
 import { useDispatch } from 'react-redux';
 

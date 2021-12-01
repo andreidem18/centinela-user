@@ -66,13 +66,11 @@ export const doLoginThunk = data => {
         dispatch(setLoading(true));
         return loginPost(data)
             .then(res => {
-                if(res.data.data.user.role !== 4){
-                    dispatch(setLoggedUser(res.data.data.user));
-                    dispatch(setLoginError(''));
-                    localStorage.setItem('token', res.data.data.token);
-                    localStorage.setItem('user_id', res.data.data.user.id);
-                    history.push('/');
-                } return null;
+                dispatch(setLoggedUser(res.data.data.user));
+                dispatch(setLoginError(''));
+                localStorage.setItem('token', res.data.data.token);
+                localStorage.setItem('user_id', res.data.data.user.id);
+                history.push('/');
             })
             .catch(error => dispatch(handleAuthError(error)))
             .finally(() => dispatch(setLoading(false)));
