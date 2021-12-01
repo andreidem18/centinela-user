@@ -12,7 +12,7 @@ export const UserView = ({ qr, code, setImgLoaded, isInvalid }) => {
         if(isMobileOrTablet()){
             navigator.share({
                 title: "Visítame a través de este código QR!",
-                url: `${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`
+                url: `${process.env.REACT_APP_HOST}/visitas/codigo/${code}`
             })
         } else {
             setShowShare(true);
@@ -52,7 +52,7 @@ export const UserView = ({ qr, code, setImgLoaded, isInvalid }) => {
                     <ShareInSocialMedia 
                         isOpened={showShare} 
                         handleClose={() => setShowShare(false)} 
-                        link={`${process.env.REACT_APP_HOST}/#/visitas/codigo/${code}`}
+                        link={`${process.env.REACT_APP_HOST}/visitas/codigo/${code}`}
                     />
                 </>)
             }
