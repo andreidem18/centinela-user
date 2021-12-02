@@ -46,7 +46,7 @@ export const AddGuest = props => {
                     <InputLight 
                         label="Vehículo (carro, moto...)" 
                         value={guest?.vehicle || ''} 
-                        onChange={e => changeGuest(e, 'vehicle')} 
+                        onChange={e => changeGuest(e, 'vehicle_type')} 
                         onKeyDown={handleEnter} 
                         required 
                     />
